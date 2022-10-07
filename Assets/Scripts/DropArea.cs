@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class DropArea : MonoBehaviour, IDropable
 {
@@ -31,7 +32,7 @@ public class DropArea : MonoBehaviour, IDropable
                     playerCollectManager.collectedObjects[i].transform.parent = gameObject.transform;
 
 
-                    playerCollectManager.collectedObjects[i].transform.position = new Vector3
+                    playerCollectManager.collectedObjects[i].transform.DOMove( new Vector3
 
                 (
 
@@ -41,7 +42,7 @@ public class DropArea : MonoBehaviour, IDropable
 
                 droppedObjectSpawnPoint.transform.position.z
 
-                );
+                ),1);
 
                     playerCollectManager.collectedObjects[i].transform.rotation = droppedObjectSpawnPoint.rotation;
 

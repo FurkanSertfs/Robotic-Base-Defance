@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
-public class DropArea : MonoBehaviour, IDropable
+public class DropArea : MonoBehaviour, IDropable<CollectManager>
 {
     [HideInInspector]
     public CollectManager playerCollectManager;
@@ -11,7 +11,10 @@ public class DropArea : MonoBehaviour, IDropable
     public int stackLimit;
 
     [SerializeField]
-    CollectableObject.ObjectType dropAreaType;
+    Colleactable.ObjectType dropAreaType;
+
+    [SerializeField]
+    MachineManager _machineManager;
 
     [SerializeField]
     Transform droppedObjectSpawnPoint;
@@ -20,7 +23,7 @@ public class DropArea : MonoBehaviour, IDropable
     public List<GameObject> droppedObjects = new List<GameObject>();
 
 
-    public void Drop()
+    public void Drop(CollectManager playerCollectManager)
     {
             for (int i = playerCollectManager.collectedObjects.Count-1; i >= 0; i--)
             {
@@ -29,36 +32,29 @@ public class DropArea : MonoBehaviour, IDropable
                 {
                         if (playerCollectManager.collectedObjects[i].GetComponent<Colleactable>().objectType == dropAreaType)
                         {
-                    playerCollectManager.collectedObjects[i].transform.parent = gameObject.transform;
+                                playerCollectManager.collectedObjects[i].transform.parent = gameObject.transform;
 
 
-                    playerCollectManager.collectedObjects[i].transform.DOMove( new Vector3
+                                playerCollectManager.collectedObjects[i].transform.DOMove(new Vector3
 
-                (
+                                (
 
-                droppedObjectSpawnPoint.transform.position.x,
+                                droppedObjectSpawnPoint.transform.position.x,
 
-                droppedObjectSpawnPoint.transform.position.y + (float)droppedObjects.Count / 3,
+                                droppedObjectSpawnPoint.transform.position.y + (float)droppedObjects.Count / 3,
 
-                droppedObjectSpawnPoint.transform.position.z
+                                droppedObjectSpawnPoint.transform.position.z
 
-                ),1);
+                                ), 0.3f);
+                                
+                                droppedObjects.Add(playerCollectManager.collectedObjects[i]);
 
-                    playerCollectManager.collectedObjects[i].transform.rotation = droppedObjectSpawnPoint.rotation;
+                                playerCollectManager.collectedObjects[i].transform.rotation = droppedObjectSpawnPoint.rotation;
 
-                    droppedObjects.Add(playerCollectManager.collectedObjects[i]);
+                                Destroy(playerCollectManager.collectedObjects[i].GetComponent<Colleactable>());
 
-                            Destroy(playerCollectManager.collectedObjects[i].GetComponent<Colleactable>());
-
-                            playerCollectManager.collectedObjects.RemoveAt(i);
-                            
-
-
-                        
-
-                    }
-
-
+                                playerCollectManager.collectedObjects.RemoveAt(i);
+                        }
                 }
 
                 else
@@ -67,14 +63,21 @@ public class DropArea : MonoBehaviour, IDropable
                     break;
 
                 }
+            
 
 
-
-
+    
             }
 
-     
 
-     
+        StartCoroutine(Wait());
+
+
+
+    }
+    IEnumerator Wait()
+    {
+        yield return new WaitForSeconds(0.45f);
+        _machineManager.FillMachine();
     }
 }

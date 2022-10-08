@@ -3,26 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
-public class Colleactable : MonoBehaviour, ICollactable
+public class Colleactable : MonoBehaviour, ICollactable<CollectManager>
 {
-    
-    public CollectManager playerCollectManager;
+    public enum ObjectType { RawIron = 0, RawPlastic = 1, IronIngot = 2, PlasticIngot = 3 };
 
-    public CollectableObject.ObjectType objectType;
+    public ObjectType objectType;
 
     float time = 0.3f;
 
 
     int collectObjeIndex;
-    public void Collect()
+    public void Collect(CollectManager playerCollectManager)
     {
         collectObjeIndex = playerCollectManager.collectedObjects.Count;
         playerCollectManager.collectedObjects.Add(gameObject);
         transform.parent = playerCollectManager.transform;
         transform.rotation = playerCollectManager.transform.rotation;
-        MovePlayer();
+        MovePlayer(playerCollectManager);
     }
-    void MovePlayer() 
+    void MovePlayer(CollectManager playerCollectManager) 
     {
 
         if (transform.position != new Vector3(playerCollectManager.collectableObjectSpawnPoint.position.x,
@@ -33,7 +32,7 @@ public class Colleactable : MonoBehaviour, ICollactable
            (playerCollectManager.collectableObjectSpawnPoint.position.x,
              playerCollectManager.collectableObjectSpawnPoint.position.y + 0.3f * (collectObjeIndex - 1),
              playerCollectManager.collectableObjectSpawnPoint.position.z
-           ), time).OnComplete(() => MovePlayer());
+           ), time).OnComplete(() => MovePlayer(playerCollectManager));
 
 
             time -= 0.1f;

@@ -21,19 +21,20 @@ public class CollectManager : MonoBehaviour
 
         if (other.GetComponent<Colleactable>() != null)
         {
-      
-            other.GetComponent<Colleactable>().playerCollectManager = this;
-           
-            other.GetComponent<Colleactable>().Collect();
+            other.GetComponent<Colleactable>().Collect(this);
 
+        }
+        if (other.GetComponent<CollectArea>()!=null)
+        {
+
+            other.GetComponent<CollectArea>().CollectFromTopofList(this);
 
         }
 
         if (other.GetComponent<DropArea>() != null)
         {
-            other.GetComponent<DropArea>().playerCollectManager = this;
 
-            other.GetComponent<DropArea>().Drop();
+            other.GetComponent<DropArea>().Drop(this);
 
             EditStack();
 

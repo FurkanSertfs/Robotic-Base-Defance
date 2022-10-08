@@ -2,8 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IDropable
+public interface IDropable<T>
 {
-    public void Drop();
+    public void Drop(CollectManager collectManager);
     
 }

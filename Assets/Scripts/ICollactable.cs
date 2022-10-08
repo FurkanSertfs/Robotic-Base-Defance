@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface ICollactable 
+public interface ICollactable<T> 
 {
 
-    public void Collect();
+    public void Collect(CollectManager collectManager);
    
 }

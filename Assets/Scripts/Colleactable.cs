@@ -15,11 +15,16 @@ public class Colleactable : MonoBehaviour, ICollactable<CollectManager>
     int collectObjeIndex;
     public void Collect(CollectManager playerCollectManager)
     {
-        collectObjeIndex = playerCollectManager.collectedObjects.Count;
-        playerCollectManager.collectedObjects.Add(gameObject);
-        transform.parent = playerCollectManager.transform;
-        transform.rotation = playerCollectManager.transform.rotation;
-        MovePlayer(playerCollectManager);
+        if (playerCollectManager.collectedObjects.Count <playerCollectManager.stackLimit)
+        {
+            collectObjeIndex = playerCollectManager.collectedObjects.Count;
+            playerCollectManager.collectedObjects.Add(gameObject);
+            transform.parent = playerCollectManager.transform;
+            transform.rotation = playerCollectManager.transform.rotation;
+            MovePlayer(playerCollectManager);
+        }
+
+       
     }
     void MovePlayer(CollectManager playerCollectManager) 
     {

@@ -12,7 +12,7 @@ public class CollectManager : MonoBehaviour
     
 
     [SerializeField]
-    int stackLimit;
+   public int stackLimit;
 
 
 

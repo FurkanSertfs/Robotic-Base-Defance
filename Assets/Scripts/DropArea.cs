@@ -5,9 +5,7 @@ using DG.Tweening;
 
 public class DropArea : MonoBehaviour, IDropable<CollectManager>
 {
-    [HideInInspector]
-    public CollectManager playerCollectManager;
-
+    
     public int stackLimit;
 
     [SerializeField]

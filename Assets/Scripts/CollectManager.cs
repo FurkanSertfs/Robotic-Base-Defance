@@ -47,8 +47,6 @@ public class CollectManager : MonoBehaviour
     public void EditStack()
     {
 
-       
-
         for (int i = 0; i < collectedObjects.Count; i++)
         {
         
@@ -57,7 +55,9 @@ public class CollectManager : MonoBehaviour
             (
                 
             collectableObjectSpawnPoint.position.x,
+            
             collectableObjectSpawnPoint.position.y +  (0.3f * i),
+           
             collectableObjectSpawnPoint.position.z
 
             );

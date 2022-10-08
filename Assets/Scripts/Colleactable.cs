@@ -9,7 +9,7 @@ public class Colleactable : MonoBehaviour, ICollactable<CollectManager>
 
     public ObjectType objectType;
 
-    float time = 0.3f;
+    float time = 0.2f;
 
 
     int collectObjeIndex;
@@ -30,17 +30,17 @@ public class Colleactable : MonoBehaviour, ICollactable<CollectManager>
     {
 
         if (transform.position != new Vector3(playerCollectManager.collectableObjectSpawnPoint.position.x,
-            playerCollectManager.collectableObjectSpawnPoint.position.y + 0.3f * (collectObjeIndex - 1),
+            playerCollectManager.collectableObjectSpawnPoint.position.y + 0.3f * collectObjeIndex,
             playerCollectManager.collectableObjectSpawnPoint.position.z))
         {
             transform.DOMove(new Vector3
            (playerCollectManager.collectableObjectSpawnPoint.position.x,
-             playerCollectManager.collectableObjectSpawnPoint.position.y + 0.3f * (collectObjeIndex - 1),
+             playerCollectManager.collectableObjectSpawnPoint.position.y + 0.3f *collectObjeIndex,
              playerCollectManager.collectableObjectSpawnPoint.position.z
            ), time).OnComplete(() => MovePlayer(playerCollectManager));
 
 
-            time -= 0.1f;
+            time -= 0.075f;
         }
 
     }

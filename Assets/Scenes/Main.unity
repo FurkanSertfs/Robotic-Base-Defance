@@ -1839,6 +1839,25 @@ Transform:
   m_Father: {fileID: 1099147352}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1379616224 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1886853608879534948, guid: 5c454ed3e7b10b44b8f1bf4e863dcb40, type: 3}
+  m_PrefabInstance: {fileID: 2046482240}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1379616228
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1379616224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edc16474e310d9c4b9e21139a03fea55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _beltMaterial: {fileID: 2100000, guid: 6018422e9a812634092b43269d3adf5f, type: 2}
+  _machineManager: {fileID: 1538774932}
 --- !u!1 &1385866220
 GameObject:
   m_ObjectHideFlags: 0
@@ -2130,7 +2149,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 0.84660614, b: 0, a: 1}
-  m_Intensity: 3.92
+  m_Intensity: 0
   m_Range: 1
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -2329,12 +2348,14 @@ MonoBehaviour:
   machinePoint2: {fileID: 1440999196}
   machineDropPoint: {fileID: 2129298535}
   dropArea: {fileID: 591583337}
-  machineLevel: 0
+  machineLevel: 1
   machineSpeed: 0
   isFull: 0
+  _fireLight: {fileID: 1464147187}
   _moltenIronPrefab: {fileID: 6229030300526065326, guid: e5ee291fcc6a03a479be0f5ded49d294, type: 3}
   _pressMachine: {fileID: 391228083}
   _collectAreaCount: 5
+  i: 0
 --- !u!1 &1675797344
 GameObject:
   m_ObjectHideFlags: 0
@@ -2619,6 +2640,25 @@ Transform:
   m_Father: {fileID: 1896351269}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1939053650 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -8685132976342019504, guid: 5c454ed3e7b10b44b8f1bf4e863dcb40, type: 3}
+  m_PrefabInstance: {fileID: 2046482240}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1939053654
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1939053650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edc16474e310d9c4b9e21139a03fea55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _beltMaterial: {fileID: 2100000, guid: 6018422e9a812634092b43269d3adf5f, type: 2}
+  _machineManager: {fileID: 1538774932}
 --- !u!1001 &2046482240
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2670,18 +2710,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -1607818984252441682, guid: 5c454ed3e7b10b44b8f1bf4e863dcb40, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6018422e9a812634092b43269d3adf5f, type: 2}
     - target: {fileID: -136146094977690518, guid: 5c454ed3e7b10b44b8f1bf4e863dcb40, type: 3}
       propertyPath: m_LocalPosition.y
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 195678870991808258, guid: 5c454ed3e7b10b44b8f1bf4e863dcb40, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 7195954620466059712, guid: 3d8bb0d1a13c3f04db824020ca9432e4, type: 3}
     - target: {fileID: 919132149155446097, guid: 5c454ed3e7b10b44b8f1bf4e863dcb40, type: 3}
       propertyPath: m_Name
       value: furnace
       objectReference: {fileID: 0}
+    - target: {fileID: 2814896426134926359, guid: 5c454ed3e7b10b44b8f1bf4e863dcb40, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6018422e9a812634092b43269d3adf5f, type: 2}
     - target: {fileID: 4175694834379971463, guid: 5c454ed3e7b10b44b8f1bf4e863dcb40, type: 3}
       propertyPath: m_Materials.Array.data[3]
       value: 
       objectReference: {fileID: 2100000, guid: 6a3976d489393af4ea94347fce7b8348, type: 2}
+    - target: {fileID: 4893237386926269159, guid: 5c454ed3e7b10b44b8f1bf4e863dcb40, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 414439481751473805, guid: 3d8bb0d1a13c3f04db824020ca9432e4, type: 3}
     - target: {fileID: 5222013632328228226, guid: 5c454ed3e7b10b44b8f1bf4e863dcb40, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 

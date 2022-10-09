@@ -25,6 +25,7 @@ public class DropArea : MonoBehaviour, IDropable<CollectManager>
     {
             for (int i = playerCollectManager.collectedObjects.Count-1; i >= 0; i--)
             {
+                
 
                 if (droppedObjects.Count < stackLimit)
                 {

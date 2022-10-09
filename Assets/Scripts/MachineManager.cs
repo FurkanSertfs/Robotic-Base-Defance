@@ -11,11 +11,14 @@ public class MachineManager : MonoBehaviour
 
     public DropArea dropArea;
 
-    public int machineLevel;
+    public int machineLevel=1;
 
     public float machineSpeed;
 
     public bool isFull;
+
+    [SerializeField]
+    Light _fireLight;
 
     [SerializeField]
     GameObject _moltenIronPrefab;
@@ -24,13 +27,14 @@ public class MachineManager : MonoBehaviour
     PressMachine _pressMachine;
 
     [SerializeField]
-    int _collectAreaCount=5;
+    int _collectAreaCount=5,i=0;
     public void FillMachine() 
     {
-
-        if ( !isFull && dropArea.droppedObjects.Count>0&&_pressMachine._collectArea.collectableObjects.Count<_collectAreaCount)
+        
+        if ( !isFull && dropArea.droppedObjects.Count>0 && _pressMachine._collectArea.collectableObjects.Count<_collectAreaCount)
         {
-          isFull = true;
+
+            isFull = true;
 
             GameObject dropped = dropArea.droppedObjects[dropArea.droppedObjects.Count - 1];
 
@@ -39,15 +43,18 @@ public class MachineManager : MonoBehaviour
                     dropped.transform.DOMove(machinePoint2.position, 1).SetEase(Ease.Linear).OnComplete(() =>
                    
                     {
+                        DOTween.To(() => (float) 0, x => _fireLight.intensity = x,5, 0.25f).SetEase(Ease.Linear).OnComplete(()=> { DOTween.To(() => (float)5, x => _fireLight.intensity = x, 0, 0.25f).SetEase(Ease.Linear); });
+                        
                         StartCoroutine(Processing(dropped));
-                       
-                        dropArea.droppedObjects.Remove(dropped);
 
-                    }); 
+                        
+
+                    });
                     
                 }
            );
-            
+            dropArea.droppedObjects.Remove(dropped);
+
         }
     }
     IEnumerator Processing(GameObject destroyObject) 

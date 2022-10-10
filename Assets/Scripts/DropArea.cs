@@ -33,6 +33,8 @@ public class DropArea : MonoBehaviour, IDropable<CollectManager>
                         {
                                 playerCollectManager.collectedObjects[i].transform.parent = gameObject.transform;
 
+                                playerCollectManager.collectedObjects[i].transform.rotation = droppedObjectSpawnPoint.transform.rotation;
+                                playerCollectManager.collectedObjects[i].transform.localScale = droppedObjectSpawnPoint.transform.localScale;
 
                                 playerCollectManager.collectedObjects[i].transform.DOMove(new Vector3
 

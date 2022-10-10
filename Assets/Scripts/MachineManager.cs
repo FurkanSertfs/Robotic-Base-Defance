@@ -27,7 +27,7 @@ public class MachineManager : MonoBehaviour
     PressMachine _pressMachine;
 
     [SerializeField]
-    int _collectAreaCount=5,i=0;
+    int _collectAreaCount = 5;
     public void FillMachine() 
     {
         
@@ -64,7 +64,7 @@ public class MachineManager : MonoBehaviour
         Destroy(destroyObject);
 
         GameObject _ironIngot = Instantiate(_moltenIronPrefab, machinePoint2.transform.position, machinePoint2.transform.rotation);
-
+        _ironIngot.transform.rotation = pressPoint.transform.rotation;
         _ironIngot.transform.DOMove(pressPoint.position, 0.5f).OnComplete(()=> 
         { 
             _pressMachine.Press(0.4f, _ironIngot, machineDropPoint);

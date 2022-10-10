@@ -2630,7 +2630,7 @@ MonoBehaviour:
   machinePoint2: {fileID: 1440999196}
   machineDropPoint: {fileID: 2129298535}
   dropArea: {fileID: 591583337}
-  machineLevel: 1
+  machineLevel: 4
   machineSpeed: 0
   isFull: 0
   _fireLight: {fileID: 1464147187}

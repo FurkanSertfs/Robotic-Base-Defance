@@ -1,74 +1,40 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class BaseDefanceManager : MonoBehaviour
 {
-
     [SerializeField]
-    List<DefancePosition> defancePositions = new List<DefancePosition>();
+    SoldierPosition[] soldierPositions;
 
-    int totalSoldier;
+    public static BaseDefanceManager baseDefanceManager;
 
-    public TransformAndIndex AddSoldierToPosition()
+    private void Awake()
     {
-        if (totalSoldier > defancePositions.Count)
+        baseDefanceManager = this;
+    }
+
+    public void AddSoldier(AIManager aIManager)
+    {
+        for (int i = 0; i < soldierPositions.Length; i++)
         {
-            for (int i = 0; i < defancePositions.Count; i++)
+            if (soldierPositions[i].aIManager == null)
             {
-                if (!defancePositions[i].isFull)
-                {
-                    defancePositions[i].isFull = true;
+                
+                aIManager.soldierPosition = soldierPositions[i].defancePosition;
+               
+                aIManager.agent.SetDestination(aIManager.soldierPosition.position);
 
-                    totalSoldier++;
+                aIManager.animator.SetBool("isRun", true);
 
-                    return new TransformAndIndex(defancePositions[i].defancePoint, i);
-
-                }
-
-
+                soldierPositions[i].aIManager = aIManager;
             }
-
-            
         }
-
-        return null;
-    
     }
-
-    public void RemoveSoldierFormList(int index)
-    {
-        defancePositions[index].isFull = false;
-
-        totalSoldier--;
-        
-        
-    }
-
   
 
     
 }
 
-public class TransformAndIndex
-{
-    public Transform transform;
-    public int index;
 
-    public TransformAndIndex(Transform transform, int index)
-    {
-        this.transform = transform;
-        this.index = index;
-
-    }
-}
-
-
-public class DefancePosition
-{
-    public Transform defancePoint;
-
-    public bool isFull;
-
-
-}

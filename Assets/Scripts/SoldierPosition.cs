@@ -7,7 +7,7 @@ public class SoldierPosition : MonoBehaviour, IFollowable<PlayerSoldierManager,b
 {
     public AIManager aIManager;
 
-   
+    public Transform defancePosition;
 
     [SerializeField]
     Image followBar;

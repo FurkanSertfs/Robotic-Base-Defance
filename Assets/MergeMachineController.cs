@@ -31,6 +31,17 @@ public class MergeMachineController : MonoBehaviour
     {
         if (ControlMerge())
         {
+            for (int i = 0; i < robotMergeMachines.Length; i++)
+            {
+                robotMergeMachines[i].robotPart.transform.parent = bodyMachine.robotPart.transform;
+                
+                if (robotMergeMachines[i].robotPart2!=null)
+                {
+                    robotMergeMachines[i].robotPart2.transform.parent = bodyMachine.robotPart.transform;
+                }
+               
+            }
+
             bodyMachine.Merge();
         }
 

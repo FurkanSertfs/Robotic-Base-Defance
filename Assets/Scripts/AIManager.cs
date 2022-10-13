@@ -6,14 +6,15 @@ using UnityEngine.AI;
 
 public class AIManager : MonoBehaviour
 {
-    public Transform target;
+    public Transform target,soldierPosition;
 
     public GameObject player;
 
+    public NavMeshAgent agent;
 
     public List<GameObject> enemies = new List<GameObject>();
 
-    private Animator animator;
+    public Animator animator;
 
     [SerializeField]
     float fireSpeed;
@@ -34,9 +35,12 @@ public class AIManager : MonoBehaviour
 
     public bool isHaveTarget;
 
+    
+
     private void Start()
     {
         animator = GetComponentInChildren<Animator>();
+        agent = GetComponent<NavMeshAgent>();
     }
 
     public void FollowPlayer()
@@ -55,6 +59,20 @@ public class AIManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        if (soldierPosition != null && agent.isActiveAndEnabled )
+        {
+
+            if (agent.remainingDistance < 1)
+            {
+                agent.enabled = false;
+                animator.SetBool("isRun", false);
+            }
+
+
+           
+        }
+
 
         if (enemies.Count > 0)
         {
@@ -104,6 +122,25 @@ public class AIManager : MonoBehaviour
     }
 
 
+    private void OnTriggerEnter(Collider other)
+   
+    {
+        Debug.Log("Test1");
+
+        Debug.Log(other.gameObject.tag);
+
+        if (other.gameObject.tag == "TestL")
+        {
+
+            Debug.Log("Test2");
+
+            agent.enabled = false;
+            animator.SetBool("isRUn", false);
+            other.GetComponent<BoxCollider>().enabled = false;
+        }
+      
+    }
+
     void Fire(GameObject enemy)
     {
         GameObject newBullet = Instantiate(bullet, firePoint.position, Quaternion.identity);
@@ -115,6 +152,7 @@ public class AIManager : MonoBehaviour
     }
 
 
+    
 
     IEnumerator FireRoutine(GameObject enemy)
     {

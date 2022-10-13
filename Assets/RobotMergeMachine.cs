@@ -7,11 +7,15 @@ public class RobotMergeMachine : MonoBehaviour
 {
 
     public  bool isFull,isCanMarge,isMerging;
+
+    public GameObject robotPart, robotPart2;
+
     [SerializeField]
-    Transform modelPoint, modelPoint2, caryStartPoint, caryStartPoint2, caryEndPoint, caryEndPoint2, caryMergePoint, caryMergePoint2;
+    Transform modelPoint, modelPoint2, caryStartPoint, caryStartPoint2, caryEndPoint, caryEndPoint2, caryMergePoint, caryMergePoint2,robotSpawnPoint;
     
     [SerializeField]
     GameObject caryMachine, caryMachine2;
+    
 
     [SerializeField]
     GameObject robotLevel1;
@@ -26,6 +30,7 @@ public class RobotMergeMachine : MonoBehaviour
         if (!isFull)
         {
             isFull = true;
+            robotPart = model;
             model.transform.parent = modelPoint.transform;
             model.transform.DOMove(modelPoint.position, timer).OnComplete(()=>Production());
             model.transform.DOScale(new Vector3(1,1,1), timer).OnComplete(() => Production());
@@ -41,6 +46,8 @@ public class RobotMergeMachine : MonoBehaviour
         {
             isFull = true;
 
+            robotPart = model;
+            robotPart2 = model2;
             model.transform.parent = modelPoint.transform;
             model.transform.DOMove(modelPoint.position, timer).OnComplete(() => Production(2));
             model.transform.DOScale(new Vector3(1, 1, 1), timer);
@@ -86,10 +93,13 @@ public class RobotMergeMachine : MonoBehaviour
            
             caryMachine.transform.DOMove(caryEndPoint.position, timer).OnComplete(() =>
             {
-
-                GameObject newRobot = Instantiate(robotLevel1, modelPoint.position, modelPoint.rotation);
+                Destroy(robotPart);
                 
+                GameObject newRobot = Instantiate(robotLevel1, robotSpawnPoint.position, robotSpawnPoint.rotation);
+                
+                newRobot.GetComponentInChildren<Animator>().SetBool("isSpawn", true);
 
+             
 
             });
         }

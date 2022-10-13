@@ -1,5 +1,4 @@
-namespace Simofun.Unity.Genre.ArcadeIdle
-{
+
     public interface IActivate
     {
         #region Methods
@@ -21,4 +20,4 @@ namespace Simofun.Unity.Genre.ArcadeIdle
     public interface IBoolActivate : IActivate<bool>
     {
     }
-}
+

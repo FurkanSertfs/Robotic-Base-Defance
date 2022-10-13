@@ -41,11 +41,11 @@ public class MachineManager : MonoBehaviour
             
             isFull = true;
 
-            GameObject dropped = dropArea.droppedObjects[dropArea.droppedObjects.Count - 1];
+            CollectedObject dropped = dropArea.droppedObjects[dropArea.droppedObjects.Count - 1];
 
-            dropped.transform.DOMove(machinePoint1.position, machineSpeed).SetEase(Ease.Linear).OnComplete(()=> 
+            dropped.collectedObject.transform.DOMove(machinePoint1.position, machineSpeed).SetEase(Ease.Linear).OnComplete(()=> 
                 {
-                    dropped.transform.DOMove(machinePoint2.position, machineSpeed).SetEase(Ease.Linear).OnComplete(() =>
+                    dropped.collectedObject.transform.DOMove(machinePoint2.position, machineSpeed).SetEase(Ease.Linear).OnComplete(() =>
                    
                     {
                         DOTween.To(() => (float) 0, x => _fireLight.intensity = x,5, machineSpeed).SetEase(Ease.Linear).OnComplete(()=> { DOTween.To(() => (float)5, x => _fireLight.intensity = x, 0, 0.25f).SetEase(Ease.Linear); });
@@ -62,11 +62,11 @@ public class MachineManager : MonoBehaviour
 
         }
     }
-    IEnumerator Processing(GameObject destroyObject) 
+    IEnumerator Processing(CollectedObject destroyObject) 
     {
         yield return new WaitForSeconds(0.5f);
         
-        Destroy(destroyObject);
+        Destroy(destroyObject.collectedObject);
 
         GameObject _ironIngot = Instantiate(_moltenIronPrefab, machinePoint2.transform.position, machinePoint2.transform.rotation);
         _ironIngot.transform.rotation = pressPoint.transform.rotation;

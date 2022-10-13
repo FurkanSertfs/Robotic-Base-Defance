@@ -1,6 +1,4 @@
-﻿namespace Simofun.Unity.Genre.ArcadeIdle.Controller
-{
-	using System;
+﻿using System;
 
 	public interface ICharacterDetector : IActivate
 	{
@@ -18,4 +16,4 @@
 		float GetCharacterStayTime(ICharacter character);
 		#endregion
 	}
-}
+

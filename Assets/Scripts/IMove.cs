@@ -1,7 +1,4 @@
-
-namespace Simofun.Unity.Genre.ArcadeIdle
-{
-	using UnityEngine;
+using UnityEngine;
 
 	public interface IMove : IActivate
 	{
@@ -17,4 +14,4 @@ namespace Simofun.Unity.Genre.ArcadeIdle
 		void Stop();
 		#endregion
 	}
-}
+

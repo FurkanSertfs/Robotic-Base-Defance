@@ -15,10 +15,21 @@ public class DropArea : MonoBehaviour, IDropable<CollectManager>
     MachineManager _machineManager;
 
     [SerializeField]
+    RobotMergeMachine _robotMergeMachine;
+
+    [SerializeField]
     Transform droppedObjectSpawnPoint;
 
+    [SerializeField]
+    int minCount;
 
-    public List<GameObject> droppedObjects = new List<GameObject>();
+    public enum DropAreaType {Machine , MergeMachine }
+
+    [SerializeField]
+    DropAreaType dropArea;
+
+
+    public List<CollectedObject> droppedObjects = new List<CollectedObject>();
 
 
     public void Drop(CollectManager playerCollectManager)
@@ -29,14 +40,16 @@ public class DropArea : MonoBehaviour, IDropable<CollectManager>
 
                 if (droppedObjects.Count < stackLimit)
                 {
-                        if (playerCollectManager.collectedObjects[i].GetComponent<Colleactable>().objectType == dropAreaType)
+                        if (playerCollectManager.collectedObjects[i].collectedObject.GetComponent<Colleactable>().objectType == dropAreaType)
                         {
-                                playerCollectManager.collectedObjects[i].transform.parent = gameObject.transform;
+                                playerCollectManager.collectedObjects[i].collectedObject.transform.parent = gameObject.transform;
 
-                                playerCollectManager.collectedObjects[i].transform.rotation = droppedObjectSpawnPoint.transform.rotation;
-                                playerCollectManager.collectedObjects[i].transform.localScale = droppedObjectSpawnPoint.transform.localScale;
+                                playerCollectManager.collectedObjects[i].collectedObject.transform.rotation = droppedObjectSpawnPoint.transform.rotation;
+                              
+                                if(dropArea == DropAreaType.Machine)
+                                playerCollectManager.collectedObjects[i].collectedObject.transform.localScale = droppedObjectSpawnPoint.transform.localScale;
 
-                                playerCollectManager.collectedObjects[i].transform.DOMove(new Vector3
+                                playerCollectManager.collectedObjects[i].collectedObject.transform.DOMove(new Vector3
 
                                 (
 
@@ -50,9 +63,9 @@ public class DropArea : MonoBehaviour, IDropable<CollectManager>
                                 
                                 droppedObjects.Add(playerCollectManager.collectedObjects[i]);
 
-                                playerCollectManager.collectedObjects[i].transform.rotation = droppedObjectSpawnPoint.rotation;
+                                playerCollectManager.collectedObjects[i].collectedObject.transform.rotation = droppedObjectSpawnPoint.rotation;
 
-                                Destroy(playerCollectManager.collectedObjects[i].GetComponent<Colleactable>());
+                                Destroy(playerCollectManager.collectedObjects[i].collectedObject.GetComponent<Colleactable>());
 
                                 playerCollectManager.collectedObjects.RemoveAt(i);
                         }
@@ -70,13 +83,51 @@ public class DropArea : MonoBehaviour, IDropable<CollectManager>
     
             }
 
+        if (dropArea == DropAreaType.Machine)
+        {
+            StartCoroutine(SetupMachine());
+        }
+        
+        else if (dropArea == DropAreaType.MergeMachine)
 
-        StartCoroutine(Wait());
+        {
+            StartCoroutine(SetupMergeMachine());
+        }
+       
 
 
 
     }
-    IEnumerator Wait()
+
+    IEnumerator SetupMergeMachine()
+    {
+        yield return new WaitForSeconds(0.45f);
+        if (droppedObjects.Count >= minCount)
+        {
+           
+
+            if (minCount > 1)
+            {
+             
+                _robotMergeMachine.FillTheMachine(droppedObjects[droppedObjects.Count - 1].collectedObject, droppedObjects[droppedObjects.Count - 2].collectedObject);
+                droppedObjects.RemoveAt(droppedObjects.Count - 1);
+                droppedObjects.RemoveAt(droppedObjects.Count - 1);
+            }
+
+            else
+            {
+               
+                _robotMergeMachine.FillTheMachine(droppedObjects[droppedObjects.Count - 1].collectedObject);
+                
+                droppedObjects.RemoveAt(droppedObjects.Count - 1);
+            }
+          
+        }
+    }
+    
+
+
+    IEnumerator SetupMachine()
     {
         yield return new WaitForSeconds(0.45f);
         _machineManager.FillMachine();

@@ -1,6 +1,4 @@
-namespace Simofun.Unity.Genre.ArcadeIdle.Input
-{
-	using UnityEngine;
+using UnityEngine;
 
 	[RequireComponent(typeof(IInput))]
 	public class InputVisualizer : MonoBehaviour
@@ -65,4 +63,4 @@ namespace Simofun.Unity.Genre.ArcadeIdle.Input
 		#endregion
 		#endregion
 	}
-}
+

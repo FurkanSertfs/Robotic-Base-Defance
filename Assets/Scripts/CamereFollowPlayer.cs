@@ -24,16 +24,6 @@ public class CamereFollowPlayer : MonoBehaviour
         transform.position = Vector3.Lerp(transform.position, target.position + offset, speed);
 
      
-
-        if (followRotate)
-        {
-            if (target.eulerAngles.y<180)
-            {
-               
-                transform.rotation = target.rotation;
-            }
-         
-        }
     }
 
 

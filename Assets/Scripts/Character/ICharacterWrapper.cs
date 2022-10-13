@@ -1,6 +1,4 @@
-﻿namespace Simofun.Unity.Genre.ArcadeIdle.Controller
-{
-	public interface ICharacterWrapper
+﻿	public interface ICharacterWrapper
 	{
 		#region Properties
 		
@@ -13,4 +11,4 @@
 		ICharacter Character { get; }
 		#endregion
 	}
-}
+

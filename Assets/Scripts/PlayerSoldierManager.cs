@@ -8,11 +8,7 @@ public class PlayerSoldierManager : MonoBehaviour
     public List<SoldierTransform> soldierTransforms = new List<SoldierTransform>();
 
 
-    private void Update()
-    {
-        Debug.Log(transform.eulerAngles.y);
-    }
-
+  
 }
 
 [System.Serializable]

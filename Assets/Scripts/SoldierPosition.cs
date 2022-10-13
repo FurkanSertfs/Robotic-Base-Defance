@@ -57,6 +57,9 @@ public class SoldierPosition : MonoBehaviour, IFollowable<PlayerSoldierManager,b
                 if (!playerSoldierManager.soldierTransforms[i].isFull)
                 {
                     aIManager.target = playerSoldierManager.soldierTransforms[i].soldierTransform;
+
+                    aIManager.FollowPlayer();
+                    aIManager.player = playerSoldierManager.gameObject;
                   
                     playerSoldierManager.soldierTransforms[i].isFull = true;
 

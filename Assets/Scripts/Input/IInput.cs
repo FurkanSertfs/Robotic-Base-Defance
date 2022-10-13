@@ -1,5 +1,4 @@
-namespace Simofun.Unity.Genre.ArcadeIdle.Input
-{
+
 	using System;
 	using UnityEngine;
 
@@ -23,4 +22,4 @@ namespace Simofun.Unity.Genre.ArcadeIdle.Input
 		Vector3 WorldPosition { get; }
 		#endregion
 	}
-}
+

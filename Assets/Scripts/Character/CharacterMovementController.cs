@@ -1,7 +1,5 @@
-namespace Simofun.Unity.Genre.ArcadeIdle.Controller
-{
-    using System;
-    using UnityEngine;
+ using System;
+using UnityEngine;
 
     [RequireComponent(typeof(Rigidbody))]
     public class CharacterMovementController : MonoBehaviour, IMove
@@ -105,4 +103,4 @@ namespace Simofun.Unity.Genre.ArcadeIdle.Controller
         public void Stop() => this.targetDirection = Vector3.zero;
         #endregion
     }
-}
+

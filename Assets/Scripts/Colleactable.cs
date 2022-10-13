@@ -5,7 +5,7 @@ using DG.Tweening;
 
 public class Colleactable : MonoBehaviour, ICollactable<CollectManager>
 {
-    public enum ObjectType { RawIron = 0, RawPlastic = 1, IronIngot = 2, PlasticIngot = 3 };
+    public enum ObjectType { RawIron = 0, RawPlastic = 1, IronIngot = 2, PlasticIngot = 3, Head=4, Body=5, Arm=6, Leg=7 };
 
     public ObjectType objectType;
 
@@ -18,9 +18,9 @@ public class Colleactable : MonoBehaviour, ICollactable<CollectManager>
         if (playerCollectManager.collectedObjects.Count <playerCollectManager.stackLimit)
         {
             collectObjeIndex = playerCollectManager.collectedObjects.Count;
-            playerCollectManager.collectedObjects.Add(gameObject);
+            playerCollectManager.collectedObjects.Add(new CollectedObject(gameObject,objectType));
             transform.parent = playerCollectManager.transform;
-            transform.rotation = playerCollectManager.transform.rotation;
+            transform.rotation = playerCollectManager.collectableObjectSpawnPoint[(int)objectType].transform.rotation;
             MovePlayer(playerCollectManager);
         }
 
@@ -29,14 +29,14 @@ public class Colleactable : MonoBehaviour, ICollactable<CollectManager>
     void MovePlayer(CollectManager playerCollectManager) 
     {
 
-        if (transform.position != new Vector3(playerCollectManager.collectableObjectSpawnPoint.position.x,
-            playerCollectManager.collectableObjectSpawnPoint.position.y + 0.3f * collectObjeIndex,
-            playerCollectManager.collectableObjectSpawnPoint.position.z))
+        if (transform.position != new Vector3(playerCollectManager.collectableObjectSpawnPoint[(int)objectType].position.x,
+            playerCollectManager.collectableObjectSpawnPoint[(int)objectType].position.y + 0.3f * collectObjeIndex,
+            playerCollectManager.collectableObjectSpawnPoint[(int)objectType].position.z))
         {
             transform.DOMove(new Vector3
-           (playerCollectManager.collectableObjectSpawnPoint.position.x,
-             playerCollectManager.collectableObjectSpawnPoint.position.y + 0.3f *collectObjeIndex,
-             playerCollectManager.collectableObjectSpawnPoint.position.z
+           (playerCollectManager.collectableObjectSpawnPoint[(int)objectType].position.x,
+             playerCollectManager.collectableObjectSpawnPoint[(int)objectType].position.y + 0.3f *collectObjeIndex,
+             playerCollectManager.collectableObjectSpawnPoint[(int)objectType].position.z
            ), time).OnComplete(() => MovePlayer(playerCollectManager));
 
 

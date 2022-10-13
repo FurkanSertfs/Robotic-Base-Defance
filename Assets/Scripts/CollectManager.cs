@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class CollectManager : MonoBehaviour
 {
-    public Transform collectableObjectSpawnPoint;
+    public Transform[] collectableObjectSpawnPoint;
 
-    public List<GameObject> collectedObjects = new List<GameObject>();
+    public List<CollectedObject> collectedObjects = new List<CollectedObject>();
 
 
     [SerializeField]
@@ -43,42 +43,27 @@ public class CollectManager : MonoBehaviour
 
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.GetComponent<SoldierPosition>() != null)
-        {
-            other.GetComponent<SoldierPosition>().Follow(GetComponent<PlayerSoldierManager>(), true);
-
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.GetComponent<SoldierPosition>() != null)
-        {
-            other.GetComponent<SoldierPosition>().Follow(GetComponent<PlayerSoldierManager>(),false);
-
-        }
-    }
+   
 
 
 
 
     public void EditStack()
     {
+        ;
 
         for (int i = 0; i < collectedObjects.Count; i++)
         {
         
 
-            collectedObjects[i].transform.position = new Vector3
+            collectedObjects[i].collectedObject.transform.position = new Vector3
             (
                 
-            collectableObjectSpawnPoint.position.x,
+            collectableObjectSpawnPoint[(int)collectedObjects[i].objectType].position.x,
             
-            collectableObjectSpawnPoint.position.y +  (0.3f * i),
+            collectableObjectSpawnPoint[(int)collectedObjects[i].objectType].position.y +  (0.3f * i),
            
-            collectableObjectSpawnPoint.position.z
+            collectableObjectSpawnPoint[(int)collectedObjects[i].objectType].position.z
 
             );
         }
@@ -86,4 +71,17 @@ public class CollectManager : MonoBehaviour
     }
 
 
+
+}
+[System.Serializable]
+public class CollectedObject
+{
+    public GameObject collectedObject;
+    public Colleactable.ObjectType objectType;
+
+    public CollectedObject(GameObject collectedObject, Colleactable.ObjectType objectType)
+    {
+        this.collectedObject = collectedObject;
+        this.objectType = objectType;
+    }
 }

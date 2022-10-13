@@ -1,4 +1,3 @@
-using Simofun.Unity.Genre.ArcadeIdle;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

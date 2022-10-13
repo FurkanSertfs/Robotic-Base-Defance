@@ -1,7 +1,5 @@
-namespace Simofun.Unity.Genre.ArcadeIdle.Input
-{
-    using System;
-    using UnityEngine;
+using System;
+using UnityEngine;
 
     public class JoystickInput : MonoBehaviour, IInput
     {
@@ -120,4 +118,4 @@ namespace Simofun.Unity.Genre.ArcadeIdle.Input
         }
         #endregion
     }
-}
+

@@ -1,11 +1,7 @@
-namespace Simofun.Unity.Genre.ArcadeIdle
-{
-    using System;
-    using Simofun.Unity.Genre.ArcadeIdle.Input;
-    using Simofun.Unity.Genre.ArcadeIdle.Controller;
-    using UnityEngine;
+using System;
+using UnityEngine;
 
-    public class ArcadeIdlePlayer : Controller.Character
+    public class ArcadeIdlePlayer : Character
     {
         #region Protected Properties
         protected IInput Input { get; set; }
@@ -45,4 +41,4 @@ namespace Simofun.Unity.Genre.ArcadeIdle
         #endregion
         #endregion
     }
-}
+

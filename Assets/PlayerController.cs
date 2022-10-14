@@ -111,5 +111,9 @@ public class PlayerController : MonoBehaviour
 
         }
     }
+    private void OnTriggerStay(Collider other)
+    {
 
+
+    }
 }

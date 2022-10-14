@@ -49,5 +49,13 @@ public class MergeMachineController : MonoBehaviour
 
     }
 
+    public void Setup()
+    {
+        for (int i = 0; i < robotMergeMachines.Length; i++)
+        {
+            robotMergeMachines[i].Setup();
+        }
+    }
+
 
 }

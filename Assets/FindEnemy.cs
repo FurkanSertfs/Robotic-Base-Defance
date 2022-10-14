@@ -50,7 +50,7 @@ public class FindEnemy : MonoBehaviour
     }
     private void OnTriggerExit(Collider other)
     {
-        if (other.TryGetComponent<Enemy>(out Enemy enemy)&&isEnemy)
+        if (other.TryGetComponent<Enemy>(out Enemy enemy)&&!isEnemy)
         {
 
             aiManager.enemies.Remove(other.gameObject);

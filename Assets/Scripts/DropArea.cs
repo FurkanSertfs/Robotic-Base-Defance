@@ -21,7 +21,7 @@ public class DropArea : MonoBehaviour, IDropable<CollectManager>
     Transform droppedObjectSpawnPoint;
 
     [SerializeField]
-    int minCount;
+   public int minCount;
 
     public enum DropAreaType {Machine , MergeMachine }
 
@@ -99,22 +99,24 @@ public class DropArea : MonoBehaviour, IDropable<CollectManager>
 
     }
 
-    IEnumerator SetupMergeMachine()
+    public IEnumerator SetupMergeMachine()
     {
+      
+     
         yield return new WaitForSeconds(0.45f);
-        if (droppedObjects.Count >= minCount)
+        if (droppedObjects.Count >= minCount&&!_robotMergeMachine.isFull)
         {
            
 
             if (minCount > 1)
             {
-             
+                
                 _robotMergeMachine.FillTheMachine(droppedObjects[droppedObjects.Count - 1].collectedObject, droppedObjects[droppedObjects.Count - 2].collectedObject);
                 droppedObjects.RemoveAt(droppedObjects.Count - 1);
                 droppedObjects.RemoveAt(droppedObjects.Count - 1);
             }
 
-            else
+            else if(minCount <= 1)
             {
                
                 _robotMergeMachine.FillTheMachine(droppedObjects[droppedObjects.Count - 1].collectedObject);
@@ -127,7 +129,7 @@ public class DropArea : MonoBehaviour, IDropable<CollectManager>
     
 
 
-    IEnumerator SetupMachine()
+  public  IEnumerator SetupMachine()
     {
         yield return new WaitForSeconds(0.45f);
         _machineManager.FillMachine();

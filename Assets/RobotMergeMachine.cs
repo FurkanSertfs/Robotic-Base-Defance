@@ -23,6 +23,9 @@ public class RobotMergeMachine : MonoBehaviour
     [SerializeField]
     MergeMachineController mergeMachineController;
 
+    [SerializeField]
+    DropArea dropArea;
+
     public float timer;
     
     public void FillTheMachine(GameObject model)
@@ -30,10 +33,15 @@ public class RobotMergeMachine : MonoBehaviour
         if (!isFull)
         {
             isFull = true;
+
             robotPart = model;
+
             model.transform.parent = modelPoint.transform;
+          
             model.transform.DOMove(modelPoint.position, timer).OnComplete(()=>Production());
-            model.transform.DOScale(new Vector3(1,1,1), timer).OnComplete(() => Production());
+         
+            model.transform.DOScale(new Vector3(1,1,1), timer);
+          
             model.transform.DORotateQuaternion(modelPoint.rotation, timer);
 
         }
@@ -83,6 +91,31 @@ public class RobotMergeMachine : MonoBehaviour
         caryMachine2.transform.DOMove(caryMergePoint2.position, timer);
     }
 
+    public void Setup()
+    {
+        caryMachine.transform.DOMove(caryStartPoint.position, timer).OnComplete(() =>
+
+         {
+
+             isFull = false;
+
+             isMerging = false;
+
+             isCanMarge = false;
+
+             StartCoroutine(dropArea.SetupMergeMachine());
+
+
+         });
+        
+        if (caryMachine2 != null)
+        {
+            caryMachine2.transform.DOMove(caryStartPoint2.position, timer);
+        }
+      
+       
+    }
+
 
 
     public void Merge()
@@ -99,6 +132,9 @@ public class RobotMergeMachine : MonoBehaviour
                 
                 newRobot.GetComponentInChildren<Animator>().SetBool("isSpawn", true);
 
+                mergeMachineController.Setup();
+
+                
              
 
             });

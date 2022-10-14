@@ -122,24 +122,6 @@ public class AIManager : MonoBehaviour
     }
 
 
-    private void OnTriggerEnter(Collider other)
-   
-    {
-        Debug.Log("Test1");
-
-        Debug.Log(other.gameObject.tag);
-
-        if (other.gameObject.tag == "TestL")
-        {
-
-            Debug.Log("Test2");
-
-            agent.enabled = false;
-            animator.SetBool("isRUn", false);
-            other.GetComponent<BoxCollider>().enabled = false;
-        }
-      
-    }
 
     void Fire(GameObject enemy)
     {

@@ -473,7 +473,7 @@ GameObject:
   - component: {fileID: 1656415771700179764}
   - component: {fileID: 5070785403319193078}
   - component: {fileID: -4127894674319711336}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: RobotLevel1
   m_TagString: Untagged
   m_Icon: {fileID: 0}

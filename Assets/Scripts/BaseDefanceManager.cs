@@ -29,6 +29,8 @@ public class BaseDefanceManager : MonoBehaviour
                 aIManager.animator.SetBool("isRun", true);
 
                 soldierPositions[i].aIManager = aIManager;
+
+                break;
             }
         }
     }

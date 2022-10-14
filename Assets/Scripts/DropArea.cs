@@ -112,7 +112,9 @@ public class DropArea : MonoBehaviour, IDropable<CollectManager>
             {
                 
                 _robotMergeMachine.FillTheMachine(droppedObjects[droppedObjects.Count - 1].collectedObject, droppedObjects[droppedObjects.Count - 2].collectedObject);
+               
                 droppedObjects.RemoveAt(droppedObjects.Count - 1);
+                
                 droppedObjects.RemoveAt(droppedObjects.Count - 1);
             }
 

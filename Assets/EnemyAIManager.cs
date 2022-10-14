@@ -97,9 +97,14 @@ public class EnemyAIManager : MonoBehaviour
 
     void Fire(GameObject enemy)
     {
+        BodyPartManager bodyPartManager;
+        bodyPartManager = enemy.GetComponent<BodyPartManager>();
+
         GameObject newBullet = Instantiate(bullet, firePoint.position, Quaternion.identity);
 
-        Vector3 shootDir = (enemy.transform.position - firePoint.position).normalized;
+        int target = Random.Range(0, bodyPartManager.bodyTypeHealths.Count);
+
+        Vector3 shootDir = (bodyPartManager.bodyTypeHealths[target].targetPoint.transform.position - firePoint.position).normalized;
 
         newBullet.GetComponent<Bullet>().Setup(shootDir, enemy.transform);
 

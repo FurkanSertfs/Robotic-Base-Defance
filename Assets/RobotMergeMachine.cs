@@ -44,6 +44,9 @@ public class RobotMergeMachine : MonoBehaviour
           
             model.transform.DORotateQuaternion(modelPoint.rotation, timer);
 
+            mergeMachineController.colactableBodyParts[model.GetComponent<ColactableBodyPart>().Id] = model.GetComponent<ColactableBodyPart>();
+
+
         }
 
     }
@@ -60,6 +63,9 @@ public class RobotMergeMachine : MonoBehaviour
             model.transform.DOMove(modelPoint.position, timer).OnComplete(() => Production(2));
             model.transform.DOScale(new Vector3(1, 1, 1), timer);
             model.transform.DORotateQuaternion(modelPoint.rotation, timer);
+
+            mergeMachineController.colactableBodyParts[model.GetComponent<ColactableBodyPart>().Id] = model.GetComponent<ColactableBodyPart>();
+            mergeMachineController.colactableBodyParts[model2.GetComponent<ColactableBodyPart>().Id] = model2.GetComponent<ColactableBodyPart>();
 
             model2.transform.parent = modelPoint2.transform;
             model2.transform.DOMove(modelPoint2.position, timer);
@@ -129,6 +135,22 @@ public class RobotMergeMachine : MonoBehaviour
                 Destroy(robotPart);
                 
                 GameObject newRobot = Instantiate(robotLevel1, robotSpawnPoint.position, robotSpawnPoint.rotation);
+
+                for (int j = 0; j < 6; j++)
+                {
+
+                    for (int i = 0; i < newRobot.GetComponent<BodyPartManager>().bodyTypeHealths[j].parts.Length; i++)
+                    {
+                        newRobot.GetComponent<BodyPartManager>().bodyTypeHealths[j].parts[i].GetComponent<MeshFilter>().mesh 
+                        
+                        = mergeMachineController.colactableBodyParts[j].partObject[i];
+
+                }
+
+
+                }
+
+               
                 
                 newRobot.GetComponentInChildren<Animator>().SetBool("isSpawn", true);
 

@@ -710,6 +710,7 @@ GameObject:
   - component: {fileID: 2093668096455978726}
   - component: {fileID: 5597408232202768420}
   - component: {fileID: 5567633305880952394}
+  - component: {fileID: -8010472901917773827}
   m_Layer: 3
   m_Name: RobotLevel2
   m_TagString: Untagged
@@ -825,6 +826,43 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &-8010472901917773827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3660264678037927894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b5a37e293733b949ae33ae17b62a763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bodyTypeHealths:
+  - bodyPart: 0
+    health: 0
+    targetPoint: {fileID: 0}
+    parts: []
+  - bodyPart: 1
+    health: 0
+    targetPoint: {fileID: 0}
+    parts: []
+  - bodyPart: 2
+    health: 0
+    targetPoint: {fileID: 0}
+    parts: []
+  - bodyPart: 3
+    health: 0
+    targetPoint: {fileID: 0}
+    parts: []
+  - bodyPart: 4
+    health: 0
+    targetPoint: {fileID: 0}
+    parts: []
+  - bodyPart: 5
+    health: 0
+    targetPoint: {fileID: 0}
+    parts: []
 --- !u!1 &4141543179890394717
 GameObject:
   m_ObjectHideFlags: 0

@@ -12,6 +12,8 @@ public class MergeMachineController : MonoBehaviour
     RobotMergeMachine[] robotMergeMachines;
 
 
+    public List<ColactableBodyPart> colactableBodyParts;
+
      bool ControlMerge()
     {
         bool isCanMerge=true;

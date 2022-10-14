@@ -53,9 +53,9 @@ public class Bullet : MonoBehaviour
 
         }
 
-        if (other.TryGetComponent<AIManager>(out AIManager soldier))
+        if (other.TryGetComponent<BodyPart>(out BodyPart soldier))
         {
-            soldier.health -= damage;
+            soldier.Hit(damage);
 
             Destroy(gameObject);
 

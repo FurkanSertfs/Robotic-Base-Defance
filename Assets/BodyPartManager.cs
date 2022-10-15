@@ -21,6 +21,8 @@ public class BodyPartManager : MonoBehaviour
     private void Start()
     {
         animator = GetComponentInChildren<Animator>();
+
+       
     }
 
     public void DestrotBodyPart(BodyPartManager.BodyParts bodyPart)

@@ -17,11 +17,7 @@ public class CollectManager : MonoBehaviour
     private void OnTriggerStay(Collider other)
     {
 
-        if (other.GetComponent<Colleactable>() != null)
-        {
-            other.GetComponent<Colleactable>().Collect(this);
-
-        }
+       
 
         if (other.GetComponent<CollectArea>()!=null)
         {
@@ -43,7 +39,16 @@ public class CollectManager : MonoBehaviour
 
     }
 
-   
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.GetComponent<Colleactable>() != null)
+        {
+            other.GetComponent<Colleactable>().Collect(this);
+
+        }
+    }
+
+
 
 
 

@@ -11,12 +11,17 @@ public class Colleactable : MonoBehaviour, ICollactable<CollectManager>
 
     float time = 0.2f;
 
+    bool isCollecting;
+
 
     int collectObjeIndex;
     public void Collect(CollectManager playerCollectManager)
     {
-        if (playerCollectManager.collectedObjects.Count <playerCollectManager.stackLimit)
+        if (playerCollectManager.collectedObjects.Count <playerCollectManager.stackLimit && !isCollecting)
         {
+           
+
+            isCollecting = true;
             collectObjeIndex = playerCollectManager.collectedObjects.Count;
             playerCollectManager.collectedObjects.Add(new CollectedObject(gameObject,objectType));
             transform.parent = playerCollectManager.transform;
@@ -42,6 +47,7 @@ public class Colleactable : MonoBehaviour, ICollactable<CollectManager>
 
             time -= 0.075f;
         }
+      
 
     }
 

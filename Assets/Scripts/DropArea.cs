@@ -42,6 +42,8 @@ public class DropArea : MonoBehaviour, IDropable<CollectManager>
                 {
                         if (playerCollectManager.collectedObjects[i].collectedObject.GetComponent<Colleactable>().objectType == dropAreaType)
                         {
+                           
+                                
                                 playerCollectManager.collectedObjects[i].collectedObject.transform.parent = gameObject.transform;
 
                                 playerCollectManager.collectedObjects[i].collectedObject.transform.rotation = droppedObjectSpawnPoint.transform.rotation;

@@ -24,6 +24,8 @@ public class BodyPart : MonoBehaviour
             {
                 bodyPartManager.DestrotBodyPart(bodyPart);
             }
+
+          
         }
        
   

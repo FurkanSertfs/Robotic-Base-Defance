@@ -10,12 +10,12 @@ public class BodyPartManager : MonoBehaviour
     [NonReorderable]
     public List<BodyTypeHealth> bodyTypeHealths = new List<BodyTypeHealth>();
 
-    int destroyedLeg;
+   public int destroyedLeg;
 
    
 
     Animator animator;
-
+    [SerializeField]
     RuntimeAnimatorController[] animatorController;
 
     private void Start()
@@ -37,7 +37,7 @@ public class BodyPartManager : MonoBehaviour
 
         if (bodyPart == BodyParts.LeftLeg || bodyPart == BodyParts.RightLeg)
         {
-           // animator.runtimeAnimatorController = animatorController[(int)bodyPart];
+            animator.runtimeAnimatorController = animatorController[(int)bodyPart];
            
             destroyedLeg++;
 
@@ -46,7 +46,7 @@ public class BodyPartManager : MonoBehaviour
 
         if (destroyedLeg > 1)
         {
-            Debug.Log("Yurumeyi Kapat");
+           
 
             animator.runtimeAnimatorController = animatorController[6];
         }

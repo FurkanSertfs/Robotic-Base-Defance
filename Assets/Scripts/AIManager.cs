@@ -6,6 +6,10 @@ using UnityEngine.AI;
 
 public class AIManager : MonoBehaviour
 {
+
+    [SerializeField]
+    Transform injuredSoldiersParent;
+
     public Transform target,soldierPosition;
 
     public GameObject player;
@@ -28,13 +32,17 @@ public class AIManager : MonoBehaviour
     public float health=100;
 
 
-    private bool isActiveFire;
-
-    [SerializeField]
-    RuntimeAnimatorController controller;
+    public bool isActiveFire;
 
     public bool isHaveTarget;
 
+    [SerializeField]
+    BodyPartManager bodyPartManager;
+
+    [SerializeField]
+    Gun[] guns;
+
+    public int id;
     
 
     private void Start()
@@ -48,6 +56,9 @@ public class AIManager : MonoBehaviour
         transform.position = target.position;
       
         transform.parent = target.transform;
+
+      
+    
 
     }
    
@@ -69,14 +80,15 @@ public class AIManager : MonoBehaviour
                 animator.SetBool("isRun", false);
             }
 
-
-           
         }
+
+       
 
 
         if (enemies.Count > 0)
         {
-              animator.SetBool("isFire", true);
+           
+           
             if (enemies[0] != null)
             {
                 var lookPos = enemies[0].transform.position - transform.position;
@@ -84,15 +96,66 @@ public class AIManager : MonoBehaviour
                 var rotation = Quaternion.LookRotation(lookPos);
                 transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * 4);
 
-
-
-                //   transform.LookAt(enemies[0].transform);
-
                 if (!isActiveFire)
                 {
-                    StartCoroutine(FireRoutine(enemies[0]));
+                    for (int i = 0; i < guns.Length; i++)
+                    {
+                        if (guns[i] != null)
+                        {
+                            if (bodyPartManager.destroyedLeg ==1)
+                            {
+                                if(player!=null && !animator.GetBool("isRun"))
+                                {
+                                    StartCoroutine(guns[i].FireRoutine(enemies[0], fireSpeed));
+                                    
+                                    animator.SetBool("isFire", true);
+                                }
+
+                            }
+
+                           else if (bodyPartManager.destroyedLeg == 2)
+                            {
+
+                                if (player != null)
+                                {
+                                    transform.parent = injuredSoldiersParent.transform;
+
+                                    player.GetComponent<PlayerSoldierManager>().soldierTransforms[id].isFull = false;
+
+                                    player = null;
+                                }
+                               
+                               
+                             // geri ekle   player = null;
+
+                               StartCoroutine(guns[i].FireRoutine(enemies[0], fireSpeed));
+                                
+
+                            }
+
+                            else
+                            {
+                                animator.SetBool("isFire", true);
+                                StartCoroutine(guns[i].FireRoutine(enemies[0], fireSpeed));
+                                
+
+                            }
+
+
+
+                        }
+
+                    }
+
+                    
 
                 }
+                else
+                {
+                    animator.SetBool("isFire", false);
+
+                }
+
             }
             else
             {
@@ -123,36 +186,12 @@ public class AIManager : MonoBehaviour
 
 
 
-    void Fire(GameObject enemy)
-    {
-        GameObject newBullet = Instantiate(bullet, firePoint.position, Quaternion.identity);
-
-        Vector3 shootDir = (enemy.transform.position - firePoint.position).normalized;
-
-        newBullet.GetComponent<Bullet>().Setup(shootDir, enemy.transform);
-
-    }
+   
 
 
     
 
-    IEnumerator FireRoutine(GameObject enemy)
-    {
-        isActiveFire = true;
-
-        yield return new WaitForSeconds(fireSpeed);
-
-        if (enemies.Count > 0&&enemy!=null)
-        {
-            Fire(enemy);
-            StartCoroutine(FireRoutine(enemy));
-        }
-        else
-        {
-            isActiveFire = false;
-        }
-
-    }
+   
 
 
 

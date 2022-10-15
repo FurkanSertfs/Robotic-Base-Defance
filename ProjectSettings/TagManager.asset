@@ -9,7 +9,7 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - SoldierSpawnPoint
+  - SoldirMain
   - Water
   - UI
   - EnemyFinder
@@ -17,8 +17,8 @@ TagManager:
   - TestL
   - Player
   - Soldier
-  - 
-  - 
+  - SoldierBullet
+  - EnemyBullet
   - 
   - 
   - 

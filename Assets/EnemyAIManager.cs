@@ -6,8 +6,9 @@ using UnityEngine.UI;
 
 public class EnemyAIManager : MonoBehaviour
 {
-    public Transform target;
-
+    public Transform target, testTarget;
+    [SerializeField]
+    LayerMask layerMask;
    
     public List<GameObject> enemies = new List<GameObject>();
 
@@ -54,20 +55,27 @@ public class EnemyAIManager : MonoBehaviour
             Destroy(gameObject);
         }
         healthBar.fillAmount = (float)(health / 100.0f);
-
+     
       
+
 
         if (enemies.Count > 0)
         {
               animator.SetBool("isFire", true);
             if (enemies[0] != null)
             {
+                
+
                 var lookPos = enemies[0].transform.position - transform.position;
+                
                 lookPos.y = 0;
+               
                 var rotation = Quaternion.LookRotation(lookPos);
+                
                 transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * 4);
-
-
+              
+              
+             
 
                 //   transform.LookAt(enemies[0].transform);
 
@@ -94,26 +102,77 @@ public class EnemyAIManager : MonoBehaviour
        
     }
 
+    void DrawRaycast()
+    {
+        
+
+        Transform a = enemies[0].GetComponent<BodyPartManager>().bodyTypeHealths[5].targetPoint.transform;
+
+        var lookPos = a.position - firePoint.position;
+
+        var rotation = Quaternion.LookRotation(lookPos);
+
+        firePoint.rotation = Quaternion.Slerp(firePoint.rotation, rotation, Time.deltaTime * 4);
+
+        RaycastHit hit;
+
+        if (Physics.Raycast(firePoint.position, firePoint.TransformDirection(Vector3.forward), out hit, 50, layerMask))
+        {
+            Debug.Log(hit.collider.gameObject.name  +" Parent "+ hit.collider.transform.parent.name);
+
+            if (hit.collider.isTrigger)
+            {
+
+                Debug.Log("trigget");
+            }
+
+
+
+            if (hit.collider.GetComponent<BodyPart>() != null)
+            {
+                hit.collider.GetComponent<BodyPart>().Hit(1);
+
+
+
+            }
+
+        }
+        Debug.DrawRay(firePoint.position, firePoint.TransformDirection(Vector3.forward)*50,Color.red);
+
+
+    }
 
     void Fire(GameObject enemy)
     {
-        Transform newTarget = enemy.transform;
-        BodyPartManager bodyPartManager;
-        bodyPartManager = enemy.GetComponent<BodyPartManager>();
+
+        DrawRaycast();
+
+//        Transform newTarget = enemy.transform;
+
+//        BodyPartManager bodyPartManager;
+       
+//        bodyPartManager = enemy.GetComponent<BodyPartManager>();
         
-        int target = Random.Range(0, bodyPartManager.bodyTypeHealths.Count);
-        if (enemy != null && bodyPartManager.bodyTypeHealths[target]!=null)
-        {
-            Debug.Log(bodyPartManager.bodyTypeHealths[target]);
-            newTarget = bodyPartManager.bodyTypeHealths[target].targetPoint.transform;
+//        int target = Random.Range(0, bodyPartManager.bodyTypeHealths.Count);
 
-            GameObject newBullet = Instantiate(bullet, firePoint.position, Quaternion.identity);
+//         target = 5;
 
-            Vector3 shootDir = (newTarget.position - firePoint.position).normalized;
 
-            newBullet.GetComponent<Bullet>().Setup(shootDir, newTarget);
 
-        }
+//        if (enemy != null && bodyPartManager.bodyTypeHealths[target]!=null)
+//        {
+           
+//            newTarget = bodyPartManager.bodyTypeHealths[target].targetPoint.transform;
+
+////            GameObject newBullet = Instantiate(bullet, firePoint.position, Quaternion.identity);
+
+//            Vector3 shootDir = (newTarget.position - firePoint.position).normalized;
+
+          
+
+//        //        newBullet.GetComponent<Bullet>().Setup(shootDir, newTarget);
+
+//        }
        
 
     }

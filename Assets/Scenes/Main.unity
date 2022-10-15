@@ -4807,7 +4807,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   partObject:
   - {fileID: 4300000, guid: f19b584089325b7479b7a43d8455bfc3, type: 2}
-  Id: 0
+  Id: 2
   bonusHealth: 0
 --- !u!1 &386883820
 GameObject:
@@ -5807,6 +5807,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 409e9ad77b61a604ebc460ebbdc17624, type: 3}
+--- !u!1 &464679788 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3371233139746800478, guid: 409e9ad77b61a604ebc460ebbdc17624, type: 3}
+  m_PrefabInstance: {fileID: 464679787}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &464679789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 464679788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6df0058e5a7d4c74eb2ed801f07eec00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  partObject:
+  - {fileID: 4300000, guid: b4d8c07a387fa354b8363fd3c89f9d44, type: 2}
+  Id: 4
+  bonusHealth: 0
 --- !u!1 &468063647
 GameObject:
   m_ObjectHideFlags: 0
@@ -13747,6 +13768,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5584ce855422eb14f98b650ff405fdd5, type: 3}
+--- !u!1 &1018651394 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4625024428014091840, guid: 5584ce855422eb14f98b650ff405fdd5, type: 3}
+  m_PrefabInstance: {fileID: 1018651393}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1018651395
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1018651394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6df0058e5a7d4c74eb2ed801f07eec00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  partObject:
+  - {fileID: 4300000, guid: 173773e1d0a8a954b962bf91404b11bc, type: 2}
+  Id: 1
+  bonusHealth: 0
 --- !u!1 &1025704891
 GameObject:
   m_ObjectHideFlags: 0
@@ -27871,7 +27913,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6df0058e5a7d4c74eb2ed801f07eec00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  partObject: []
+  partObject:
+  - {fileID: 4300000, guid: 82d9c632a58533e43981a619e9790fe6, type: 2}
   Id: 0
   bonusHealth: 0
 --- !u!1 &2001491941

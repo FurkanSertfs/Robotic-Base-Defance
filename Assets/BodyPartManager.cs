@@ -30,13 +30,14 @@ public class BodyPartManager : MonoBehaviour
         for (int i = 0; i < bodyTypeHealths[(int)bodyPart].parts.Length; i++)
         {
             Destroy(bodyTypeHealths[(int)bodyPart].parts[i].gameObject);
+           
         }
+        bodyTypeHealths.RemoveAt((int)bodyPart);
 
-       
 
         if (bodyPart == BodyParts.LeftLeg || bodyPart == BodyParts.RightLeg)
         {
-            animator.runtimeAnimatorController = animatorController[(int)bodyPart];
+           // animator.runtimeAnimatorController = animatorController[(int)bodyPart];
            
             destroyedLeg++;
 

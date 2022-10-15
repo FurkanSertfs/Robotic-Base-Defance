@@ -97,16 +97,24 @@ public class EnemyAIManager : MonoBehaviour
 
     void Fire(GameObject enemy)
     {
+        Transform newTarget = enemy.transform;
         BodyPartManager bodyPartManager;
         bodyPartManager = enemy.GetComponent<BodyPartManager>();
-
-        GameObject newBullet = Instantiate(bullet, firePoint.position, Quaternion.identity);
-
+        
         int target = Random.Range(0, bodyPartManager.bodyTypeHealths.Count);
+        if (enemy != null && bodyPartManager.bodyTypeHealths[target]!=null)
+        {
+            Debug.Log(bodyPartManager.bodyTypeHealths[target]);
+            newTarget = bodyPartManager.bodyTypeHealths[target].targetPoint.transform;
 
-        Vector3 shootDir = (bodyPartManager.bodyTypeHealths[target].targetPoint.transform.position - firePoint.position).normalized;
+            GameObject newBullet = Instantiate(bullet, firePoint.position, Quaternion.identity);
 
-        newBullet.GetComponent<Bullet>().Setup(shootDir, enemy.transform);
+            Vector3 shootDir = (newTarget.position - firePoint.position).normalized;
+
+            newBullet.GetComponent<Bullet>().Setup(shootDir, newTarget);
+
+        }
+       
 
     }
 

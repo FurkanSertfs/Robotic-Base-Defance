@@ -16,12 +16,16 @@ public class BodyPart : MonoBehaviour
 
     public void Hit(float damage)
     {
-        bodyPartManager.bodyTypeHealths[(int)bodyPart].health -= damage;
-      
-        if (bodyPartManager.bodyTypeHealths[(int)bodyPart].health <= 0)
+        if (bodyPartManager.bodyTypeHealths.Count> (int)bodyPart)
         {
-            bodyPartManager.DestrotBodyPart(bodyPart);
+            bodyPartManager.bodyTypeHealths[(int)bodyPart].health -= damage;
+
+            if (bodyPartManager.bodyTypeHealths[(int)bodyPart].health <= 0)
+            {
+                bodyPartManager.DestrotBodyPart(bodyPart);
+            }
         }
+       
   
     
     }

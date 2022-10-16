@@ -14,7 +14,7 @@ public class Belt : MonoBehaviour
     {
         if (_machineManager.isFull)
         {
-            _beltMaterial.mainTextureOffset = new Vector2(_beltMaterial.mainTextureOffset.x, _beltMaterial.mainTextureOffset.y - 2*_machineManager.machineSpeed * Time.deltaTime);
+            _beltMaterial.mainTextureOffset = new Vector2(_beltMaterial.mainTextureOffset.x, _beltMaterial.mainTextureOffset.y - 0.5f*_machineManager.machineLevel * Time.deltaTime);
         }
 
     }

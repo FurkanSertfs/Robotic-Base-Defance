@@ -15,13 +15,16 @@ public class Gun : MonoBehaviour
 
     void Fire(GameObject enemy)
     {
-        GameObject newBullet = Instantiate(bullet, firePoint.position, Quaternion.identity);
+      
+       GameObject newBullet = Instantiate(bullet, firePoint.position, Quaternion.identity);
 
+       Vector3 shootDir = (enemy.transform.position - firePoint.position).normalized;
 
-        Vector3 shootDir = (enemy.transform.position - firePoint.position).normalized;
+       newBullet.GetComponent<Bullet>().Setup(shootDir, enemy.transform);
+            
+        
 
-        newBullet.GetComponent<Bullet>().Setup(shootDir, enemy.transform);
-        newBullet.GetComponent<Bullet>().name = "pþa";
+       
     }
 
    public IEnumerator FireRoutine(GameObject enemy, float fireSpeed)
@@ -31,10 +34,11 @@ public class Gun : MonoBehaviour
 
         yield return new WaitForSeconds(fireSpeed);
 
-        if (enemy != null && aIManager.enemies.Count>0 && aIManager.enemies[0]==enemy)
+        if (enemy != null && aIManager.enemies.Count>0 && aIManager.enemies[0]==enemy && this!=null)
         {
 
             Fire(enemy);
+            
             aIManager.isActiveFire = false;
          //   StartCoroutine(FireRoutine(enemy, fireSpeed));
         }

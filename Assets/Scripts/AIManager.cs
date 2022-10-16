@@ -12,6 +12,8 @@ public class AIManager : MonoBehaviour
 
     public Transform target,soldierPosition;
 
+    public BoxCollider fullCollider, smallCollider;
+
     public GameObject player;
 
     public NavMeshAgent agent;
@@ -43,6 +45,9 @@ public class AIManager : MonoBehaviour
     Gun[] guns;
 
     public int id;
+
+    [SerializeField]
+    GameObject robotMesh;
     
 
     private void Start()
@@ -71,7 +76,7 @@ public class AIManager : MonoBehaviour
             Destroy(gameObject);
         }
 
-        if (soldierPosition != null && agent.isActiveAndEnabled )
+        if (soldierPosition != null && agent.isActiveAndEnabled)
         {
 
             if (agent.remainingDistance < 1)
@@ -82,13 +87,13 @@ public class AIManager : MonoBehaviour
 
         }
 
-       
+
 
 
         if (enemies.Count > 0)
         {
-           
-           
+
+            animator.SetBool("isFire", true);
             if (enemies[0] != null)
             {
                 var lookPos = enemies[0].transform.position - transform.position;
@@ -111,19 +116,16 @@ public class AIManager : MonoBehaviour
                                     animator.SetBool("isFire", true);
                                 }
 
+                                else if (player != null && animator.GetBool("isRun"))
+                                {
+                                    animator.SetBool("isFire", false);
+                                }
+
                             }
 
                            else if (bodyPartManager.destroyedLeg == 2)
                             {
 
-                                if (player != null)
-                                {
-                                    transform.parent = injuredSoldiersParent.transform;
-
-                                    player.GetComponent<PlayerSoldierManager>().soldierTransforms[id].isFull = false;
-
-                                    player = null;
-                                }
                                
                                
                              // geri ekle   player = null;
@@ -150,11 +152,7 @@ public class AIManager : MonoBehaviour
                     
 
                 }
-                else
-                {
-                    animator.SetBool("isFire", false);
-
-                }
+                
 
             }
             else
@@ -184,7 +182,28 @@ public class AIManager : MonoBehaviour
         }
     }
 
+   public void LeaveFromPlayer()
+    {
+        if (bodyPartManager != null && bodyPartManager.destroyedLeg == 2)
+        {
+            transform.parent = injuredSoldiersParent.transform;
 
+            robotMesh.transform.position = new Vector3(robotMesh.transform.position.x, robotMesh.transform.position.y - 2, robotMesh.transform.position.z);
+
+            fullCollider.enabled = false;
+
+            smallCollider.enabled = true;
+
+            if (player != null)
+            {
+                player.GetComponent<PlayerSoldierManager>().soldierTransforms[id].isFull = false;
+
+                player = null;
+            }
+
+
+        }
+    }
 
    
 

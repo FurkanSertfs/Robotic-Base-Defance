@@ -18,45 +18,60 @@ public class BodyPartManager : MonoBehaviour
     [SerializeField]
     RuntimeAnimatorController[] animatorController;
 
-    private void Start()
+    private void Awake()
     {
         animator = GetComponentInChildren<Animator>();
-
-       
     }
 
-    public void DestrotBodyPart(BodyPartManager.BodyParts bodyPart)
+  
+
+    public void DestrotBodyPart(BodyPartManager.BodyParts bodyPart, int id)
     {
-        for (int i = 0; i < bodyTypeHealths[(int)bodyPart].parts.Length; i++)
+        for (int i = 0; i < bodyTypeHealths[id].parts.Length; i++)
         {
-            Destroy(bodyTypeHealths[(int)bodyPart].parts[i].gameObject);
+            Destroy(bodyTypeHealths[id].parts[i].gameObject);
            
         }
 
 
-        bodyTypeHealths.RemoveAt((int)bodyPart);
+        bodyTypeHealths.RemoveAt(id);
+
+        for (int i = 0; i < bodyTypeHealths.Count; i++)
+        {
+            for (int j = 0; j < bodyTypeHealths[i].parts.Length; j++)
+            {
+             
+                bodyTypeHealths[i].parts[j].GetComponent<BodyPart>().id = i;
+               
+            }
+
+              
+            
+        }
+
+
 
         if (bodyPart == BodyParts.LeftLeg || bodyPart == BodyParts.RightLeg)
         {
+            
             animator.runtimeAnimatorController = animatorController[(int)bodyPart];
            
             destroyedLeg++;
 
+            if (destroyedLeg == 2)
+            {
+                animator.runtimeAnimatorController = animatorController[6];
+
+                GetComponent<AIManager>().LeaveFromPlayer();
+            }
 
         }
 
-        if (destroyedLeg > 1)
-        {
-           
-
-            animator.runtimeAnimatorController = animatorController[6];
-        }
+    
 
         if (bodyPart == BodyParts.Head || bodyPart == BodyParts.Body)
         {
             Destroy(gameObject);
-
-            Debug.Log("Listelerden Cikar");
 
         }
 

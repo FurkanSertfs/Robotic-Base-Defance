@@ -104,41 +104,54 @@ public class EnemyAIManager : MonoBehaviour
 
     void DrawRaycast(int target)
     {
-        
+      
 
-        Transform a = enemies[0].GetComponent<BodyPartManager>().bodyTypeHealths[target].targetPoint.transform;
 
-        var lookPos = a.position - firePoint.position;
-
-        var rotation = Quaternion.LookRotation(lookPos);
-
-        firePoint.rotation = Quaternion.Slerp(firePoint.rotation, rotation, Time.deltaTime * 4);
-
-        firePoint.transform.LookAt(a);
-
-        RaycastHit hit;
-
-        if (Physics.Raycast(firePoint.position, firePoint.TransformDirection(Vector3.forward), out hit, 50, layerMask))
+        if (enemies[0].GetComponent<BodyPartManager>().bodyTypeHealths.Count> target)
         {
-           
+            Transform a = enemies[0].GetComponent<BodyPartManager>().bodyTypeHealths[target].targetPoint.transform;
 
-            if (hit.collider.GetComponent<BodyPart>() != null)
+            var lookPos = a.position - firePoint.position;
+
+            var rotation = Quaternion.LookRotation(lookPos);
+
+            firePoint.rotation = Quaternion.Slerp(firePoint.rotation, rotation, Time.deltaTime * 4);
+
+            firePoint.transform.LookAt(a);
+
+            RaycastHit hit;
+
+            if (Physics.Raycast(firePoint.position, firePoint.TransformDirection(Vector3.forward), out hit, 50, layerMask))
             {
-                hit.collider.GetComponent<BodyPart>().Hit(6);
+                Debug.Log("Vurdum 0 ");
 
-                Debug.Log("Hit Enemy"+ " " +hit.collider.name);
+                if (hit.collider.GetComponent<BodyPart>() != null)
+                {
+                    hit.collider.GetComponent<BodyPart>().Hit(6);
+
+                    Debug.Log("Vurdum");
+
+                }
 
             }
+        }
+        else
+        {
+            Debug.Log("hATA");
 
         }
-       
+
+
+
+
+
 
     }
 
     void Fire(GameObject enemy)
     {
 
-        
+        Debug.Log("Fire basladi");
 
         Transform newTarget = enemy.transform;
 
@@ -148,23 +161,38 @@ public class EnemyAIManager : MonoBehaviour
 
         int target = Random.Range(0, bodyPartManager.bodyTypeHealths.Count);
 
-       
+      
        
         DrawRaycast(target);
 
+       
 
-        if (enemy != null && bodyPartManager.bodyTypeHealths[target] != null)
+        if (enemy != null)
         {
 
-            newTarget = bodyPartManager.bodyTypeHealths[target].targetPoint.transform;
+            if (bodyPartManager.bodyTypeHealths.Count>target)
+            {
+                
+                    newTarget = bodyPartManager.bodyTypeHealths[target].targetPoint.transform;
 
-            GameObject newBullet = Instantiate(bullet, firePoint.position, Quaternion.identity);
+                    GameObject newBullet = Instantiate(bullet, firePoint.position, Quaternion.identity);
 
-            Vector3 shootDir = (newTarget.position - firePoint.position).normalized;
-            
-            newBullet.GetComponent<Bullet>().Setup(shootDir, newTarget);
+                    Vector3 shootDir = (newTarget.position - firePoint.position).normalized;
+
+                    newBullet.GetComponent<Bullet>().Setup(shootDir, newTarget);
+
+                
+            }
+            else
+            {
+               
+            }
+
+           
+
 
         }
+
 
 
     }

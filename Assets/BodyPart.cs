@@ -10,27 +10,36 @@ public class BodyPart : MonoBehaviour
   
     
     [SerializeField]
-    BodyPartManager.BodyParts bodyPart;
+    public BodyPartManager.BodyParts bodyPart;
 
     public int id;
+
+    public bool isTest;
+
 
     private void Start()
     {
         id = (int)bodyPart;
-
+       
+    }
+    private void Update()
+    {
+       
     }
 
 
 
     public void Hit(float damage)
     {
-        if (bodyPartManager.bodyTypeHealths.Count> (int)bodyPart)
+        if (bodyPartManager.bodyTypeHealths.Count > id)
         {
-            bodyPartManager.bodyTypeHealths[(int)bodyPart].health -= damage;
+            bodyPartManager.bodyTypeHealths[id].health -= damage;
 
-            if (bodyPartManager.bodyTypeHealths[(int)bodyPart].health <= 0)
+            if (bodyPartManager.bodyTypeHealths[id].health <= 0)
             {
-                bodyPartManager.DestrotBodyPart(bodyPart);
+                bodyPartManager.DestrotBodyPart(bodyPart, id);
+
+                
             }
 
           

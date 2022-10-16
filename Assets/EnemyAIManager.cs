@@ -102,11 +102,11 @@ public class EnemyAIManager : MonoBehaviour
        
     }
 
-    void DrawRaycast()
+    void DrawRaycast(int target)
     {
         
 
-        Transform a = enemies[0].GetComponent<BodyPartManager>().bodyTypeHealths[5].targetPoint.transform;
+        Transform a = enemies[0].GetComponent<BodyPartManager>().bodyTypeHealths[target].targetPoint.transform;
 
         var lookPos = a.position - firePoint.position;
 
@@ -114,66 +114,58 @@ public class EnemyAIManager : MonoBehaviour
 
         firePoint.rotation = Quaternion.Slerp(firePoint.rotation, rotation, Time.deltaTime * 4);
 
+        firePoint.transform.LookAt(a);
+
         RaycastHit hit;
 
         if (Physics.Raycast(firePoint.position, firePoint.TransformDirection(Vector3.forward), out hit, 50, layerMask))
         {
-            Debug.Log(hit.collider.gameObject.name  +" Parent "+ hit.collider.transform.parent.name);
-
-            if (hit.collider.isTrigger)
-            {
-
-                Debug.Log("trigget");
-            }
-
-
+           
 
             if (hit.collider.GetComponent<BodyPart>() != null)
             {
-                hit.collider.GetComponent<BodyPart>().Hit(1);
+                hit.collider.GetComponent<BodyPart>().Hit(6);
 
-
+                Debug.Log("Hit Enemy"+ " " +hit.collider.name);
 
             }
 
         }
-        Debug.DrawRay(firePoint.position, firePoint.TransformDirection(Vector3.forward)*50,Color.red);
-
+       
 
     }
 
     void Fire(GameObject enemy)
     {
 
-        DrawRaycast();
-
-//        Transform newTarget = enemy.transform;
-
-//        BodyPartManager bodyPartManager;
-       
-//        bodyPartManager = enemy.GetComponent<BodyPartManager>();
         
-//        int target = Random.Range(0, bodyPartManager.bodyTypeHealths.Count);
 
-//         target = 5;
+        Transform newTarget = enemy.transform;
 
+        BodyPartManager bodyPartManager;
 
+        bodyPartManager = enemy.GetComponent<BodyPartManager>();
 
-//        if (enemy != null && bodyPartManager.bodyTypeHealths[target]!=null)
-//        {
-           
-//            newTarget = bodyPartManager.bodyTypeHealths[target].targetPoint.transform;
+        int target = Random.Range(0, bodyPartManager.bodyTypeHealths.Count);
 
-////            GameObject newBullet = Instantiate(bullet, firePoint.position, Quaternion.identity);
-
-//            Vector3 shootDir = (newTarget.position - firePoint.position).normalized;
-
-          
-
-//        //        newBullet.GetComponent<Bullet>().Setup(shootDir, newTarget);
-
-//        }
        
+       
+        DrawRaycast(target);
+
+
+        if (enemy != null && bodyPartManager.bodyTypeHealths[target] != null)
+        {
+
+            newTarget = bodyPartManager.bodyTypeHealths[target].targetPoint.transform;
+
+            GameObject newBullet = Instantiate(bullet, firePoint.position, Quaternion.identity);
+
+            Vector3 shootDir = (newTarget.position - firePoint.position).normalized;
+            
+            newBullet.GetComponent<Bullet>().Setup(shootDir, newTarget);
+
+        }
+
 
     }
 

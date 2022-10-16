@@ -12,7 +12,15 @@ public class BodyPart : MonoBehaviour
     [SerializeField]
     BodyPartManager.BodyParts bodyPart;
 
-  
+    public int id;
+
+    private void Start()
+    {
+        id = (int)bodyPart;
+
+    }
+
+
 
     public void Hit(float damage)
     {

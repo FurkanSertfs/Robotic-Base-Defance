@@ -32,8 +32,9 @@ public class BodyPartManager : MonoBehaviour
             Destroy(bodyTypeHealths[(int)bodyPart].parts[i].gameObject);
            
         }
-        bodyTypeHealths.RemoveAt((int)bodyPart);
 
+
+        bodyTypeHealths.RemoveAt((int)bodyPart);
 
         if (bodyPart == BodyParts.LeftLeg || bodyPart == BodyParts.RightLeg)
         {

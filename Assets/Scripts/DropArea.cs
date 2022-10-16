@@ -136,6 +136,6 @@ public class DropArea : MonoBehaviour, IDropable<CollectManager>
   public  IEnumerator SetupMachine()
     {
         yield return new WaitForSeconds(0.45f);
-        _machineManager.FillMachine();
+        _machineManager.Control();
     }
 }

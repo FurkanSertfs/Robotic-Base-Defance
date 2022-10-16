@@ -82,6 +82,7 @@ public class CollectManager : MonoBehaviour
 public class CollectedObject
 {
     public GameObject collectedObject;
+
     public Colleactable.ObjectType objectType;
 
     public CollectedObject(GameObject collectedObject, Colleactable.ObjectType objectType)

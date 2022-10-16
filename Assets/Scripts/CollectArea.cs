@@ -19,7 +19,7 @@ public class CollectArea : MonoBehaviour
 
             collectableObjects.Add(_iron);
             _machineManager.isFull = false;
-            _machineManager.FillMachine();
+            _machineManager.Control();
 
         });
      
@@ -30,7 +30,7 @@ public class CollectArea : MonoBehaviour
         {
             collectableObjects[collectableObjects.Count - 1].GetComponent<Colleactable>().Collect(playerCollectManager);
             collectableObjects.RemoveAt(collectableObjects.Count - 1);
-            _machineManager.FillMachine();
+            _machineManager.Control();
         }
         
     }

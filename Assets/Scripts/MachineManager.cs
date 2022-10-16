@@ -7,7 +7,10 @@ using DG.Tweening;
 public class MachineManager : MonoBehaviour
 {
     [SerializeField]
-    public Transform pressPoint,machinePoint1, machinePoint2, machineDropPoint;
+    public Transform pressPoint, machineDropPoint,spawnResaourcesPoint;
+
+   
+  
 
     public DropArea dropArea;
 
@@ -21,7 +24,7 @@ public class MachineManager : MonoBehaviour
     Light _fireLight;
 
     [SerializeField]
-    GameObject _moltenIronPrefab;
+    GameObject _productResources;
 
     [SerializeField]
     PressMachine _pressMachine;
@@ -29,51 +32,254 @@ public class MachineManager : MonoBehaviour
     [SerializeField]
     int _collectAreaCount = 5;
 
+    [NonReorderable]
+    public List<InputObject> inputResources = new List<InputObject>();
+
+    [SerializeField]
+    private int totalCount=0;
+
     private void Start()
     {
         machineSpeed = 2 / (Mathf.Pow(machineLevel, 1.2f) / 5 + 2);
     }
-    public void FillMachine() 
+
+    public void Control()
     {
-        
-        if ( !isFull && dropArea.droppedObjects.Count>0 && _pressMachine._collectArea.collectableObjects.Count<_collectAreaCount)
+        bool isCanProduction=true;
+        totalCount = 0;
+       
+        for (int i = 0; i < inputResources.Count; i++)
         {
-            
-            isFull = true;
+            if(inputResources[i].dropArea.droppedObjects.Count < inputResources[i].Count) 
+            {
+                isCanProduction = false;
+            }
+            totalCount += inputResources[i].Count;
+          
+        }
 
-            CollectedObject dropped = dropArea.droppedObjects[dropArea.droppedObjects.Count - 1];
-
-            dropped.collectedObject.transform.DOMove(machinePoint1.position, machineSpeed).SetEase(Ease.Linear).OnComplete(()=> 
-                {
-                    dropped.collectedObject.transform.DOMove(machinePoint2.position, machineSpeed).SetEase(Ease.Linear).OnComplete(() =>
-                   
-                    {
-                        DOTween.To(() => (float) 0, x => _fireLight.intensity = x,5, machineSpeed).SetEase(Ease.Linear).OnComplete(()=> { DOTween.To(() => (float)5, x => _fireLight.intensity = x, 0, 0.25f).SetEase(Ease.Linear); });
-                        
-                        StartCoroutine(Processing(dropped));
-
-                        
-
-                    });
-                    
-                }
-           );
-            dropArea.droppedObjects.Remove(dropped);
-
+        if (isCanProduction)
+        {
+            FillMachine();
         }
     }
-    IEnumerator Processing(CollectedObject destroyObject) 
-    {
-        yield return new WaitForSeconds(0.5f);
-        
-        Destroy(destroyObject.collectedObject);
 
-        GameObject _ironIngot = Instantiate(_moltenIronPrefab, machinePoint2.transform.position, machinePoint2.transform.rotation);
-        _ironIngot.transform.rotation = pressPoint.transform.rotation;
-        _ironIngot.transform.DOMove(pressPoint.position, machineSpeed).OnComplete(()=> 
-        { 
-            _pressMachine.Press(machineSpeed, _ironIngot, machineDropPoint);
-        });
+
+    //public void FillMachine() 
+    //{
+        
+    //    if ( !isFull && dropArea.droppedObjects.Count > 0 && _pressMachine._collectArea.collectableObjects.Count<_collectAreaCount)
+    //    {
+            
+    //        isFull = true;
+
+    //        CollectedObject dropped = dropArea.droppedObjects[dropArea.droppedObjects.Count - 1];
+
+    //        dropped.collectedObject.transform.DOMove(machinePoint1.position, machineSpeed).SetEase(Ease.Linear).OnComplete(()=> 
+    //            {
+    //                dropped.collectedObject.transform.DOMove(machinePoint2.position, machineSpeed).SetEase(Ease.Linear).OnComplete(() =>
+                   
+    //                {
+    //                    DOTween.To(() => (float) 0, x => _fireLight.intensity = x,5, machineSpeed).SetEase(Ease.Linear).OnComplete(()=> { DOTween.To(() => (float)5, x => _fireLight.intensity = x, 0, 0.25f).SetEase(Ease.Linear); });
+                        
+    //                    StartCoroutine(Processing(dropped));
+
+                        
+
+    //                });
+                    
+    //            }
+    //       );
+    //        dropArea.droppedObjects.Remove(dropped);
+
+    //    }
+    //}
+
+    void FillMachine()
+    {
+
+        if (!isFull &&  _pressMachine._collectArea.collectableObjects.Count < _collectAreaCount)
+        {
+            
+
+            isFull = true;
+
+            List<ProcessedObjectsList> processedObjectsLists = new List<ProcessedObjectsList>();
+
+            for (int i = 0; i < inputResources.Count; i++)
+            {
+                processedObjectsLists.Add(new ProcessedObjectsList());
+
+            }
+        
+
+           
+            for (int i = 0; i < processedObjectsLists.Count; i++)
+            {
+              
+                for (int j = 0; j < inputResources[i].Count; j++)
+                {
+                   
+                    processedObjectsLists[i].processedObjects.Add(inputResources[i].dropArea.droppedObjects[dropArea.droppedObjects.Count - (j+1)]);
+                }
+               
+            }
+
+            StartCoroutine(Fill(processedObjectsLists,0,0));
+
+          
+        }
+    }
+
+    IEnumerator Fill(List<ProcessedObjectsList> list,int index,int x)
+    {
+       
+
+       
+        
+        yield return new WaitForSeconds(2.125f);
+
+        if (index < list[0].processedObjects.Count)
+        {
+           
+
+            list[0].processedObjects[index].collectedObject.transform.DOMove(inputResources[0].machinePoint1.position, machineSpeed).SetEase(Ease.Linear).OnComplete(() =>
+            {
+              
+                list[0].processedObjects[index].collectedObject.transform.DOMove(inputResources[0].machinePoint2.position, machineSpeed).SetEase(Ease.Linear).OnComplete(()=> 
+                {
+
+                    DOTween.To(() => (float)0, x => _fireLight.intensity = x, 5, machineSpeed).SetEase(Ease.Linear).OnComplete(() => { DOTween.To(() => (float)5, x => _fireLight.intensity = x, 0, 0.25f).SetEase(Ease.Linear); });
+
+                });
+
+            });
+            inputResources[0].dropArea.droppedObjects.Remove(list[0].processedObjects[index]);
+            x++;
+           
+        }
+
+        if (list.Count > 1)
+        {
+
+            if (index < list[1].processedObjects.Count)
+            {
+
+          
+                list[1].processedObjects[index].collectedObject.transform.DOMove(inputResources[1].machinePoint1.position, machineSpeed).SetEase(Ease.Linear).OnComplete(() =>
+                {
+                  list[1].processedObjects[index].collectedObject.transform.DOMove(inputResources[1].machinePoint2.position, machineSpeed).SetEase(Ease.Linear).OnComplete(()=> 
+                  {
+
+                      DOTween.To(() => (float)0, x => _fireLight.intensity = x, 5, machineSpeed).SetEase(Ease.Linear).OnComplete(() => { DOTween.To(() => (float)5, x => _fireLight.intensity = x, 0, 0.25f).SetEase(Ease.Linear); });
+
+                  });
+
+                });
+
+                inputResources[1].dropArea.droppedObjects.Remove(list[1].processedObjects[index]);
+                x++;
+            }
+        }
+
+       
+
+        if (x==totalCount)
+        {
+              StartCoroutine(Processing(list[list.Count-1].processedObjects[index]));
+        }
+
+        else
+        {
+            StartCoroutine(Fill(list, index + 1, x));
+        }
+
+
+
+
+
+
+
+
+
+        //for (int i = 0; i < list.Count; i++)
+        //{
+
+        //    index = y;
+
+        //    if( y < list[i].processedObjects.Count)
+        //    {
+        //        Debug.Log(i);
+
+        //        list[i].processedObjects[index].collectedObject.transform.DOMove(inputResources[i].machinePoint1.position, machineSpeed).SetEase(Ease.Linear).OnComplete(()=> 
+        //        {
+        //            Debug.Log(index);
+
+        //            //  Debug.Log(list[i].processedObjects[index].collectedObject.name);
+
+        //            list[i].processedObjects[index].collectedObject.transform.DOMove(inputResources[0].machinePoint2.position, machineSpeed).SetEase(Ease.Linear);
+
+        //        });
+
+        //        //list[i].processedObjects[index].collectedObject.transform.DOMove(inputResources[i].machinePoint1.position, machineSpeed).SetEase(Ease.Linear).OnComplete(() =>
+        //        //{
+        //        //    list[i].processedObjects[index].collectedObject.transform.DOMove(inputResources[i].machinePoint2.position, machineSpeed).SetEase(Ease.Linear).OnComplete(() =>
+
+        //        //    {
+        //        //        DOTween.To(() => (float)0, x => _fireLight.intensity = x, 5, machineSpeed).SetEase(Ease.Linear).OnComplete(() => { DOTween.To(() => (float)5, x => _fireLight.intensity = x, 0, 0.25f).SetEase(Ease.Linear); });
+
+
+
+        //        //    });
+
+        //        //}
+        //        //);
+
+        //        //inputResources[i].dropArea.droppedObjects.Remove(list[i].processedObjects[index]);
+
+
+
+        //    }
+
+
+
+
+        //}
+
+
 
     }
+
+
+
+        IEnumerator Processing(CollectedObject destroyObject) 
+        {
+            yield return new WaitForSeconds(machineSpeed+1.4f);
+        
+        // Destroy(destroyObject.collectedObject);
+
+            GameObject _ironIngot = Instantiate(_productResources, spawnResaourcesPoint.transform.position, spawnResaourcesPoint.transform.rotation);
+            _ironIngot.transform.rotation = pressPoint.transform.rotation;
+            _ironIngot.transform.DOMove(pressPoint.position, machineSpeed).OnComplete(()=> 
+            { 
+            _pressMachine.Press(machineSpeed, _ironIngot, machineDropPoint);
+            });
+
+    }   
+}
+[System.Serializable]
+public class ProcessedObjectsList
+{
+    public List<CollectedObject> processedObjects = new List<CollectedObject>();
+  
+}
+
+
+
+[System.Serializable]
+public class InputObject
+{
+    public DropArea dropArea;
+    public int Count;
+    public Transform machinePoint1, machinePoint2;
 }

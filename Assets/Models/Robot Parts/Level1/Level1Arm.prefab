@@ -130,5 +130,7 @@ MonoBehaviour:
   - {fileID: 4300000, guid: 8e21e251cf801104487ec4fb00259996, type: 2}
   - {fileID: 4300000, guid: b9591510e0269ba4f917153c11e94ffd, type: 2}
   - {fileID: 4300000, guid: 615804de6e250b749a52215fd81cf6b4, type: 2}
+  material: {fileID: 0}
   Id: 2
+  level: 1
   bonusHealth: 0

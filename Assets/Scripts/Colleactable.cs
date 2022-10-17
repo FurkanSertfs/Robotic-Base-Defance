@@ -5,7 +5,7 @@ using DG.Tweening;
 
 public class Colleactable : MonoBehaviour, ICollactable<CollectManager>
 {
-    public enum ObjectType { RawIron = 0, RawPlastic = 1, IronIngot = 2, CopperIngot = 3, Head=4, Body=5, Arm=6, Leg=7 };
+    public enum ObjectType { RawIron = 0, RawCopper = 1, IronIngot = 2, CopperIngot = 3, Head=4, Body=5, Arm=6, Leg=7 };
 
     public ObjectType objectType;
 

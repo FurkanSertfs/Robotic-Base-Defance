@@ -137,7 +137,7 @@ public class MachineManager : MonoBehaviour
 
        
         
-        yield return new WaitForSeconds(2.125f);
+        yield return new WaitForSeconds(machineSpeed);
 
         if (index < list[0].processedObjects.Count)
         {
@@ -260,6 +260,7 @@ public class MachineManager : MonoBehaviour
 
             GameObject _ironIngot = Instantiate(_productResources, spawnResaourcesPoint.transform.position, spawnResaourcesPoint.transform.rotation);
             _ironIngot.transform.rotation = pressPoint.transform.rotation;
+            _ironIngot.transform.localScale = pressPoint.transform.localScale;
             _ironIngot.transform.DOMove(pressPoint.position, machineSpeed).OnComplete(()=> 
             { 
             _pressMachine.Press(machineSpeed, _ironIngot, machineDropPoint);

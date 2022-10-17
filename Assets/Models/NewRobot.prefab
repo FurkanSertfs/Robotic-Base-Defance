@@ -223,6 +223,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bodyPartManager: {fileID: 8555622048540601098}
   bodyPart: 2
+  id: 0
+  isTest: 0
 --- !u!1 &745194217305078690
 GameObject:
   m_ObjectHideFlags: 0
@@ -478,6 +480,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bodyPartManager: {fileID: 8555622048540601098}
   bodyPart: 5
+  id: 0
+  isTest: 0
 --- !u!1 &1331341737559851926
 GameObject:
   m_ObjectHideFlags: 0
@@ -642,8 +646,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f73bc7aad8a6a749aa6365cfda78b1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  injuredSoldiersParent: {fileID: 0}
   target: {fileID: 0}
   soldierPosition: {fileID: 0}
+  fullCollider: {fileID: 0}
+  smallCollider: {fileID: 0}
   player: {fileID: 0}
   agent: {fileID: 1651533214128562317}
   enemies: []
@@ -652,8 +659,12 @@ MonoBehaviour:
   firePoint: {fileID: 7634611124157549015}
   bullet: {fileID: 4645443845697616512, guid: 44d3487bd266c21478226b2fb2eb2445, type: 3}
   health: 100
-  controller: {fileID: 0}
+  isActiveFire: 0
   isHaveTarget: 1
+  bodyPartManager: {fileID: 0}
+  guns: []
+  id: 0
+  robotMesh: {fileID: 0}
 --- !u!65 &3490281691588079243
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -738,7 +749,7 @@ MonoBehaviour:
     health: 0
     targetPoint: {fileID: 3124729126522349746}
     parts:
-    - {fileID: 229296698948380401}
+    - {fileID: 4464128523891553101}
   - bodyPart: 1
     health: 0
     targetPoint: {fileID: 7721287091189489441}
@@ -774,6 +785,8 @@ MonoBehaviour:
     - {fileID: 5073603702717680169}
     - {fileID: 1271235699608604941}
     - {fileID: 5131713750150028144}
+  destroyedLeg: 0
+  animatorController: []
 --- !u!1 &2247236167198634625
 GameObject:
   m_ObjectHideFlags: 0
@@ -1023,6 +1036,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bodyPartManager: {fileID: 8555622048540601098}
   bodyPart: 4
+  id: 0
+  isTest: 0
 --- !u!1 &2774336133939695702
 GameObject:
   m_ObjectHideFlags: 0
@@ -1200,6 +1215,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bodyPartManager: {fileID: 8555622048540601098}
   bodyPart: 2
+  id: 0
+  isTest: 0
 --- !u!1 &2948349251824802130
 GameObject:
   m_ObjectHideFlags: 0
@@ -1453,6 +1470,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bodyPartManager: {fileID: 8555622048540601098}
   bodyPart: 4
+  id: 0
+  isTest: 0
 --- !u!1 &3124729126522349746
 GameObject:
   m_ObjectHideFlags: 0
@@ -1892,6 +1911,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bodyPartManager: {fileID: 8555622048540601098}
   bodyPart: 0
+  id: 0
+  isTest: 0
 --- !u!1 &4555436010133423761
 GameObject:
   m_ObjectHideFlags: 0
@@ -2098,6 +2119,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bodyPartManager: {fileID: 8555622048540601098}
   bodyPart: 5
+  id: 0
+  isTest: 0
 --- !u!1 &5131713750150028144
 GameObject:
   m_ObjectHideFlags: 0
@@ -2209,6 +2232,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bodyPartManager: {fileID: 8555622048540601098}
   bodyPart: 5
+  id: 0
+  isTest: 0
 --- !u!1 &5172148560581306376
 GameObject:
   m_ObjectHideFlags: 0
@@ -2351,6 +2376,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bodyPartManager: {fileID: 8555622048540601098}
   bodyPart: 2
+  id: 0
+  isTest: 0
 --- !u!1 &5416648251732994089
 GameObject:
   m_ObjectHideFlags: 0
@@ -2493,6 +2520,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bodyPartManager: {fileID: 8555622048540601098}
   bodyPart: 3
+  id: 0
+  isTest: 0
 --- !u!1 &5803334475808160159
 GameObject:
   m_ObjectHideFlags: 0
@@ -2685,6 +2714,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bodyPartManager: {fileID: 8555622048540601098}
   bodyPart: 4
+  id: 0
+  isTest: 0
 --- !u!1 &6109443744064254416
 GameObject:
   m_ObjectHideFlags: 0
@@ -2958,6 +2989,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bodyPartManager: {fileID: 8555622048540601098}
   bodyPart: 3
+  id: 0
+  isTest: 0
 --- !u!1 &7721287091189489441
 GameObject:
   m_ObjectHideFlags: 0
@@ -3195,6 +3228,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bodyPartManager: {fileID: 8555622048540601098}
   bodyPart: 3
+  id: 0
+  isTest: 0
 --- !u!1 &8684352823254008912
 GameObject:
   m_ObjectHideFlags: 0
@@ -3307,6 +3342,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bodyPartManager: {fileID: 8555622048540601098}
   bodyPart: 1
+  id: 0
+  isTest: 0
 --- !u!1 &8916486149158259913
 GameObject:
   m_ObjectHideFlags: 0

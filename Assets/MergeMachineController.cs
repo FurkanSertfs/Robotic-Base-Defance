@@ -43,12 +43,19 @@ public class MergeMachineController : MonoBehaviour
                 }
                
             }
+            StartCoroutine(Wait());
 
-            bodyMachine.Merge();
+
+
         }
 
 
 
+    }
+    IEnumerator Wait()
+    {
+        yield return new WaitForSeconds(0.25f);
+        bodyMachine.Merge();
     }
 
     public void Setup()

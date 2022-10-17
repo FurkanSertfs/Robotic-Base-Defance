@@ -6,7 +6,7 @@ public class Mine : MonoBehaviour
 {
 
 
-    public GameObject IronOre, CopperOre;
+    public GameObject resourcesPrefav;
     public Transform[] SpawnPoints;
 
     float timer;
@@ -16,10 +16,10 @@ public class Mine : MonoBehaviour
     public void Dig()
     {
         int randomIndex = Random.Range(0, SpawnPoints.Length);
-        Instantiate(IronOre, SpawnPoints[randomIndex].position, Quaternion.identity);
+        
+        Instantiate(resourcesPrefav, SpawnPoints[randomIndex].position, Quaternion.identity);
 
-               
-       
+             
     }
 
 }

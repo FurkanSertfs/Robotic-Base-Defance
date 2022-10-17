@@ -14,85 +14,19 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     Transform firePoint;
     [SerializeField]
-    GameObject bullet;
+    GameObject pikAxe;
 
-
-    private bool isActiveFire;
+    Mine _mine;
 
     private void Start()
     {
-        animator= GetComponent<Animator>();
+        animator = GetComponent<Animator>();
     }
 
-    private void Update()
+    public void Mining()
     {
-        if (enemies.Count > 0)
-        {
-            //  animator.SetBool("isFire", true);
-
-
-            var lookPos = enemies[0].transform.position - transform.position;
-            lookPos.y = 0;
-            var rotation = Quaternion.LookRotation(lookPos);
-            transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * 4);
-            
-
-
-                     //   transform.LookAt(enemies[0].transform);
-         
-            if (!isActiveFire)
-            {
-                StartCoroutine(FireRoutine(enemies[0]));
-               
-            }
-            
-        }
-        else
-        {
-          //  animator.SetBool("isFire", false);
-        }
-   
+        _mine.Dig();
     }
-
-    void Fire(GameObject enemy)
-    {
-        GameObject newBullet = Instantiate(bullet, firePoint.position, Quaternion.identity);
-        
-        Vector3 shootDir = (enemy.transform.position - firePoint.position).normalized;
-       
-        newBullet.GetComponent<Bullet>().Setup(shootDir,enemy.transform);
-
-    }
-
-
-
-    IEnumerator FireRoutine(GameObject enemy)
-    {
-        isActiveFire = true;
-       
-        yield return new WaitForSeconds(fireSpeed);
-
-        if (enemies.Count > 0)
-        {
-            Fire(enemy);
-            StartCoroutine(FireRoutine(enemy));
-        }
-        else
-        {
-            isActiveFire = false;
-        }
-    
-    }
-
-
-
-
-
-
-
-
-
-
 
     private void OnTriggerEnter(Collider other)
     {
@@ -101,6 +35,15 @@ public class PlayerController : MonoBehaviour
             other.GetComponent<SoldierPosition>().Follow(GetComponent<PlayerSoldierManager>(), true);
 
         }
+
+        if (other.GetComponent<Mine>() != null)
+        {
+            animator.SetBool("isMining", true);
+            pikAxe.SetActive(true);
+            _mine = other.GetComponent<Mine>();
+        }
+
+
     }
 
     private void OnTriggerExit(Collider other)
@@ -110,7 +53,18 @@ public class PlayerController : MonoBehaviour
             other.GetComponent<SoldierPosition>().Follow(GetComponent<PlayerSoldierManager>(), false);
 
         }
+
+        if (other.GetComponent<Mine>() != null)
+        {
+            animator.SetBool("isMining", false);
+            pikAxe.SetActive(false);
+        
+        }
+
+
+
     }
+
     private void OnTriggerStay(Collider other)
     {
 

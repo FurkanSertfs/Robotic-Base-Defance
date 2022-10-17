@@ -42,7 +42,14 @@ public class Colleactable : MonoBehaviour, ICollactable<CollectManager>
            (playerCollectManager.collectableObjectSpawnPoint[(int)objectType].position.x,
              playerCollectManager.collectableObjectSpawnPoint[(int)objectType].position.y + 0.3f *collectObjeIndex,
              playerCollectManager.collectableObjectSpawnPoint[(int)objectType].position.z
-           ), time).OnComplete(() => MovePlayer(playerCollectManager));
+           ), time).OnComplete(() => 
+           {
+               if (this!=null)
+               {
+                   MovePlayer(playerCollectManager);
+               }
+              
+           });
 
 
             time -= 0.075f;

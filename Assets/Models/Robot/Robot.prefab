@@ -141,9 +141,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bodyPartManager: {fileID: 5132994138939653631}
+  level: 0
   bodyPart: 1
   id: 0
   isWhite: 1
+  robotMaterials: []
 --- !u!1 &1298653920658374660
 GameObject:
   m_ObjectHideFlags: 0
@@ -480,9 +482,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bodyPartManager: {fileID: 5132994138939653631}
+  level: 0
   bodyPart: 4
   id: 0
   isWhite: 0
+  robotMaterials: []
 --- !u!1 &2342957880884684424
 GameObject:
   m_ObjectHideFlags: 0
@@ -700,9 +704,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bodyPartManager: {fileID: 5132994138939653631}
+  level: 0
   bodyPart: 5
   id: 0
   isWhite: 1
+  robotMaterials: []
 --- !u!1 &3011286976722839588
 GameObject:
   m_ObjectHideFlags: 0
@@ -969,9 +975,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bodyPartManager: {fileID: 5132994138939653631}
+  level: 0
   bodyPart: 3
   id: 0
   isWhite: 1
+  robotMaterials: []
 --- !u!1 &3892879821432121516
 GameObject:
   m_ObjectHideFlags: 0
@@ -1081,9 +1089,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bodyPartManager: {fileID: 5132994138939653631}
+  level: 0
   bodyPart: 2
   id: 0
   isWhite: 0
+  robotMaterials: []
 --- !u!1 &4236268896854205814
 GameObject:
   m_ObjectHideFlags: 0
@@ -1223,9 +1233,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bodyPartManager: {fileID: 5132994138939653631}
+  level: 0
   bodyPart: 2
   id: 0
   isWhite: 1
+  robotMaterials: []
 --- !u!1 &4341515755637758517
 GameObject:
   m_ObjectHideFlags: 0
@@ -1336,9 +1348,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bodyPartManager: {fileID: 5132994138939653631}
+  level: 0
   bodyPart: 4
   id: 0
   isWhite: 0
+  robotMaterials: []
 --- !u!1 &4341515755745992853
 GameObject:
   m_ObjectHideFlags: 0
@@ -1449,9 +1463,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bodyPartManager: {fileID: 5132994138939653631}
+  level: 0
   bodyPart: 2
   id: 0
   isWhite: 0
+  robotMaterials: []
 --- !u!1 &4341515755784946477
 GameObject:
   m_ObjectHideFlags: 0
@@ -1562,9 +1578,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bodyPartManager: {fileID: 5132994138939653631}
+  level: 0
   bodyPart: 5
   id: 0
   isWhite: 0
+  robotMaterials: []
 --- !u!1 &4341515755995735143
 GameObject:
   m_ObjectHideFlags: 0
@@ -1674,9 +1692,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bodyPartManager: {fileID: 5132994138939653631}
+  level: 0
   bodyPart: 3
   id: 0
   isWhite: 0
+  robotMaterials: []
 --- !u!1 &4341515756104758583
 GameObject:
   m_ObjectHideFlags: 0
@@ -1786,9 +1806,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bodyPartManager: {fileID: 5132994138939653631}
+  level: 0
   bodyPart: 3
   id: 0
   isWhite: 1
+  robotMaterials: []
 --- !u!1 &4341515756139772667
 GameObject:
   m_ObjectHideFlags: 0
@@ -1900,9 +1922,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bodyPartManager: {fileID: 5132994138939653631}
+  level: 0
   bodyPart: 2
   id: 0
   isWhite: 0
+  robotMaterials: []
 --- !u!114 &4341515756139772661
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2027,9 +2051,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bodyPartManager: {fileID: 5132994138939653631}
+  level: 0
   bodyPart: 4
   id: 0
   isWhite: 1
+  robotMaterials: []
 --- !u!1 &4396573890294047689
 GameObject:
   m_ObjectHideFlags: 0
@@ -2172,9 +2198,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bodyPartManager: {fileID: 5132994138939653631}
+  level: 0
   bodyPart: 2
   id: 0
   isWhite: 1
+  robotMaterials: []
 --- !u!1 &4878849143712650993
 GameObject:
   m_ObjectHideFlags: 0
@@ -2451,9 +2479,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bodyPartManager: {fileID: 5132994138939653631}
+  level: 0
   bodyPart: 3
   id: 0
   isWhite: 0
+  robotMaterials:
+  - materials:
+    - {fileID: 2100000, guid: 5a0159f5bdc661545a8ba5d2076d075a, type: 2}
+  - materials:
+    - {fileID: 2100000, guid: 5a0159f5bdc661545a8ba5d2076d075a, type: 2}
+  - materials:
+    - {fileID: 2100000, guid: 5a0159f5bdc661545a8ba5d2076d075a, type: 2}
 --- !u!114 &5875302904635912727
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3100,9 +3136,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bodyPartManager: {fileID: 5132994138939653631}
+  level: 0
   bodyPart: 0
   id: 0
   isWhite: 1
+  robotMaterials: []
 --- !u!1 &7628167170130369333
 GameObject:
   m_ObjectHideFlags: 0
@@ -3245,9 +3283,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bodyPartManager: {fileID: 5132994138939653631}
+  level: 0
   bodyPart: 5
   id: 0
   isWhite: 0
+  robotMaterials: []
 --- !u!1 &7911514282627046506
 GameObject:
   m_ObjectHideFlags: 0
@@ -3422,9 +3462,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bodyPartManager: {fileID: 5132994138939653631}
+  level: 0
   bodyPart: 3
   id: 0
   isWhite: 0
+  robotMaterials: []
 --- !u!1 &8817829889968913830
 GameObject:
   m_ObjectHideFlags: 0

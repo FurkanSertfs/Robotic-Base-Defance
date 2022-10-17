@@ -11,7 +11,7 @@ public class PressMachine : MonoBehaviour
 
 
     [SerializeField]
-    Material _grayIron;
+    Material[] _materials;
 
     Vector3 _startPosition;
 
@@ -27,7 +27,11 @@ public class PressMachine : MonoBehaviour
         transform.DOMove(_endPosition.position,time).OnComplete(()=> 
         {
             transform.DOMove(_startPosition, time);
-            _iron.GetComponent<MeshRenderer>().material = _grayIron;
+            for (int i = 0; i < _iron.GetComponent<MeshRenderer>().materials.Length; i++)
+            {
+                _iron.GetComponent<MeshRenderer>().materials[i] = _materials[i];
+            }
+
             _iron.transform.DOMove(_machineDropPoint.position, time);
             _collectArea.AddObjectstoList(_iron);
             

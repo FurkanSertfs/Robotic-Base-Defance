@@ -9,9 +9,6 @@ public class MachineManager : MonoBehaviour
     [SerializeField]
     public Transform pressPoint, machineDropPoint,spawnResaourcesPoint;
 
-   
-  
-
     public DropArea dropArea;
 
     public int machineLevel=1;
@@ -182,11 +179,11 @@ public class MachineManager : MonoBehaviour
             }
         }
 
-       
+       // Makinedeki objeler temizlenebilir 
 
         if (x==totalCount)
         {
-              StartCoroutine(Processing(list[list.Count-1].processedObjects[index]));
+              StartCoroutine(Processing());
         }
 
         else
@@ -196,68 +193,14 @@ public class MachineManager : MonoBehaviour
 
 
 
-
-
-
-
-
-
-        //for (int i = 0; i < list.Count; i++)
-        //{
-
-        //    index = y;
-
-        //    if( y < list[i].processedObjects.Count)
-        //    {
-        //        Debug.Log(i);
-
-        //        list[i].processedObjects[index].collectedObject.transform.DOMove(inputResources[i].machinePoint1.position, machineSpeed).SetEase(Ease.Linear).OnComplete(()=> 
-        //        {
-        //            Debug.Log(index);
-
-        //            //  Debug.Log(list[i].processedObjects[index].collectedObject.name);
-
-        //            list[i].processedObjects[index].collectedObject.transform.DOMove(inputResources[0].machinePoint2.position, machineSpeed).SetEase(Ease.Linear);
-
-        //        });
-
-        //        //list[i].processedObjects[index].collectedObject.transform.DOMove(inputResources[i].machinePoint1.position, machineSpeed).SetEase(Ease.Linear).OnComplete(() =>
-        //        //{
-        //        //    list[i].processedObjects[index].collectedObject.transform.DOMove(inputResources[i].machinePoint2.position, machineSpeed).SetEase(Ease.Linear).OnComplete(() =>
-
-        //        //    {
-        //        //        DOTween.To(() => (float)0, x => _fireLight.intensity = x, 5, machineSpeed).SetEase(Ease.Linear).OnComplete(() => { DOTween.To(() => (float)5, x => _fireLight.intensity = x, 0, 0.25f).SetEase(Ease.Linear); });
-
-
-
-        //        //    });
-
-        //        //}
-        //        //);
-
-        //        //inputResources[i].dropArea.droppedObjects.Remove(list[i].processedObjects[index]);
-
-
-
-        //    }
-
-
-
-
-        //}
-
-
-
     }
 
 
 
-        IEnumerator Processing(CollectedObject destroyObject) 
+        IEnumerator Processing() 
         {
             yield return new WaitForSeconds(machineSpeed+1.4f);
         
-        // Destroy(destroyObject.collectedObject);
-
             GameObject _ironIngot = Instantiate(_productResources, spawnResaourcesPoint.transform.position, spawnResaourcesPoint.transform.rotation);
             _ironIngot.transform.rotation = pressPoint.transform.rotation;
             _ironIngot.transform.localScale = pressPoint.transform.localScale;

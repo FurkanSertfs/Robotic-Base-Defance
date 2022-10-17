@@ -26,11 +26,8 @@ public class BodyPart : MonoBehaviour
     {
         id = (int)bodyPart;
 
-        GetComponent<MeshRenderer>().materials = robotMaterials[level].materials;
+        GetComponent<MeshRenderer>().materials = robotMaterials[level-1].materials;
 
-
-
-       
     }
     private void Update()
     {

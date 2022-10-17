@@ -19,6 +19,7 @@ public class BodyPart : MonoBehaviour
     public bool isWhite;
 
     [SerializeField]
+    [NonReorderable]
     List<RobotMaterials> robotMaterials;
 
 

@@ -145,7 +145,16 @@ MonoBehaviour:
   bodyPart: 1
   id: 0
   isWhite: 1
-  robotMaterials: []
+  robotMaterials:
+  - materials:
+    - {fileID: 2100000, guid: 817a4fc311e9ce14f89178fe6020c061, type: 2}
+    - {fileID: 2100000, guid: b3d05eba699db3645a15411df2e5984a, type: 2}
+  - materials:
+    - {fileID: 2100000, guid: aedb1e88d8c40f447be770409e55e5f5, type: 2}
+    - {fileID: 2100000, guid: 017e783b45fffbc4ea8e6f12f7ed5672, type: 2}
+  - materials:
+    - {fileID: 2100000, guid: 7efabcf18dbc69d44a87e55b47920a35, type: 2}
+    - {fileID: 2100000, guid: 952876131e8a93643b95b1d253aa8c9d, type: 2}
 --- !u!1 &1298653920658374660
 GameObject:
   m_ObjectHideFlags: 0
@@ -486,7 +495,16 @@ MonoBehaviour:
   bodyPart: 4
   id: 0
   isWhite: 0
-  robotMaterials: []
+  robotMaterials:
+  - materials:
+    - {fileID: 2100000, guid: 817a4fc311e9ce14f89178fe6020c061, type: 2}
+    - {fileID: 2100000, guid: b3d05eba699db3645a15411df2e5984a, type: 2}
+  - materials:
+    - {fileID: 2100000, guid: aedb1e88d8c40f447be770409e55e5f5, type: 2}
+    - {fileID: 2100000, guid: 017e783b45fffbc4ea8e6f12f7ed5672, type: 2}
+  - materials:
+    - {fileID: 2100000, guid: 7efabcf18dbc69d44a87e55b47920a35, type: 2}
+    - {fileID: 2100000, guid: 952876131e8a93643b95b1d253aa8c9d, type: 2}
 --- !u!1 &2342957880884684424
 GameObject:
   m_ObjectHideFlags: 0
@@ -708,7 +726,13 @@ MonoBehaviour:
   bodyPart: 5
   id: 0
   isWhite: 1
-  robotMaterials: []
+  robotMaterials:
+  - materials:
+    - {fileID: 2100000, guid: b3d05eba699db3645a15411df2e5984a, type: 2}
+  - materials:
+    - {fileID: 2100000, guid: 017e783b45fffbc4ea8e6f12f7ed5672, type: 2}
+  - materials:
+    - {fileID: 2100000, guid: 952876131e8a93643b95b1d253aa8c9d, type: 2}
 --- !u!1 &3011286976722839588
 GameObject:
   m_ObjectHideFlags: 0
@@ -927,7 +951,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b3d05eba699db3645a15411df2e5984a, type: 2}
+  - {fileID: 2100000, guid: 952876131e8a93643b95b1d253aa8c9d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -979,7 +1003,13 @@ MonoBehaviour:
   bodyPart: 3
   id: 0
   isWhite: 1
-  robotMaterials: []
+  robotMaterials:
+  - materials:
+    - {fileID: 2100000, guid: b3d05eba699db3645a15411df2e5984a, type: 2}
+  - materials:
+    - {fileID: 2100000, guid: 017e783b45fffbc4ea8e6f12f7ed5672, type: 2}
+  - materials:
+    - {fileID: 2100000, guid: 952876131e8a93643b95b1d253aa8c9d, type: 2}
 --- !u!1 &3892879821432121516
 GameObject:
   m_ObjectHideFlags: 0
@@ -1093,7 +1123,13 @@ MonoBehaviour:
   bodyPart: 2
   id: 0
   isWhite: 0
-  robotMaterials: []
+  robotMaterials:
+  - materials:
+    - {fileID: 2100000, guid: 817a4fc311e9ce14f89178fe6020c061, type: 2}
+  - materials:
+    - {fileID: 2100000, guid: aedb1e88d8c40f447be770409e55e5f5, type: 2}
+  - materials:
+    - {fileID: 2100000, guid: 7efabcf18dbc69d44a87e55b47920a35, type: 2}
 --- !u!1 &4236268896854205814
 GameObject:
   m_ObjectHideFlags: 0
@@ -1237,7 +1273,13 @@ MonoBehaviour:
   bodyPart: 2
   id: 0
   isWhite: 1
-  robotMaterials: []
+  robotMaterials:
+  - materials:
+    - {fileID: 2100000, guid: b3d05eba699db3645a15411df2e5984a, type: 2}
+  - materials:
+    - {fileID: 2100000, guid: 017e783b45fffbc4ea8e6f12f7ed5672, type: 2}
+  - materials:
+    - {fileID: 2100000, guid: 952876131e8a93643b95b1d253aa8c9d, type: 2}
 --- !u!1 &4341515755637758517
 GameObject:
   m_ObjectHideFlags: 0
@@ -1352,7 +1394,13 @@ MonoBehaviour:
   bodyPart: 4
   id: 0
   isWhite: 0
-  robotMaterials: []
+  robotMaterials:
+  - materials:
+    - {fileID: 2100000, guid: 817a4fc311e9ce14f89178fe6020c061, type: 2}
+  - materials:
+    - {fileID: 2100000, guid: aedb1e88d8c40f447be770409e55e5f5, type: 2}
+  - materials:
+    - {fileID: 2100000, guid: 7efabcf18dbc69d44a87e55b47920a35, type: 2}
 --- !u!1 &4341515755745992853
 GameObject:
   m_ObjectHideFlags: 0
@@ -1467,7 +1515,13 @@ MonoBehaviour:
   bodyPart: 2
   id: 0
   isWhite: 0
-  robotMaterials: []
+  robotMaterials:
+  - materials:
+    - {fileID: 2100000, guid: 817a4fc311e9ce14f89178fe6020c061, type: 2}
+  - materials:
+    - {fileID: 2100000, guid: aedb1e88d8c40f447be770409e55e5f5, type: 2}
+  - materials:
+    - {fileID: 2100000, guid: 7efabcf18dbc69d44a87e55b47920a35, type: 2}
 --- !u!1 &4341515755784946477
 GameObject:
   m_ObjectHideFlags: 0
@@ -1582,7 +1636,16 @@ MonoBehaviour:
   bodyPart: 5
   id: 0
   isWhite: 0
-  robotMaterials: []
+  robotMaterials:
+  - materials:
+    - {fileID: 2100000, guid: 817a4fc311e9ce14f89178fe6020c061, type: 2}
+    - {fileID: 2100000, guid: b3d05eba699db3645a15411df2e5984a, type: 2}
+  - materials:
+    - {fileID: 2100000, guid: aedb1e88d8c40f447be770409e55e5f5, type: 2}
+    - {fileID: 2100000, guid: 017e783b45fffbc4ea8e6f12f7ed5672, type: 2}
+  - materials:
+    - {fileID: 2100000, guid: 7efabcf18dbc69d44a87e55b47920a35, type: 2}
+    - {fileID: 2100000, guid: 952876131e8a93643b95b1d253aa8c9d, type: 2}
 --- !u!1 &4341515755995735143
 GameObject:
   m_ObjectHideFlags: 0
@@ -1696,7 +1759,13 @@ MonoBehaviour:
   bodyPart: 3
   id: 0
   isWhite: 0
-  robotMaterials: []
+  robotMaterials:
+  - materials:
+    - {fileID: 2100000, guid: 817a4fc311e9ce14f89178fe6020c061, type: 2}
+  - materials:
+    - {fileID: 2100000, guid: aedb1e88d8c40f447be770409e55e5f5, type: 2}
+  - materials:
+    - {fileID: 2100000, guid: 7efabcf18dbc69d44a87e55b47920a35, type: 2}
 --- !u!1 &4341515756104758583
 GameObject:
   m_ObjectHideFlags: 0
@@ -1810,7 +1879,13 @@ MonoBehaviour:
   bodyPart: 3
   id: 0
   isWhite: 1
-  robotMaterials: []
+  robotMaterials:
+  - materials:
+    - {fileID: 2100000, guid: b3d05eba699db3645a15411df2e5984a, type: 2}
+  - materials:
+    - {fileID: 2100000, guid: 017e783b45fffbc4ea8e6f12f7ed5672, type: 2}
+  - materials:
+    - {fileID: 2100000, guid: 952876131e8a93643b95b1d253aa8c9d, type: 2}
 --- !u!1 &4341515756139772667
 GameObject:
   m_ObjectHideFlags: 0
@@ -1926,7 +2001,13 @@ MonoBehaviour:
   bodyPart: 2
   id: 0
   isWhite: 0
-  robotMaterials: []
+  robotMaterials:
+  - materials:
+    - {fileID: 2100000, guid: 5a0159f5bdc661545a8ba5d2076d075a, type: 2}
+  - materials:
+    - {fileID: 2100000, guid: 5a0159f5bdc661545a8ba5d2076d075a, type: 2}
+  - materials:
+    - {fileID: 2100000, guid: 5a0159f5bdc661545a8ba5d2076d075a, type: 2}
 --- !u!114 &4341515756139772661
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2055,7 +2136,13 @@ MonoBehaviour:
   bodyPart: 4
   id: 0
   isWhite: 1
-  robotMaterials: []
+  robotMaterials:
+  - materials:
+    - {fileID: 2100000, guid: b3d05eba699db3645a15411df2e5984a, type: 2}
+  - materials:
+    - {fileID: 2100000, guid: 017e783b45fffbc4ea8e6f12f7ed5672, type: 2}
+  - materials:
+    - {fileID: 2100000, guid: 952876131e8a93643b95b1d253aa8c9d, type: 2}
 --- !u!1 &4396573890294047689
 GameObject:
   m_ObjectHideFlags: 0
@@ -2202,7 +2289,13 @@ MonoBehaviour:
   bodyPart: 2
   id: 0
   isWhite: 1
-  robotMaterials: []
+  robotMaterials:
+  - materials:
+    - {fileID: 2100000, guid: b3d05eba699db3645a15411df2e5984a, type: 2}
+  - materials:
+    - {fileID: 2100000, guid: 017e783b45fffbc4ea8e6f12f7ed5672, type: 2}
+  - materials:
+    - {fileID: 2100000, guid: 952876131e8a93643b95b1d253aa8c9d, type: 2}
 --- !u!1 &4878849143712650993
 GameObject:
   m_ObjectHideFlags: 0
@@ -3140,7 +3233,16 @@ MonoBehaviour:
   bodyPart: 0
   id: 0
   isWhite: 1
-  robotMaterials: []
+  robotMaterials:
+  - materials:
+    - {fileID: 2100000, guid: 817a4fc311e9ce14f89178fe6020c061, type: 2}
+    - {fileID: 2100000, guid: b3d05eba699db3645a15411df2e5984a, type: 2}
+  - materials:
+    - {fileID: 2100000, guid: aedb1e88d8c40f447be770409e55e5f5, type: 2}
+    - {fileID: 2100000, guid: 017e783b45fffbc4ea8e6f12f7ed5672, type: 2}
+  - materials:
+    - {fileID: 2100000, guid: 7efabcf18dbc69d44a87e55b47920a35, type: 2}
+    - {fileID: 2100000, guid: 952876131e8a93643b95b1d253aa8c9d, type: 2}
 --- !u!1 &7628167170130369333
 GameObject:
   m_ObjectHideFlags: 0
@@ -3287,7 +3389,13 @@ MonoBehaviour:
   bodyPart: 5
   id: 0
   isWhite: 0
-  robotMaterials: []
+  robotMaterials:
+  - materials:
+    - {fileID: 2100000, guid: 817a4fc311e9ce14f89178fe6020c061, type: 2}
+  - materials:
+    - {fileID: 2100000, guid: aedb1e88d8c40f447be770409e55e5f5, type: 2}
+  - materials:
+    - {fileID: 2100000, guid: 7efabcf18dbc69d44a87e55b47920a35, type: 2}
 --- !u!1 &7911514282627046506
 GameObject:
   m_ObjectHideFlags: 0
@@ -3414,7 +3522,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -6478536213147159724, guid: 531086299402fc447ab7309f5a591765, type: 3}
+  - {fileID: 2100000, guid: 7efabcf18dbc69d44a87e55b47920a35, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3466,7 +3574,13 @@ MonoBehaviour:
   bodyPart: 3
   id: 0
   isWhite: 0
-  robotMaterials: []
+  robotMaterials:
+  - materials:
+    - {fileID: 2100000, guid: 817a4fc311e9ce14f89178fe6020c061, type: 2}
+  - materials:
+    - {fileID: 2100000, guid: aedb1e88d8c40f447be770409e55e5f5, type: 2}
+  - materials:
+    - {fileID: 2100000, guid: 7efabcf18dbc69d44a87e55b47920a35, type: 2}
 --- !u!1 &8817829889968913830
 GameObject:
   m_ObjectHideFlags: 0

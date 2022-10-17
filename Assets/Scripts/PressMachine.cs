@@ -27,6 +27,7 @@ public class PressMachine : MonoBehaviour
         transform.DOMove(_endPosition.position,time).OnComplete(()=> 
         {
             transform.DOMove(_startPosition, time);
+           
             for (int i = 0; i < _iron.GetComponent<MeshRenderer>().materials.Length; i++)
             {
                 _iron.GetComponent<MeshRenderer>().materials[i] = _materials[i];

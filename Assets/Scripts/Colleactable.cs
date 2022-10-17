@@ -26,6 +26,7 @@ public class Colleactable : MonoBehaviour, ICollactable<CollectManager>
             playerCollectManager.collectedObjects.Add(new CollectedObject(gameObject,objectType));
             transform.parent = playerCollectManager.transform;
             transform.rotation = playerCollectManager.collectableObjectSpawnPoint[(int)objectType].transform.rotation;
+            transform.localScale = playerCollectManager.collectableObjectSpawnPoint[(int)objectType].transform.localScale;
             MovePlayer(playerCollectManager);
         }
 

@@ -5,7 +5,7 @@ using DG.Tweening;
 
 public class RobotMergeMachine : MonoBehaviour
 {
-
+  
     public  bool isFull,isCanMarge,isMerging;
 
     public GameObject robotPart, robotPart2;
@@ -142,6 +142,7 @@ public class RobotMergeMachine : MonoBehaviour
 
                 newRobot.GetComponent<BodyPartManager>().bodyTypeHealths[j].parts[i].GetComponent<MeshFilter>().mesh = mergeMachineController.colactableBodyParts[j].partObject[i];
 
+                
             }
 
 

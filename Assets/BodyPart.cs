@@ -7,19 +7,29 @@ public class BodyPart : MonoBehaviour
    
     [SerializeField]
     BodyPartManager bodyPartManager;
-  
+    
+    [HideInInspector]
+    public int level;
     
     [SerializeField]
     public BodyPartManager.BodyParts bodyPart;
 
     public int id;
+    
+    public bool isWhite;
 
-    public bool isTest;
+    [SerializeField]
+    List<RobotMaterials> robotMaterials;
 
 
     private void Start()
     {
         id = (int)bodyPart;
+
+        GetComponent<MeshRenderer>().materials = robotMaterials[level].materials;
+
+
+
        
     }
     private void Update()
@@ -51,4 +61,9 @@ public class BodyPart : MonoBehaviour
 
 
 
+}
+[System.Serializable]
+public class RobotMaterials
+{
+  public  Material[] materials;
 }

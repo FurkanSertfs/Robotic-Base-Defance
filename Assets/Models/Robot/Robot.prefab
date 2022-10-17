@@ -3033,17 +3033,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bodyTypeHealths:
   - bodyPart: 0
-    health: 2000
+    health: 100
     targetPoint: {fileID: 6334624790351498548}
     parts:
     - {fileID: 7339175458540410081}
   - bodyPart: 1
-    health: 20000
+    health: 100
     targetPoint: {fileID: 6334624789389066472}
     parts:
     - {fileID: 1255504538246595749}
   - bodyPart: 2
-    health: 50000
+    health: 100
     targetPoint: {fileID: 6334624789501299897}
     parts:
     - {fileID: 4341515756139772667}
@@ -3052,7 +3052,7 @@ MonoBehaviour:
     - {fileID: 3892879821432121516}
     - {fileID: 4672208453238633044}
   - bodyPart: 3
-    health: 50000
+    health: 100
     targetPoint: {fileID: 6334624789852557310}
     parts:
     - {fileID: 5875302904635912724}
@@ -3061,14 +3061,14 @@ MonoBehaviour:
     - {fileID: 4341515755995735143}
     - {fileID: 4341515756104758583}
   - bodyPart: 4
-    health: 1
+    health: 100
     targetPoint: {fileID: 6334624789982279332}
     parts:
     - {fileID: 4341515756375913934}
     - {fileID: 4341515755637758517}
     - {fileID: 2204966377971383731}
   - bodyPart: 5
-    health: 1
+    health: 100
     targetPoint: {fileID: 6334624791381136406}
     parts:
     - {fileID: 2932669017979512766}
@@ -3106,7 +3106,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 7
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120

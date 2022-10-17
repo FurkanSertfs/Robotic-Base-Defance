@@ -186,7 +186,7 @@ public class AIManager : MonoBehaviour
     {
         if (bodyPartManager != null && bodyPartManager.destroyedLeg == 2)
         {
-            transform.parent = injuredSoldiersParent.transform;
+            transform.parent =  PlayerController.playerController.injuredSoldierParent.transform;
 
             robotMesh.transform.position = new Vector3(robotMesh.transform.position.x, robotMesh.transform.position.y - 2, robotMesh.transform.position.z);
 

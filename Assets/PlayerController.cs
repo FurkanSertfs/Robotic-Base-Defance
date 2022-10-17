@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public static PlayerController playerController;
+
     public List<GameObject> enemies = new List<GameObject>();
 
     private Animator animator;
@@ -18,9 +20,12 @@ public class PlayerController : MonoBehaviour
 
     Mine _mine;
 
+    public GameObject injuredSoldierParent;
+
     private void Start()
     {
         animator = GetComponent<Animator>();
+        playerController = this;
     }
 
     public void Mining()

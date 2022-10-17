@@ -125,5 +125,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   partObject:
   - {fileID: 4300000, guid: e79ff0a3b9b9300449ff5574d963f50e, type: 2}
+  material: {fileID: 0}
   Id: 1
+  level: 1
   bonusHealth: 0

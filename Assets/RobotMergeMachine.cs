@@ -32,8 +32,7 @@ public class RobotMergeMachine : MonoBehaviour
     {
         if (!isFull)
         {
-            Debug.Log("1");
-
+          
             isFull = true;
 
             robotPart = model;
@@ -45,8 +44,6 @@ public class RobotMergeMachine : MonoBehaviour
             model.transform.DOScale(new Vector3(1,1,1), timer);
           
             model.transform.DORotateQuaternion(modelPoint.rotation, timer);
-
-            Debug.Log(robotPart.GetComponent<ColactableBodyPart>());
 
             mergeMachineController.colactableBodyParts[model.GetComponent<ColactableBodyPart>().Id] = robotPart.GetComponent<ColactableBodyPart>();
 
@@ -134,7 +131,7 @@ public class RobotMergeMachine : MonoBehaviour
 
         newRobot.GetComponent<BodyPartManager>().bodyTypeHealths[0].parts[0].GetComponent<MeshFilter>().mesh = mergeMachineController.colactableBodyParts[0].partObject[0];
 
-        for (int j = 1; j < 6; j++)
+        for (int j = 0; j < 6; j++)
         {
 
             for (int i = 0; i < newRobot.GetComponent<BodyPartManager>().bodyTypeHealths[j].parts.Length; i++)
@@ -142,7 +139,7 @@ public class RobotMergeMachine : MonoBehaviour
 
                 newRobot.GetComponent<BodyPartManager>().bodyTypeHealths[j].parts[i].GetComponent<MeshFilter>().mesh = mergeMachineController.colactableBodyParts[j].partObject[i];
 
-                
+                newRobot.GetComponent<BodyPartManager>().bodyTypeHealths[j].parts[i].GetComponent<BodyPart>().level = mergeMachineController.colactableBodyParts[j].level;
             }
 
 

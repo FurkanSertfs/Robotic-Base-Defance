@@ -8,7 +8,7 @@ public class BodyPart : MonoBehaviour
     [SerializeField]
     BodyPartManager bodyPartManager;
     
-    [HideInInspector]
+  
     public int level;
     
     [SerializeField]
@@ -27,6 +27,7 @@ public class BodyPart : MonoBehaviour
     {
         id = (int)bodyPart;
 
+       
         GetComponent<MeshRenderer>().materials = robotMaterials[level-1].materials;
 
     }

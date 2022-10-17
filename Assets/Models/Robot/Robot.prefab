@@ -1818,8 +1818,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4341515756139772667}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -0, y: 0.01291, z: 0}
-  m_LocalScale: {x: 0.4341261, y: 0.45514858, z: 0.22022529}
+  m_LocalPosition: {x: 0.0001, y: 0.0161, z: -0.0002}
+  m_LocalScale: {x: 0.2202252, y: 0.2202252, z: 0.2202252}
   m_Children:
   - {fileID: 6334624789309614310}
   m_Father: {fileID: 3842966145704218771}
@@ -1832,7 +1832,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4341515756139772667}
-  m_Mesh: {fileID: -3980640363298443340, guid: 531086299402fc447ab7309f5a591765, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 69bf86aae2de1eb4bbe5abf83e8d2552, type: 2}
 --- !u!23 &4341515756139772665
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2369,8 +2369,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5875302904635912724}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0.7071068, w: 0}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.4341262, y: 0.45514858, z: 0.22022527}
+  m_LocalPosition: {x: 0, y: 0.0032, z: 0}
+  m_LocalScale: {x: 0.2202252, y: 0.2202252, z: 0.2202252}
   m_Children:
   - {fileID: 6334624790255232857}
   m_Father: {fileID: 7366185353354570693}
@@ -2383,7 +2383,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5875302904635912724}
-  m_Mesh: {fileID: -3980640363298443340, guid: 531086299402fc447ab7309f5a591765, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 69bf86aae2de1eb4bbe5abf83e8d2552, type: 2}
 --- !u!23 &6867348591942804573
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2803,9 +2803,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7287603731866625492}
-  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0.821, z: -0.33}
-  m_LocalScale: {x: 0.4, y: 1, z: 0.39999992}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1406669093970456612}
   - {fileID: 8804023750015882483}
@@ -2917,9 +2917,9 @@ MonoBehaviour:
     health: 50000
     targetPoint: {fileID: 6334624789501299897}
     parts:
-    - {fileID: 4341515755745992853}
-    - {fileID: 4341515755424624233}
     - {fileID: 4341515756139772667}
+    - {fileID: 4341515755424624233}
+    - {fileID: 4341515755745992853}
     - {fileID: 3892879821432121516}
     - {fileID: 4672208453238633044}
   - bodyPart: 3

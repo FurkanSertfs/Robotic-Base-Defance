@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.UI;
 
 
 public class MachineManager : MonoBehaviour
@@ -34,6 +35,9 @@ public class MachineManager : MonoBehaviour
 
     [SerializeField]
     private int totalCount=0;
+
+    [SerializeField]
+    Image _ingotBuild;
 
     private void Start()
     {
@@ -97,7 +101,12 @@ public class MachineManager : MonoBehaviour
 
         if (!isFull &&  _pressMachine._collectArea.collectableObjects.Count < _collectAreaCount)
         {
-            
+            if (inputResources.Count>1)
+            {
+                DOTween.To(() => (float)0, x => _ingotBuild.fillAmount = x, 1, (4 + Mathf.Max(inputResources[0].Count, inputResources[1].Count)) * machineSpeed + 1.4f).SetEase(Ease.Linear).OnComplete(() => { _ingotBuild.fillAmount = 0; });
+            }
+            else
+                DOTween.To(() => (float)0, x => _ingotBuild.fillAmount = x, 1, (5) * machineSpeed + 1.4f).SetEase(Ease.Linear).OnComplete(() => { _ingotBuild.fillAmount = 0; });
 
             isFull = true;
 
@@ -138,7 +147,6 @@ public class MachineManager : MonoBehaviour
 
         if (index < list[0].processedObjects.Count)
         {
-           
 
             list[0].processedObjects[index].collectedObject.transform.DOMove(inputResources[0].machinePoint1.position, machineSpeed).SetEase(Ease.Linear).OnComplete(() =>
             {
@@ -147,7 +155,7 @@ public class MachineManager : MonoBehaviour
                 {
 
                     DOTween.To(() => (float)0, x => _fireLight.intensity = x, 5, machineSpeed).SetEase(Ease.Linear).OnComplete(() => { DOTween.To(() => (float)5, x => _fireLight.intensity = x, 0, 0.25f).SetEase(Ease.Linear); });
-
+                    
                 });
 
             });
@@ -169,7 +177,7 @@ public class MachineManager : MonoBehaviour
                   {
 
                       DOTween.To(() => (float)0, x => _fireLight.intensity = x, 5, machineSpeed).SetEase(Ease.Linear).OnComplete(() => { DOTween.To(() => (float)5, x => _fireLight.intensity = x, 0, 0.25f).SetEase(Ease.Linear); });
-
+      
                   });
 
                 });

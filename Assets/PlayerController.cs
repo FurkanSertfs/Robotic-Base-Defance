@@ -48,6 +48,13 @@ public class PlayerController : MonoBehaviour
             _mine = other.GetComponent<Mine>();
         }
 
+        if (other.GetComponent<BaseDefanceManager>() != null)
+        {
+            other.GetComponent<BaseDefanceManager>().FillAttackBar(this, true);
+
+        }
+
+
 
     }
 
@@ -64,6 +71,12 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("isMining", false);
             pikAxe.SetActive(false);
         
+        }
+
+        if (other.GetComponent<BaseDefanceManager>() != null)
+        {
+            other.GetComponent<BaseDefanceManager>().FillAttackBar(this, false);
+
         }
 
 

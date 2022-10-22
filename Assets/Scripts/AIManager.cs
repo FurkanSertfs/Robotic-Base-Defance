@@ -48,6 +48,9 @@ public class AIManager : MonoBehaviour
 
     [SerializeField]
     GameObject robotMesh;
+   
+    [HideInInspector]
+     public string targetName;
     
 
     private void Start()
@@ -56,25 +59,45 @@ public class AIManager : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
     }
 
-    public void FollowPlayer()
+    public void GotoTarget(Transform point, string tartgetName)
     {
-        transform.position = target.position;
-      
-        transform.parent = target.transform;
+        this.targetName = tartgetName;
 
-      
-    
+        agent.SetDestination(point.position);
+
+        agent.isStopped = false;
+
+        animator.SetBool("isRun", true);
 
     }
-   
+
+    void CheckArrive()
+    {
+        if (agent.hasPath && agent.remainingDistance <0.1f)
+        {
+            animator.SetBool("isRun", false);
+
+            agent.isStopped = true;
+
+            target = null;
+
+            if (targetName=="waitingPoint")
+            {
+              BaseDefanceManager.baseDefanceManager.waitingSoldierList.Add(this);
+            }
+
+
+          
+        }
+    }
+
 
 
     private void Update()
     {
-        if (health <= 0)
-        {
-            Destroy(gameObject);
-        }
+
+
+        CheckArrive();
 
         if (soldierPosition != null && agent.isActiveAndEnabled)
         {
@@ -86,8 +109,6 @@ public class AIManager : MonoBehaviour
             }
 
         }
-
-
 
 
         if (enemies.Count > 0)
@@ -169,17 +190,6 @@ public class AIManager : MonoBehaviour
         }
 
 
-        if (player != null)
-        {
-            if (enemies.Count<=0)
-            {
-                transform.rotation = player.transform.rotation;
-            }
-
-            transform.localPosition = new Vector3(0, 0, 0);
-
-            animator.SetBool("isRun", player.GetComponent<Animator>().GetBool("isRun"));
-        }
     }
 
    public void LeaveFromPlayer()
@@ -205,12 +215,17 @@ public class AIManager : MonoBehaviour
         }
     }
 
-   
-
+    private void OnDisable()
+    {
+        BaseDefanceManager.baseDefanceManager.waitingSoldierCount--;
+    }
 
     
 
-   
+
+
+
+
 
 
 

@@ -31,7 +31,7 @@ public class FindEnemy : MonoBehaviour
         if (other.TryGetComponent<Enemy>(out Enemy enemy)&&!isEnemy)
         {
           
-            aiManager.enemies.Add(other.gameObject);
+            aiManager.enemiesInRange.Add(other.gameObject);
 
           
         }
@@ -39,7 +39,7 @@ public class FindEnemy : MonoBehaviour
         if (other.TryGetComponent<AIManager>(out AIManager solider) && isEnemy)
         {
 
-            enemyAIManager.enemies.Add(other.gameObject);
+            enemyAIManager.enemiesInRange.Add(other.gameObject);
 
 
         }
@@ -53,7 +53,7 @@ public class FindEnemy : MonoBehaviour
         if (other.TryGetComponent<Enemy>(out Enemy enemy)&&!isEnemy)
         {
 
-            aiManager.enemies.Remove(other.gameObject);
+            aiManager.enemiesInRange.Remove(other.gameObject);
 
 
         }
@@ -62,7 +62,7 @@ public class FindEnemy : MonoBehaviour
         if (other.TryGetComponent<AIManager>(out AIManager solider) && isEnemy)
         {
 
-            enemyAIManager.enemies.Remove(other.gameObject);
+            enemyAIManager.enemiesInRange.Remove(other.gameObject);
 
 
         }

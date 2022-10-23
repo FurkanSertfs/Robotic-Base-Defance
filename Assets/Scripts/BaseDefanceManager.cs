@@ -16,68 +16,45 @@ public class BaseDefanceManager : MonoBehaviour
 
     bool _playerIsHere;
 
-    [SerializeField]
-    Transform[] _waitingAttackPoints;
-
-    
-    public int waitingSoldierCount;
-
-   
-
     [HideInInspector]
     public List<AIManager> soldierList = new List<AIManager>();
-    public List<AIManager> waitingSoldierList = new List<AIManager>();
-
-
+    
     [SerializeField]
 
     Transform attackPoint, soldiersParent;
+
+    EnemyManager _enemyManager;
 
     private void Awake()
     {
         baseDefanceManager = this;
 
- 
     }
 
-    private void Update()
+    private void Start()
     {
-        if (waitingSoldierCount> 0 & waitingSoldierCount == waitingSoldierList.Count)
-        {
-
-            for (int i = 0; i < waitingSoldierList.Count; i++)
-            {
-                waitingSoldierList[i].GotoTarget(attackPoint,"attackPoint");
-              
-                soldierList.Add(waitingSoldierList[i]);
-            }
-
-            waitingSoldierList.Clear();
-
-
-
-
-        }
+        EnemyManager.enemyManager = _enemyManager;
     }
+
 
     public void AddSoldier(AIManager aIManager)
     {
-        for (int i = 0; i < soldierPositions.Length; i++)
-        {
-            if (soldierPositions[i].aIManager == null)
-            {
+        //for (int i = 0; i < soldierPositions.Length; i++)
+        //{
+        //    if (soldierPositions[i].aIManager == null)
+        //    {
                 
-                aIManager.soldierPosition = soldierPositions[i].defancePosition;
+        //        aIManager.soldierPosition = soldierPositions[i].defancePosition;
                
-                aIManager.agent.SetDestination(aIManager.soldierPosition.position);
+        //        aIManager.agent.SetDestination(aIManager.soldierPosition.position);
 
-                aIManager.animator.SetBool("isRun", true);
+        //        aIManager.animator.SetBool("isRun", true);
 
-                soldierPositions[i].aIManager = aIManager;
+        //        soldierPositions[i].aIManager = aIManager;
 
-                break;
-            }
-        }
+        //        break;
+        //    }
+        //}
     }
 
     public void FillAttackBar(PlayerController playerController,bool playerIsHere)
@@ -93,22 +70,18 @@ public class BaseDefanceManager : MonoBehaviour
 
     void Attack()
     {
-        int index = 0;
+      
 
         for (int i = 0; i < soldierPositions.Length; i++)
         {
             if (soldierPositions[i].aIManager!=null)
             {
-                soldierPositions[i].aIManager.GotoTarget(_waitingAttackPoints[index], "waitingPoint");
+                soldierPositions[i].aIManager.GotoTarget(attackPoint);
 
                 soldierPositions[i].transform.parent = soldiersParent;
-
-
+                
                 soldierPositions[i].aIManager = null;
 
-                index++;
-                
-                waitingSoldierCount = index;
             }
 
         }

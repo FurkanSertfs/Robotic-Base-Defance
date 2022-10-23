@@ -7,10 +7,6 @@ public class Bullet : MonoBehaviour
 {
     private Vector3 shootDir;
 
-    public string name;
-
-    float damage = 9;
-
     [SerializeField]
     private float moveSpeed;
 
@@ -46,34 +42,6 @@ public class Bullet : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
       
-
-        if (other.TryGetComponent<EnemyAIManager>(out EnemyAIManager enemy))
-        {
-            enemy.health -= damage;
-            enemy.healthBarBG.gameObject.SetActive(true);
-
-            Destroy(gameObject,1);
-
-
-        }
-
-        if (other.TryGetComponent<BodyPart>(out BodyPart soldier))
-        {
-
-          
-
-          //  soldier.Hit(damage);
-
-
-
-            Destroy(gameObject);
-
-
-        }
-
-
-
-
 
     }
 

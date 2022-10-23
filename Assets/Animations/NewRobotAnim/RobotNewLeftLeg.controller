@@ -1,31 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1102 &-8490900813028391156
-AnimatorState:
-  serializedVersion: 6
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Leg1
-  m_Speed: 1
-  m_CycleOffset: 0
-  m_Transitions: []
-  m_StateMachineBehaviours: []
-  m_Position: {x: 50, y: 50, z: 0}
-  m_IKOnFeet: 0
-  m_WriteDefaultValues: 1
-  m_Mirror: 0
-  m_SpeedParameterActive: 0
-  m_MirrorParameterActive: 0
-  m_CycleOffsetParameterActive: 0
-  m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 4c09d29b81b73cf43922c66ec635a226, type: 2}
-  m_Tag: 
-  m_SpeedParameter: 
-  m_MirrorParameter: 
-  m_CycleOffsetParameter: 
-  m_TimeParameter: 
 --- !u!1101 &-7531568759668586907
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -179,7 +153,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 2012204719954072570, guid: ec67e9e67fc6e0f469b38310ac16acb5, type: 3}
+  m_Motion: {fileID: 7400000, guid: a3c08f21d1de25c408fb80d9eb525859, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -457,32 +431,6 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
---- !u!1102 &3016636237004455448
-AnimatorState:
-  serializedVersion: 6
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Leg2
-  m_Speed: 1
-  m_CycleOffset: 0
-  m_Transitions: []
-  m_StateMachineBehaviours: []
-  m_Position: {x: 50, y: 50, z: 0}
-  m_IKOnFeet: 0
-  m_WriteDefaultValues: 1
-  m_Mirror: 0
-  m_SpeedParameterActive: 0
-  m_MirrorParameterActive: 0
-  m_CycleOffsetParameterActive: 0
-  m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: dc0532b989dd26d48acb84a0b804fdb0, type: 2}
-  m_Tag: 
-  m_SpeedParameter: 
-  m_MirrorParameter: 
-  m_CycleOffsetParameter: 
-  m_TimeParameter: 
 --- !u!1102 &3229681811064404901
 AnimatorState:
   serializedVersion: 6
@@ -580,12 +528,6 @@ AnimatorStateMachine:
   - serializedVersion: 1
     m_State: {fileID: 501536605003520743}
     m_Position: {x: 550, y: 220, z: 0}
-  - serializedVersion: 1
-    m_State: {fileID: -8490900813028391156}
-    m_Position: {x: 363.46948, y: -363.78613, z: 0}
-  - serializedVersion: 1
-    m_State: {fileID: 3016636237004455448}
-    m_Position: {x: 707.5397, y: -377.54895, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -2347050844069366612}
     m_Position: {x: 550, y: 70, z: 0}

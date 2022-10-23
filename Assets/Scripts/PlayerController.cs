@@ -35,11 +35,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.GetComponent<SoldierPosition>() != null)
-        {
-            other.GetComponent<SoldierPosition>().Follow(GetComponent<PlayerSoldierManager>(), true);
-
-        }
+      
 
         if (other.GetComponent<Mine>() != null)
         {
@@ -60,11 +56,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.GetComponent<SoldierPosition>() != null)
-        {
-            other.GetComponent<SoldierPosition>().Follow(GetComponent<PlayerSoldierManager>(), false);
-
-        }
+     
 
         if (other.GetComponent<Mine>() != null)
         {

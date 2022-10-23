@@ -62,7 +62,6 @@ public class BodyPartManager : MonoBehaviour
             {
                 animator.runtimeAnimatorController = animatorController[6];
 
-                GetComponent<AIManager>().LeaveFromPlayer();
             }
 
         }

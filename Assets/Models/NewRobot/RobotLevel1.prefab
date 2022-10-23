@@ -725,7 +725,8 @@ MonoBehaviour:
   bodyPart: 1
   id: 0
   isWhite: 1
-  robotMaterials: []
+  robotMaterials:
+  - materials: []
 --- !u!1 &2114987282976757768
 GameObject:
   m_ObjectHideFlags: 0

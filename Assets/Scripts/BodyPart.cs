@@ -18,9 +18,8 @@ public class BodyPart : MonoBehaviour
     
     public bool isWhite;
 
-    [SerializeField]
-    [NonReorderable]
-    List<RobotMaterials> robotMaterials;
+ 
+  //  List<RobotMaterials> robotMaterials;
 
 
     private void Start()
@@ -28,7 +27,7 @@ public class BodyPart : MonoBehaviour
         id = (int)bodyPart;
 
        
-        GetComponent<MeshRenderer>().materials = robotMaterials[level-1].materials;
+      //  GetComponent<MeshRenderer>().materials = robotMaterials[level-1].materials;
 
     }
     private void Update()

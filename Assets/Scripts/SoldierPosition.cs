@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class SoldierPosition : MonoBehaviour
 { 
 
-    public AIManager aIManager;
+    public SoldierAIManager aIManager;
 
     public Transform defancePosition;
 

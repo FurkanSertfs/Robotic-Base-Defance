@@ -14,7 +14,7 @@ public class DropAreainCanvas : MonoBehaviour
     Vector3 _startScale;
     void Start()
     {
-        _startScale= GetComponentInChildren<Canvas>().transform.localScale;
+        _startScale = new Vector3(1, 1, 1);
     }
 
     // Update is called once per frame
@@ -26,7 +26,7 @@ public class DropAreainCanvas : MonoBehaviour
     {
         if (other.GetComponent<PlayerController>()!=null)
         {
-            GetComponentInChildren<Canvas>().enabled = true;
+            //GetComponentInChildren<Canvas>().enabled = true;
             DOTween.To(() => new Vector3(0, 0, 0), x => GetComponentInChildren<Canvas>().transform.localScale = x, _startScale, 0.3f).SetEase(Ease.Linear);
         }
         
@@ -36,8 +36,9 @@ public class DropAreainCanvas : MonoBehaviour
     {
         if (other.GetComponent<PlayerController>() != null)
         {
-            GetComponentInChildren<Canvas>().enabled = false;
+            
             DOTween.To(() => _startScale, x => GetComponentInChildren<Canvas>().transform.localScale = x, new Vector3(0, 0, 0), 0.3f).SetEase(Ease.Linear);
+            //GetComponentInChildren<Canvas>().enabled = false;
         }
         
     }

@@ -21,6 +21,8 @@ public class EnemyManager : MonoBehaviour
     private void Start()
     {
         poolManager = GyroPoolManager.poolManager;
+
+     //   StartCoroutine("EnemyType1", 1);
     }
 
     IEnumerator SpawnEnemy(string poolName,float spawnInterval)

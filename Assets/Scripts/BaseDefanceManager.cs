@@ -37,24 +37,20 @@ public class BaseDefanceManager : MonoBehaviour
     }
 
 
-    public void AddSoldier(AIManager aIManager)
+    public void AddSoldier(SoldierAIManager aIManager)
     {
-        //for (int i = 0; i < soldierPositions.Length; i++)
-        //{
-        //    if (soldierPositions[i].aIManager == null)
-        //    {
-                
-        //        aIManager.soldierPosition = soldierPositions[i].defancePosition;
-               
-        //        aIManager.agent.SetDestination(aIManager.soldierPosition.position);
+        for (int i = 0; i < soldierPositions.Length; i++)
+        {
+            if (soldierPositions[i].aIManager == null)
+            {   
+                aIManager.GotoTarget(soldierPositions[i].defancePosition);
 
-        //        aIManager.animator.SetBool("isRun", true);
+                soldierPositions[i].aIManager = aIManager;
 
-        //        soldierPositions[i].aIManager = aIManager;
+                break;
+            }
 
-        //        break;
-        //    }
-        //}
+        }
     }
 
     public void FillAttackBar(PlayerController playerController,bool playerIsHere)
@@ -79,8 +75,12 @@ public class BaseDefanceManager : MonoBehaviour
                 soldierPositions[i].aIManager.GotoTarget(attackPoint);
 
                 soldierPositions[i].transform.parent = soldiersParent;
-                
+
+                soldierPositions[i].aIManager.positionState = AIManager.PositionState.Attack;
+
                 soldierPositions[i].aIManager = null;
+
+               
 
             }
 

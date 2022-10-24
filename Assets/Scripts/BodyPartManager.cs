@@ -4,80 +4,66 @@ using UnityEngine;
 
 public class BodyPartManager : MonoBehaviour
 {
-    
     public enum BodyParts { Head=0, Body=1, LeftArm=2, RightArm=3, LeftLeg=4, RightLeg=5 }
 
     [NonReorderable]
     public List<BodyTypeHealth> bodyTypeHealths = new List<BodyTypeHealth>();
 
-   public int destroyedLeg;
-
-   
+    public int destroyedLeg;
 
     Animator animator;
+    
     [SerializeField]
     RuntimeAnimatorController[] animatorController;
+
+    public int animatorControllerId;
+
+    [SerializeField]
+    GameObject[] oils;
+    [SerializeField]
+    GameObject trailRenderer;
+
 
     private void Awake()
     {
         animator = GetComponentInChildren<Animator>();
     }
 
-  
-
-    public void DestrotBodyPart(BodyPartManager.BodyParts bodyPart, int id)
+    public void DestrotBodyPart(int index)
     {
-        for (int i = 0; i < bodyTypeHealths[id].parts.Length; i++)
+
+        animatorControllerId += bodyTypeHealths[index].animatorID;
+      
+        bodyTypeHealths[index].isDestroyed = true;
+
+        for (int i = 0; i < bodyTypeHealths[index].parts.Length; i++)
         {
-            Destroy(bodyTypeHealths[id].parts[i].gameObject);
+            Destroy(bodyTypeHealths[index].parts[i].gameObject);
            
         }
+        animator.runtimeAnimatorController = animatorController[animatorControllerId];
 
-
-        bodyTypeHealths.RemoveAt(id);
-
-        for (int i = 0; i < bodyTypeHealths.Count; i++)
+        if (animatorControllerId == 12 || animatorControllerId == 13 || animatorControllerId == 14)
         {
-            for (int j = 0; j < bodyTypeHealths[i].parts.Length; j++)
-            {
-             
-                bodyTypeHealths[i].parts[j].GetComponent<BodyPart>().id = i;
-               
-            }
-
-              
-            
+            animator.SetBool("noLeg", true);
         }
 
 
-
-        if (bodyPart == BodyParts.LeftLeg || bodyPart == BodyParts.RightLeg)
+        if (animatorControllerId==4)
         {
-            
-            animator.runtimeAnimatorController = animatorController[(int)bodyPart];
-           
-            destroyedLeg++;
-
-            if (destroyedLeg == 2)
-            {
-                animator.runtimeAnimatorController = animatorController[6];
-
-            }
-
+            oils[0].SetActive(true);
+            trailRenderer.SetActive(true);
         }
 
-    
-
-        if (bodyPart == BodyParts.Head || bodyPart == BodyParts.Body)
+        if (animatorControllerId == 8)
         {
-            Destroy(gameObject);
+            oils[1].SetActive(true);
+            trailRenderer.SetActive(true);
 
         }
 
 
-
-
-        }
+    }
 
 
 
@@ -88,9 +74,12 @@ public class BodyPartManager : MonoBehaviour
 public class BodyTypeHealth
 {
     public  BodyPartManager.BodyParts bodyPart;
-    public float health;
-    public GameObject targetPoint;
+    
     public GameObject[] parts;
+   
+    public int animatorID;
+
+    public bool isDestroyed;
 }
 
 

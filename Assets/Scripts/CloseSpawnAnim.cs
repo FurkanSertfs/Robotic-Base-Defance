@@ -8,7 +8,7 @@ public class CloseSpawnAnim : MonoBehaviour
     {
         GetComponent<Animator>().SetBool("isSpawn", false);
 
-        BaseDefanceManager.baseDefanceManager.AddSoldier(GetComponentInParent<AIManager>());
+       
 
     }
 }

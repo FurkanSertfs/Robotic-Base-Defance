@@ -1,17 +1,36 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class SoldierAIManager : AIManager
 {
-    public enum PositionState { Defance,Attack }
-
-    PositionState positionState;
+ 
+    public PositionState positionState;
 
     public List<DefanceAreas> defanceAreas;
 
-   
-    
+    int _destroyedPart;
+
+    int _shouldDestroyPart;
+
+    float startHealth;
+
+    BodyPartManager _bodyPartManager;
+    private void Start()
+    {
+        startHealth = health;
+
+        _bodyPartManager = GetComponent<BodyPartManager>();
+
+        animator = GetComponentInChildren<Animator>();
+
+        agent = GetComponent<NavMeshAgent>();
+
+        BaseDefanceManager.baseDefanceManager.AddSoldier(this);
+    }
+
+
 
     private void Update()
     {
@@ -36,10 +55,26 @@ public class SoldierAIManager : AIManager
 
         }
 
-        else
+        else if (positionState == PositionState.Defance)
         {
             Fire();
 
+        }
+
+        else if (positionState == PositionState.State)
+        {
+            CheckArrive();
+           
+           
+
+        }
+
+
+
+
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            TakeHit(transform, 8);
         }
 
 
@@ -47,8 +82,56 @@ public class SoldierAIManager : AIManager
 
     }
 
+    public void TakeHit(Transform point,int damage)
+    {
+        // Instantiate(bloodParticicaular , point)
 
-    
+        health -= damage;
+
+        if (health > 0)
+        {
+            SelectRandomPart((int)((startHealth - health) / (startHealth / 4)));
+        }
+
+       
+
+
+       
+
+    }
+
+    void SelectRandomPart(int shouldDestroyPart)
+    {
+        Debug.Log(shouldDestroyPart);
+
+        for (int i = 0; i < shouldDestroyPart-_destroyedPart; i++)
+        {
+            int randomPart = Random.Range(2, 5);
+            int x = 0;
+
+            while (_bodyPartManager.bodyTypeHealths[randomPart].isDestroyed)
+            {
+                randomPart = Random.Range(2, 6);
+                
+                x++;
+              
+                if (x == 50)
+                {
+                    Debug.Log("break");
+                    break;
+                 
+                }
+            }
+
+            _bodyPartManager.DestrotBodyPart(randomPart);
+
+        }
+
+        _destroyedPart = shouldDestroyPart;
+
+    }
+
+
 
     public bool FindEnemy()
     {

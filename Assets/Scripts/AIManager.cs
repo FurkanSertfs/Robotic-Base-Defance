@@ -6,6 +6,9 @@ using UnityEngine.AI;
 
 public class AIManager : MonoBehaviour
 {
+
+       public enum PositionState {State,Defance,Attack }
+
     public Transform _targetEnemy;
 
     public NavMeshAgent agent;
@@ -26,12 +29,9 @@ public class AIManager : MonoBehaviour
 
     public float health=100;
 
-    private void Start()
-    {
-        animator = GetComponentInChildren<Animator>();
-      
-        agent = GetComponent<NavMeshAgent>();
-    }
+
+
+
 
     public void GotoTarget(Transform point)
     {
@@ -81,11 +81,14 @@ public class AIManager : MonoBehaviour
 
     public void CheckArrive()
     {
-        if (agent.hasPath && agent.remainingDistance <0.1f)
+        Debug.Log(agent.remainingDistance);
+        if (agent.hasPath && agent.remainingDistance <0.2f)
         {
             animator.SetBool("isRun", false);
 
             agent.isStopped = true;
+
+            Debug.Log("1");
 
         }
     }

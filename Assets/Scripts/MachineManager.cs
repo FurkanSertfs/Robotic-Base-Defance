@@ -153,9 +153,13 @@ public class MachineManager : MonoBehaviour
               
                 list[0].processedObjects[index].collectedObject.transform.DOMove(inputResources[0].machinePoint2.position, machineSpeed).SetEase(Ease.Linear).OnComplete(()=> 
                 {
+                    if (_fireLight != null)
+                    {
 
-                    DOTween.To(() => (float)0, x => _fireLight.intensity = x, 5, machineSpeed).SetEase(Ease.Linear).OnComplete(() => { DOTween.To(() => (float)5, x => _fireLight.intensity = x, 0, 0.25f).SetEase(Ease.Linear); });
                     
+                         DOTween.To(() => (float)0, x => _fireLight.intensity = x, 5, machineSpeed).SetEase(Ease.Linear).OnComplete(() => { DOTween.To(() => (float)5, x => _fireLight.intensity = x, 0, 0.25f).SetEase(Ease.Linear); });
+                    }
+
                 });
 
             });
@@ -175,9 +179,13 @@ public class MachineManager : MonoBehaviour
                 {
                   list[1].processedObjects[index].collectedObject.transform.DOMove(inputResources[1].machinePoint2.position, machineSpeed).SetEase(Ease.Linear).OnComplete(()=> 
                   {
+                      if (_fireLight!=null)
+                      {
 
-                      DOTween.To(() => (float)0, x => _fireLight.intensity = x, 5, machineSpeed).SetEase(Ease.Linear).OnComplete(() => { DOTween.To(() => (float)5, x => _fireLight.intensity = x, 0, 0.25f).SetEase(Ease.Linear); });
-      
+
+                          DOTween.To(() => (float)0, x => _fireLight.intensity = x, 5, machineSpeed).SetEase(Ease.Linear).OnComplete(() => { DOTween.To(() => (float)5, x => _fireLight.intensity = x, 0, 0.25f).SetEase(Ease.Linear); });
+
+                      }
                   });
 
                 });

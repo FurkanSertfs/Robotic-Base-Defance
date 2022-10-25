@@ -27,8 +27,8 @@ public class MachineManager : MonoBehaviour
     [SerializeField]
     PressMachine _pressMachine;
 
-    [SerializeField]
-    int _collectAreaCount = 5;
+    
+    public int _collectAreaCount = 5;
 
     [NonReorderable]
     public List<InputObject> inputResources = new List<InputObject>();

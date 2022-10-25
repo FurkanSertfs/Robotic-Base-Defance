@@ -4,18 +4,22 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 
-public class DropAreainCanvas : MonoBehaviour
+public class DropAreaOutCanvas : MonoBehaviour
 {
     [SerializeField]
     Text _countText;
 
     [SerializeField]
-    DropArea _dropArea;
+    CollectArea _dropAreaOut;
 
     [SerializeField]
     Image _image;
 
-    Vector3 _startScale,_stopScale;
+    [SerializeField]
+    MachineManager _machineManager;
+    
+    Vector3 _startScale, _stopScale;
+    // Start is called before the first frame update
     void Start()
     {
         _startScale = _image.transform.localScale;
@@ -25,27 +29,27 @@ public class DropAreainCanvas : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        _countText.text = (_dropArea.droppedObjects.Count + "/" + _dropArea.stackLimit);
+        _countText.text = (_dropAreaOut.collectableObjects.Count + "/" + _machineManager._collectAreaCount);
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.GetComponent<PlayerController>()!=null)
+        if (other.GetComponent<PlayerController>() != null)
         {
-            
+
             DOTween.To(() => _startScale, x => _image.transform.localScale = x, _stopScale, 0.3f).SetEase(Ease.Linear);
         }
-        
-        
+
+
     }
     private void OnTriggerExit(Collider other)
     {
         if (other.GetComponent<PlayerController>() != null)
         {
-            
+
             DOTween.To(() => _stopScale
             , x => _image.transform.localScale = x, _startScale, 0.3f).SetEase(Ease.Linear);
-            
+
         }
-        
+
     }
 }

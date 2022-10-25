@@ -216,15 +216,16 @@ public class MachineManager : MonoBehaviour
         IEnumerator Processing() 
         {
             yield return new WaitForSeconds(machineSpeed+1.4f);
-        
+        if (pressPoint != null)
+        {
             GameObject _ironIngot = Instantiate(_productResources, spawnResaourcesPoint.transform.position, spawnResaourcesPoint.transform.rotation);
             _ironIngot.transform.rotation = pressPoint.transform.rotation;
             _ironIngot.transform.localScale = pressPoint.transform.localScale;
-            _ironIngot.transform.DOMove(pressPoint.position, machineSpeed).OnComplete(()=> 
-            { 
-            _pressMachine.Press(machineSpeed, _ironIngot, machineDropPoint);
+            _ironIngot.transform.DOMove(pressPoint.position, machineSpeed).OnComplete(() =>
+            {
+                _pressMachine.Press(machineSpeed, _ironIngot, machineDropPoint);
             });
-
+        }
     }   
 }
 [System.Serializable]

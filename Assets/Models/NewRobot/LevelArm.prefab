@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2860050421535340813}
   - component: {fileID: 7764434259849737560}
   - component: {fileID: 246028395811527637}
+  - component: {fileID: -4836251660351332945}
   m_Layer: 0
   m_Name: LevelArm
   m_TagString: Untagged
@@ -82,3 +83,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &-4836251660351332945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4474042095273938379}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 770f14e5b0b35ad48941b0812173b093, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectType: 6

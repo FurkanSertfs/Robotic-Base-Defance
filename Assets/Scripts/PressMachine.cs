@@ -19,6 +19,9 @@ public class PressMachine : MonoBehaviour
     [SerializeField]
     Transform _endPosition1,_endPosition2;
 
+    [SerializeField]
+    GameObject _particalEfect;
+
     private void Start()
     {
         _startPosition1 = _pres1.transform.position;
@@ -29,11 +32,14 @@ public class PressMachine : MonoBehaviour
     {
         _pres1.transform.DOMove(_endPosition1.position,time).OnComplete(()=> 
         {
+            _particalEfect.active = true;
+            _iron.active = false;
             _pres2.transform.DOMove(_endPosition2.position, time).OnComplete(() => 
             {
-
+                _iron.active = true;
                 _pres1.transform.DOMove(_startPosition1, time);
                 _pres2.transform.DOMove(_startPosition2, time);
+                
                 _iron.GetComponent<MeshRenderer>().materials = _materials;
                 _iron.transform.DOMove(_machineDropPoint.position, time);
                 _collectArea.AddObjectstoList(_iron);

@@ -70,6 +70,8 @@ public class MergeMachineController : MonoBehaviour
                 }
                
             }
+
+
             StartCoroutine(Wait());
 
 

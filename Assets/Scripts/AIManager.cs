@@ -87,6 +87,8 @@ public class AIManager : MonoBehaviour
             else
             {
                 enemiesInRange.RemoveAt(0);
+                
+                isActiceFire = false;
             }
 
           

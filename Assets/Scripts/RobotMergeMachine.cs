@@ -79,10 +79,6 @@ public class RobotMergeMachine : MonoBehaviour
 
 
 
-
-
-
-
     void Production()
     {
         isCanMarge = true; mergeMachineController.Merge();

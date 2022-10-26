@@ -805,11 +805,21 @@ public  class GyroPoolManager : MonoBehaviour
             // Control all spawned objects are active 
             for (int j = 0; j < objectPools[poolID].autoSpawner.autoSpawnedObjects.Count; j++)
             {
-                if (!objectPools[poolID].autoSpawner.autoSpawnedObjects[j].activeSelf)
+                if (objectPools[poolID].autoSpawner.autoSpawnedObjects[j]!=null)
+                {
+                    if (!objectPools[poolID].autoSpawner.autoSpawnedObjects[j].activeSelf)
+                    {
+                        objectPools[poolID].autoSpawner.autoSpawnedObjects.RemoveAt(j);
+
+                    }
+                }
+                else
                 {
                     objectPools[poolID].autoSpawner.autoSpawnedObjects.RemoveAt(j);
-
                 }
+
+
+              
 
             }
 

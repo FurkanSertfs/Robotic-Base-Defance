@@ -45,6 +45,7 @@ public class MachineManager : MonoBehaviour
     }
 
     public void Control()
+    
     {
         bool isCanProduction=true;
         totalCount = 0;

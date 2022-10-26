@@ -48,10 +48,17 @@ public class EnemyAIManager : AIManager
         }
 
 
-       
+    }
 
+    public IEnumerator SetupSpawn(float time,Transform target)
+    {
+        yield return new WaitForSeconds(time);
+
+
+        GotoTarget(target);
 
     }
+
 
     void FindEnemy()
     {

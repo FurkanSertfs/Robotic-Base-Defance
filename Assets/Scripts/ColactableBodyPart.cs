@@ -8,9 +8,9 @@ public class ColactableBodyPart : MonoBehaviour
 
     public Material material;
 
+    [HideInInspector]
     public int Id;
 
     public int level;
 
-    public float bonusHealth;
 }

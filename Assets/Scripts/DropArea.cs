@@ -106,6 +106,7 @@ public class DropArea : MonoBehaviour, IDropable<CollectManager>
       
      
         yield return new WaitForSeconds(0.45f);
+   
         if (droppedObjects.Count >= minCount&&!_robotMergeMachine.isFull)
         {
            

@@ -81,10 +81,6 @@ public class RobotMergeMachine : MonoBehaviour
 
 
 
-
-
-
-
     void Production()
     {
         caryMachine.transform.DOMove(caryMergePoint.position, timer).OnComplete(()=> { isCanMarge = true; mergeMachineController.Merge(); });

@@ -10,6 +10,8 @@ public class EnemyManager : MonoBehaviour
 
     GyroPoolManager poolManager;
 
+    BaseDefanceManager baseManager;
+
     [SerializeField]
     Transform[] targetPoints,spawnPoints;
 
@@ -21,6 +23,8 @@ public class EnemyManager : MonoBehaviour
     private void Start()
     {
         poolManager = GyroPoolManager.poolManager;
+
+        baseManager = BaseDefanceManager.baseDefanceManager;
 
         StartCoroutine(SpawnEnemy("EnemyType1",1));
     }

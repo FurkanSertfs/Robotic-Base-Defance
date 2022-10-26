@@ -12,9 +12,36 @@ public class MergeMachineController : MonoBehaviour
     RobotMergeMachine[] robotMergeMachines;
 
 
+    [SerializeField]
+    Transform _buildMachineDoor;
+
+    [SerializeField]
+    Transform _doorFinish;
+
+    Quaternion _doorStart;
+
+    [SerializeField]
+    GameObject _particalEfect;
+
     public List<ColactableBodyPart> colactableBodyParts;
 
-     bool ControlMerge()
+    private void Start()
+    {
+        _doorStart = _buildMachineDoor.rotation;
+        
+    }
+    public void OpenDoor() 
+    {
+        _buildMachineDoor.DORotateQuaternion(_doorFinish.rotation, 1).OnComplete(()=> { CloseDoor(); });
+        _particalEfect.active = true;
+
+    }
+    public void CloseDoor() 
+    {
+        Debug.Log("closedoor");
+        _buildMachineDoor.DORotateQuaternion(_doorStart, 1);
+    }
+    bool ControlMerge()
     {
         bool isCanMerge=true;
 

@@ -22,8 +22,10 @@ public class RobotMergeMachine : MonoBehaviour
     [SerializeField]
     DropArea dropArea;
 
+
     public float timer;
     
+
     public void FillTheMachine(GameObject model)
     {
         if (!isFull)
@@ -127,9 +129,9 @@ public class RobotMergeMachine : MonoBehaviour
 
     }
 
-        newRobot.GetComponentInChildren<Animator>().SetBool("isSpawn", true);
-
+        mergeMachineController.OpenDoor();
         mergeMachineController.Setup();
+
     }
 
     IEnumerator Wait()

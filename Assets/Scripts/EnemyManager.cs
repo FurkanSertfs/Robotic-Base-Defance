@@ -22,7 +22,7 @@ public class EnemyManager : MonoBehaviour
     {
         poolManager = GyroPoolManager.poolManager;
 
-     //   StartCoroutine("EnemyType1", 1);
+        StartCoroutine(SpawnEnemy("EnemyType1",1));
     }
 
     IEnumerator SpawnEnemy(string poolName,float spawnInterval)
@@ -32,7 +32,9 @@ public class EnemyManager : MonoBehaviour
 
         int randomPoint = Random.Range(0, spawnPoints.Length);
 
-        enemyAIManagers.Add(poolManager.Pull(poolName, spawnPoints[randomPoint].position, spawnPoints[randomPoint].rotation).GetComponent<EnemyAIManager>());
+        GameObject newEnemy= poolManager.Pull(0, spawnPoints[randomPoint].position, spawnPoints[randomPoint].rotation);
+
+        newEnemy.GetComponent<EnemyAIManager>().GotoTarget(targetPoints[0]);
 
     }
 

@@ -7,7 +7,24 @@ using UnityEngine.AI;
 
 public class EnemyAIManager : AIManager
 {
-    
+    private void Awake()
+    {
+        animator = GetComponentInChildren<Animator>();
+
+        agent = GetComponent<NavMeshAgent>();
+    }
+    private void Update()
+    {
+        if (agent.hasPath)
+        {
+            animator.SetBool("isRun", true);
+        }
+        else
+        {
+            animator.SetBool("isRun", false);
+        }
+
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -17,6 +34,7 @@ public class EnemyAIManager : AIManager
         }
     }
 
+  
 
 
 

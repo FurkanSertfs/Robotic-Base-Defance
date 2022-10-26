@@ -742,9 +742,9 @@ public  class GyroPoolManager : MonoBehaviour
             {
                 nameCheck = true;
                
-                Pull(i);
+              return Pull(i);
                
-                break;
+                
             }
         }
         // Return a error message for wrong pool name
@@ -918,9 +918,9 @@ public  class GyroPoolManager : MonoBehaviour
             {
                 nameCheck = true;
 
-                Pull(i, position, rotation);
+               return Pull(i, position, rotation);
                
-                break;
+                
             }
         }
 

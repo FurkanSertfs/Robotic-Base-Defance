@@ -35,6 +35,18 @@ public class SoldierAIManager : AIManager
     private void Update()
     {
 
+
+        if (agent.hasPath)
+        {
+            animator.SetBool("isRun", true);
+        }
+        else
+        {
+            animator.SetBool("isRun", false);
+        }
+
+
+
         if (positionState==PositionState.Attack)
         {
             if (_targetEnemy != null)
@@ -106,22 +118,28 @@ public class SoldierAIManager : AIManager
 
         for (int i = 0; i < shouldDestroyPart-_destroyedPart; i++)
         {
-            int randomPart = Random.Range(2, 5);
-            int x = 0;
+            int randomPart = Random.Range(2, 6);
 
-            while (_bodyPartManager.bodyTypeHealths[randomPart].isDestroyed)
+            if (_bodyPartManager.isHandDestroyed)
             {
-                randomPart = Random.Range(2, 6);
-                
-                x++;
-              
-                if (x == 50)
+                while (_bodyPartManager.bodyTypeHealths[randomPart].isDestroyed || randomPart ==2 || randomPart == 3)
                 {
-                    Debug.Log("break");
-                    break;
-                 
+                    randomPart = Random.Range(2, 6);
+
+                }
+
+            }
+
+            else
+            {
+                while (_bodyPartManager.bodyTypeHealths[randomPart].isDestroyed)
+                {
+                    randomPart = Random.Range(2, 6);
+
                 }
             }
+
+           
 
             _bodyPartManager.DestrotBodyPart(randomPart);
 

@@ -8,17 +8,16 @@ public class FindEnemy : MonoBehaviour
     [SerializeField]
     private AIManager aiManager;
 
-    [SerializeField]
-    Component findComponent;
+  
 
     [SerializeField]
     bool isEnemy;
 
     private void Start()
     {
-        aiManager = GetComponent<AIManager>();
+        aiManager = GetComponentInParent<SoldierAIManager>();
         
-        enemyAIManager = GetComponent<EnemyAIManager>();
+        enemyAIManager = GetComponentInParent<EnemyAIManager>();
 
 
     }
@@ -26,7 +25,7 @@ public class FindEnemy : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.TryGetComponent<Enemy>(out Enemy enemy)&&!isEnemy)
+        if (other.TryGetComponent<EnemyAIManager>(out EnemyAIManager enemy)&&!isEnemy)
         {
           
             aiManager.enemiesInRange.Add(other.gameObject);
@@ -34,7 +33,7 @@ public class FindEnemy : MonoBehaviour
           
         }
 
-        if (other.TryGetComponent<AIManager>(out AIManager solider) && isEnemy)
+        if (other.GetComponentInParent<SoldierAIManager>() && isEnemy)
         {
 
             enemyAIManager.enemiesInRange.Add(other.gameObject);
@@ -48,7 +47,7 @@ public class FindEnemy : MonoBehaviour
     }
     private void OnTriggerExit(Collider other)
     {
-        if (other.TryGetComponent<Enemy>(out Enemy enemy)&&!isEnemy)
+        if (other.TryGetComponent<EnemyAIManager>(out EnemyAIManager enemy)&&!isEnemy)
         {
 
             aiManager.enemiesInRange.Remove(other.gameObject);
@@ -57,7 +56,7 @@ public class FindEnemy : MonoBehaviour
         }
 
 
-        if (other.TryGetComponent<AIManager>(out AIManager solider) && isEnemy)
+        if (other.TryGetComponent<SoldierAIManager>(out SoldierAIManager solider) && isEnemy)
         {
 
             enemyAIManager.enemiesInRange.Remove(other.gameObject);

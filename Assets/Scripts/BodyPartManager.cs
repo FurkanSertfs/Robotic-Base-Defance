@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class BodyPartManager : MonoBehaviour
 {
@@ -19,9 +20,12 @@ public class BodyPartManager : MonoBehaviour
     public int animatorControllerId;
 
     [SerializeField]
-    GameObject[] oils;
+    GameObject[] oils,bodyParts;
     [SerializeField]
     GameObject trailRenderer;
+
+    [HideInInspector]
+    public  bool isHandDestroyed;
 
 
     private void Awake()
@@ -36,12 +40,22 @@ public class BodyPartManager : MonoBehaviour
       
         bodyTypeHealths[index].isDestroyed = true;
 
+        GameObject newBodyPart = Instantiate(bodyParts[index], bodyTypeHealths[index].parts[0].transform.position, Quaternion.identity);
+
+        newBodyPart.transform.parent = BaseDefanceManager.baseDefanceManager.gameObject.transform;
+
+
         for (int i = 0; i < bodyTypeHealths[index].parts.Length; i++)
         {
             Destroy(bodyTypeHealths[index].parts[i].gameObject);
            
         }
+
         animator.runtimeAnimatorController = animatorController[animatorControllerId];
+        animator = GetComponentInChildren<Animator>();
+
+      
+
 
         if (animatorControllerId == 12 || animatorControllerId == 13 || animatorControllerId == 14)
         {
@@ -53,12 +67,15 @@ public class BodyPartManager : MonoBehaviour
         {
             oils[0].SetActive(true);
             trailRenderer.SetActive(true);
+            GetComponent<NavMeshAgent>().speed -= 2;
+            
         }
 
         if (animatorControllerId == 8)
         {
             oils[1].SetActive(true);
             trailRenderer.SetActive(true);
+            GetComponent<NavMeshAgent>().speed -= 2;
 
         }
 

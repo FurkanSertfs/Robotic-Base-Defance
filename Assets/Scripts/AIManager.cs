@@ -29,7 +29,7 @@ public class AIManager : MonoBehaviour
 
     public float health=100;
 
-
+    
 
 
 
@@ -81,14 +81,14 @@ public class AIManager : MonoBehaviour
 
     public void CheckArrive()
     {
-        Debug.Log(agent.remainingDistance);
+       
         if (agent.hasPath && agent.remainingDistance <0.2f)
         {
             animator.SetBool("isRun", false);
 
             agent.isStopped = true;
 
-            Debug.Log("1");
+         
 
         }
     }

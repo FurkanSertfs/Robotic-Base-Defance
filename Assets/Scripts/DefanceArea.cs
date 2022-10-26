@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class DefanceArea : MonoBehaviour
 {
-    public List<EnemyAIManager> enemyAIManagers;
+     public List<EnemyAIManager> enemyAIManagers;
 }

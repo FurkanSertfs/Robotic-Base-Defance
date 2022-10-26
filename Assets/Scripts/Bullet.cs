@@ -41,7 +41,17 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-      
+        if(other.GetComponentInParent<EnemyAIManager>() != null)
+        {
+            other.GetComponentInParent<EnemyAIManager>().health -= 35;
+
+            if (other.GetComponentInParent<EnemyAIManager>().health <= 0)
+            {
+                Destroy(other.gameObject);
+            }
+        }
+
+        Destroy(other.GetComponentInParent<EnemyAIManager>().gameObject);
 
     }
 

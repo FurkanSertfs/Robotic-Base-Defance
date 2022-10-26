@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 328621789431213768}
   - component: {fileID: 3101098342276372662}
   - component: {fileID: 7714175130469679605}
-  m_Layer: 0
-  m_Name: Bullet
+  m_Layer: 12
+  m_Name: EnemyBulllet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -152,7 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 012ebc8d2d9418b43a0a22f2dfca0793, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 100
+  moveSpeed: 50
 --- !u!65 &7714175130469679605
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -161,7 +161,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3928528860053484037}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.0028328393, y: 0.0018707897, z: 0.014335486}

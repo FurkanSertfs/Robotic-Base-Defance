@@ -7,12 +7,14 @@ using UnityEngine.AI;
 
 public class EnemyAIManager : AIManager
 {
+
     private void Awake()
     {
         animator = GetComponentInChildren<Animator>();
 
         agent = GetComponent<NavMeshAgent>();
     }
+
     private void Update()
     {
         if (agent.hasPath)
@@ -34,7 +36,23 @@ public class EnemyAIManager : AIManager
         }
     }
 
-  
+    private void OnDisable()
+    {
+        if (BaseDefanceManager.baseDefanceManager!=null)
+        {
+            for (int i = 0; i < BaseDefanceManager.baseDefanceManager.defanceAreas.Count; i++)
+            {
+                for (int j = 0; j < BaseDefanceManager.baseDefanceManager.defanceAreas[i].defanceArea.enemyAIManagers.Count; j++)
+                {
+                    BaseDefanceManager.baseDefanceManager.defanceAreas[i].defanceArea.enemyAIManagers.Remove(this);
+                }
+            }
+        }
+
+        
+    }
+
+
 
 
 

@@ -28,6 +28,8 @@ public class SoldierAIManager : AIManager
         agent = GetComponent<NavMeshAgent>();
 
         BaseDefanceManager.baseDefanceManager.AddSoldier(this);
+
+        defanceAreas = BaseDefanceManager.baseDefanceManager.defanceAreas;
     }
 
 
@@ -49,19 +51,27 @@ public class SoldierAIManager : AIManager
 
         if (positionState==PositionState.Attack)
         {
-            if (_targetEnemy != null)
+
+            if (_targetEnemy == null)
             {
-                if (FindEnemy())
-                {
-                    GotoTarget(_targetEnemy);
-                }
+                FindEnemy();
+                
             }
 
             else
             {
-                if (CheckArrive(range))
+                var lookPos = _targetEnemy.position - transform.position;
+                lookPos.y = 0;
+                var rotation = Quaternion.LookRotation(lookPos);
+                transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * 2);
+
+
+                GotoTarget(_targetEnemy);
+
+                if (CheckArrive(range)&&!isActiceFire)
                 {
-                    Fire();
+                   StartCoroutine(Fire(fireRate));
+
                 }
             }
 
@@ -69,7 +79,7 @@ public class SoldierAIManager : AIManager
 
         else if (positionState == PositionState.Defance)
         {
-            Fire();
+            StartCoroutine(Fire(fireRate));
 
         }
 
@@ -156,11 +166,24 @@ public class SoldierAIManager : AIManager
 
         for (int i = 0; i < defanceAreas.Count; i++)
         {
+
+          
             for (int j = 0; j < defanceAreas[i].defanceArea.enemyAIManagers.Count; j++)
             {
-                _targetEnemy = defanceAreas[i].defanceArea.enemyAIManagers[j].transform;
+                if (defanceAreas[i].defanceArea.enemyAIManagers[j] != null)
+                {
+                    _targetEnemy = defanceAreas[i].defanceArea.enemyAIManagers[j].transform;
+                    
+                    return true;
+                }
 
-                return true;
+                else
+                {
+                    defanceAreas[i].defanceArea.enemyAIManagers.RemoveAt(j);
+                }
+               
+
+               
             }
 
             
@@ -170,7 +193,7 @@ public class SoldierAIManager : AIManager
     }
 
 }
-
+[System.Serializable]
 public class DefanceAreas
 {
     public DefanceArea defanceArea;

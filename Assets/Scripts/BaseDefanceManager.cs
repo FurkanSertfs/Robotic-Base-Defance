@@ -6,6 +6,8 @@ using UnityEngine.AI;
 
 public class BaseDefanceManager : MonoBehaviour
 {
+    public List<DefanceAreas> defanceAreas;
+
     [SerializeField]
     SoldierPosition[] soldierPositions;
 

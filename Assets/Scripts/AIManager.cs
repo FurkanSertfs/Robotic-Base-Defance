@@ -7,7 +7,9 @@ using UnityEngine.AI;
 public class AIManager : MonoBehaviour
 {
 
-       public enum PositionState {State,Defance,Attack }
+    public enum PositionState {State,Defance,Attack }
+
+    public Transform hitPoint;
 
     public Transform _targetEnemy;
 
@@ -29,7 +31,7 @@ public class AIManager : MonoBehaviour
 
     public float health=100;
 
-    
+   public bool isActiceFire;
 
 
 
@@ -57,22 +59,37 @@ public class AIManager : MonoBehaviour
         return false;
     }
 
-    public IEnumerator Fire()
+    public IEnumerator Fire(float _fireRate)
     {
-     
+        isActiceFire = true;
 
-        yield return new WaitForSeconds(fireRate);
-
+        yield return new WaitForSeconds(_fireRate);
+        
+       
         if (enemiesInRange.Count > 0)
         {
-            GameObject newBullet = Instantiate(bullet, firePoint.position, Quaternion.identity);
+            if (enemiesInRange[0] != null)
+            {
+                GameObject newBullet = Instantiate(bullet, firePoint.position, Quaternion.identity);
+
+                Vector3 shootDir = (enemiesInRange[0].GetComponent<EnemyAIManager>().hitPoint.position - firePoint.position).normalized;
+
+                newBullet.GetComponent<Bullet>().Setup(shootDir, enemiesInRange[0].GetComponent<EnemyAIManager>().hitPoint);
+
+                StartCoroutine(Fire(_fireRate));
+            }
+            else
+            {
+                enemiesInRange.RemoveAt(0);
+            }
+
           
-            StartCoroutine(Fire());
 
-            Vector3 shootDir = (enemiesInRange[0].transform.position - firePoint.position).normalized;
-
-            newBullet.GetComponent<Bullet>().Setup(shootDir, enemiesInRange[0].transform);
-
+         
+        }
+        else
+        {
+            isActiceFire = false;
         }
     }
 

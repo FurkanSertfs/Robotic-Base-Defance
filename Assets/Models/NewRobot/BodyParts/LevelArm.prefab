@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 9040271283878587317}
   - component: {fileID: -6719728878713409024}
   - component: {fileID: 69270017723487959}
+  - component: {fileID: 6644144441136939218}
   m_Layer: 0
   m_Name: LevelArm
   m_TagString: Untagged
@@ -140,3 +141,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b62514d8bb11d245801ed6f35795d52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6644144441136939218
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4474042095273938379}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6df0058e5a7d4c74eb2ed801f07eec00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  partObject:
+  - {fileID: -4299625302041532480, guid: 65ca0da7d8b842b41b7bf763bb7907ed, type: 3}
+  - {fileID: -7641511462515273006, guid: 65ca0da7d8b842b41b7bf763bb7907ed, type: 3}
+  - {fileID: 6203175587852505565, guid: 65ca0da7d8b842b41b7bf763bb7907ed, type: 3}
+  material: {fileID: 0}
+  Id: 2
+  level: 1
+  bonusHealth: 0

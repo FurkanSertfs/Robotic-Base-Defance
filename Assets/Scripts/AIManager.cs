@@ -21,6 +21,8 @@ public class AIManager : MonoBehaviour
 
     public float range;
 
+    public int damage;
+
     [SerializeField]
     Transform firePoint;
    
@@ -72,11 +74,15 @@ public class AIManager : MonoBehaviour
             {
                 GameObject newBullet = Instantiate(bullet, firePoint.position, Quaternion.identity);
 
-                Vector3 shootDir = (enemiesInRange[0].GetComponent<EnemyAIManager>().hitPoint.position - firePoint.position).normalized;
+                Vector3 shootDir = (enemiesInRange[0].GetComponentInParent<AIManager>().hitPoint.position - firePoint.position).normalized;
 
-                newBullet.GetComponent<Bullet>().Setup(shootDir, enemiesInRange[0].GetComponent<EnemyAIManager>().hitPoint);
+                newBullet.GetComponent<Bullet>().Setup(shootDir, enemiesInRange[0].GetComponentInParent<AIManager>().hitPoint);
+
+                newBullet.GetComponent<Bullet>().damage = damage;
 
                 StartCoroutine(Fire(_fireRate));
+
+             
             }
             else
             {

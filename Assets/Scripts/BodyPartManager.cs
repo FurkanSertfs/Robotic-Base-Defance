@@ -25,8 +25,12 @@ public class BodyPartManager : MonoBehaviour
     GameObject trailRenderer;
 
     [HideInInspector]
-    public  bool isHandDestroyed;
+    public  bool isHandDestroyed,noLeg;
 
+    [SerializeField]
+    Transform[] gunPosition;
+
+    
 
     private void Awake()
     {
@@ -35,6 +39,34 @@ public class BodyPartManager : MonoBehaviour
 
     public void DestrotBodyPart(int index)
     {
+        if (index == 2 || index == 3)
+        {
+            isHandDestroyed = true;
+         
+            if (index == 3)
+            {
+                GetComponent<SoldierAIManager>().ChangeGunPosition(gunPosition[0]);
+            }
+        }
+
+        if (index == 4)
+        {
+            oils[0].SetActive(true);
+            trailRenderer.SetActive(true);
+            GetComponent<NavMeshAgent>().speed -= 2;
+
+        }
+
+        if (index == 5)
+        {
+            oils[1].SetActive(true);
+            trailRenderer.SetActive(true);
+            GetComponent<NavMeshAgent>().speed -= 2;
+
+        }
+
+
+
 
         animatorControllerId += bodyTypeHealths[index].animatorID;
       
@@ -52,33 +84,32 @@ public class BodyPartManager : MonoBehaviour
         }
 
         animator.runtimeAnimatorController = animatorController[animatorControllerId];
+       
         animator = GetComponentInChildren<Animator>();
 
-      
+
+        Debug.Log(animatorControllerId);
 
 
         if (animatorControllerId == 12 || animatorControllerId == 13 || animatorControllerId == 14)
         {
-            animator.SetBool("noLeg", true);
+            noLeg = true;
+            GetComponent<NavMeshAgent>().speed = 3;
+
+            if (animatorControllerId == 14)
+            {
+                GetComponent<SoldierAIManager>().ChangeGunPosition(gunPosition[1]);
+            }
+            else
+            {
+                GetComponent<SoldierAIManager>().ChangeGunPosition(gunPosition[2]);
+            }
         }
 
+      
 
-        if (animatorControllerId==4)
-        {
-            oils[0].SetActive(true);
-            trailRenderer.SetActive(true);
-            GetComponent<NavMeshAgent>().speed -= 2;
-            
-        }
 
-        if (animatorControllerId == 8)
-        {
-            oils[1].SetActive(true);
-            trailRenderer.SetActive(true);
-            GetComponent<NavMeshAgent>().speed -= 2;
-
-        }
-
+       
 
     }
 

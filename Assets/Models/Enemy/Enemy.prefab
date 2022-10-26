@@ -348,7 +348,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1986356627760579586}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.467, z: 0}
+  m_LocalPosition: {x: 0, y: 1.413, z: 0}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_Children: []
   m_Father: {fileID: 2709600140603043622}
@@ -5488,7 +5488,7 @@ GameObject:
   - component: {fileID: 3373686865429165471}
   - component: {fileID: 3373686865429165469}
   - component: {fileID: 3373686865429165467}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5564,9 +5564,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyAIManager: {fileID: 0}
   aiManager: {fileID: 0}
-  enemyLayer:
-    serializedVersion: 2
-    m_Bits: 0
+  isNotEnemy: 0
+  enemyLayer: Soldier
 --- !u!114 &3373686865429165467
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5585,6 +5584,7 @@ MonoBehaviour:
   animator: {fileID: 0}
   fireRate: 1
   range: 6
+  damage: 20
   firePoint: {fileID: 2176551551430926064}
   bullet: {fileID: 3928528860053484037, guid: 43559d27d223bf340b413fde1315c256, type: 3}
   enemiesInRange: []
@@ -25590,8 +25590,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.034374036, y: 0.11157523, z: 0.03155952}
-  m_Center: {x: -0.0007217181, y: -0.025306487, z: -0.00020485949}
+  m_Size: {x: 0.05914422, y: 0.11157523, z: 0.0376112}
+  m_Center: {x: 0.0034952038, y: -0.025306487, z: -0.0032307135}
 --- !u!1 &7782254379240053983
 GameObject:
   m_ObjectHideFlags: 0

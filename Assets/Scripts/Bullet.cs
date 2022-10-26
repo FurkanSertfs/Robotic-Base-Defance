@@ -10,6 +10,8 @@ public class Bullet : MonoBehaviour
     [SerializeField]
     private float moveSpeed;
 
+    public int damage;
+
     public void Setup(Vector3 shootDir,Transform enemy)
     {
         this.shootDir = shootDir;
@@ -43,15 +45,30 @@ public class Bullet : MonoBehaviour
     {
         if(other.GetComponentInParent<EnemyAIManager>() != null)
         {
-            other.GetComponentInParent<EnemyAIManager>().health -= 35;
+           
+            other.GetComponentInParent<EnemyAIManager>().health -= damage;
 
             if (other.GetComponentInParent<EnemyAIManager>().health <= 0)
             {
-                Destroy(other.gameObject);
+                Destroy(other.GetComponentInParent<EnemyAIManager>().gameObject);
             }
+
+         
         }
 
-        Destroy(other.GetComponentInParent<EnemyAIManager>().gameObject);
+        if (other.GetComponentInParent<SoldierAIManager>() != null)
+        {
+      
+
+            other.GetComponentInParent<SoldierAIManager>().TakeHit(gameObject.transform,damage);
+
+        
+
+        }
+
+
+
+        Destroy(gameObject);
 
     }
 

@@ -26,7 +26,49 @@ public class EnemyAIManager : AIManager
             animator.SetBool("isRun", false);
         }
 
+
+        if (!isActiceFire)
+        {
+            StartCoroutine(Fire(fireRate));
+
+        }
+
+
+        if (_targetEnemy != null)
+        {
+            var lookPos = _targetEnemy.position - transform.position;
+            lookPos.y = 0;
+            var rotation = Quaternion.LookRotation(lookPos);
+            transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * 2);
+        }
+
+        else
+        {
+            FindEnemy();
+        }
+
+
+       
+
+
     }
+
+    void FindEnemy()
+    {
+        if (enemiesInRange.Count > 0)
+        {
+            if (enemiesInRange[0] != null)
+            {
+                _targetEnemy = enemiesInRange[0].transform;
+            }
+            else
+            {
+                enemiesInRange.RemoveAt(0);
+            }
+
+        }
+    }
+
 
     private void OnTriggerEnter(Collider other)
     {

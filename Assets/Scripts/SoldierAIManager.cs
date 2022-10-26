@@ -17,6 +17,8 @@ public class SoldierAIManager : AIManager
     float startHealth;
 
     BodyPartManager _bodyPartManager;
+
+    public GameObject gun;
     private void Start()
     {
         startHealth = health;
@@ -47,49 +49,53 @@ public class SoldierAIManager : AIManager
             animator.SetBool("isRun", false);
         }
 
+        CheckArrive();
+
+        FindEnemy();
+
+        if (!isActiceFire)
+        {
+            if (_bodyPartManager.noLeg && !animator.GetBool("isRun"))
+            {
+                StartCoroutine(Fire(fireRate));
+            }
+
+            else if (!_bodyPartManager.noLeg)
+            {
+                StartCoroutine(Fire(fireRate));
+            }
+
+          
+
+        }
+
+        if (_targetEnemy != null)
+        {
+            var lookPos = _targetEnemy.position - transform.position;
+            var gunLookPos = _targetEnemy.position - transform.position;
+            lookPos.y = 0;
+            var rotation = Quaternion.LookRotation(lookPos);
+            var gunRotation = Quaternion.LookRotation(gunLookPos);
+            transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * 2);
+         //   gun.transform.rotation = Quaternion.Slerp(gun.transform.rotation, gunRotation, Time.deltaTime * 2);
+        }
 
 
         if (positionState==PositionState.Attack)
         {
 
-            if (_targetEnemy == null)
+            if (_targetEnemy != null)
             {
-                FindEnemy();
-                
-            }
-
-            else
-            {
-                var lookPos = _targetEnemy.position - transform.position;
-                lookPos.y = 0;
-                var rotation = Quaternion.LookRotation(lookPos);
-                transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * 2);
-
-
+              
                 GotoTarget(_targetEnemy);
 
-                if (CheckArrive(range)&&!isActiceFire)
-                {
-                   StartCoroutine(Fire(fireRate));
+                CheckArrive(range);
 
-                }
             }
 
         }
 
-        else if (positionState == PositionState.Defance)
-        {
-            StartCoroutine(Fire(fireRate));
-
-        }
-
-        else if (positionState == PositionState.State)
-        {
-            CheckArrive();
-           
-           
-
-        }
+     
 
 
 
@@ -102,6 +108,12 @@ public class SoldierAIManager : AIManager
 
 
 
+    }
+    public void ChangeGunPosition(Transform point)
+    {
+        gun.transform.parent = point;
+        gun.transform.position = point.position;
+        gun.transform.rotation = point.rotation;
     }
 
     public void TakeHit(Transform point,int damage)
@@ -124,14 +136,17 @@ public class SoldierAIManager : AIManager
 
     void SelectRandomPart(int shouldDestroyPart)
     {
-        Debug.Log(shouldDestroyPart);
+        
 
-        for (int i = 0; i < shouldDestroyPart-_destroyedPart; i++)
+        for (int i = 0; i < shouldDestroyPart - _destroyedPart; i++)
         {
             int randomPart = Random.Range(2, 6);
 
             if (_bodyPartManager.isHandDestroyed)
             {
+
+
+
                 while (_bodyPartManager.bodyTypeHealths[randomPart].isDestroyed || randomPart ==2 || randomPart == 3)
                 {
                     randomPart = Random.Range(2, 6);
@@ -157,37 +172,44 @@ public class SoldierAIManager : AIManager
 
         _destroyedPart = shouldDestroyPart;
 
+        
+
     }
 
 
 
     public bool FindEnemy()
     {
-
-        for (int i = 0; i < defanceAreas.Count; i++)
+        if (enemiesInRange.Count==0)
         {
-
-          
-            for (int j = 0; j < defanceAreas[i].defanceArea.enemyAIManagers.Count; j++)
+            for (int i = 0; i < defanceAreas.Count; i++)
             {
-                if (defanceAreas[i].defanceArea.enemyAIManagers[j] != null)
+
+
+                for (int j = 0; j < defanceAreas[i].defanceArea.enemyAIManagers.Count; j++)
                 {
-                    _targetEnemy = defanceAreas[i].defanceArea.enemyAIManagers[j].transform;
-                    
-                    return true;
+                    if (defanceAreas[i].defanceArea.enemyAIManagers[j] != null)
+                    {
+                        _targetEnemy = defanceAreas[i].defanceArea.enemyAIManagers[j].transform;
+
+                        return true;
+                    }
+
+                    else
+                    {
+                        defanceAreas[i].defanceArea.enemyAIManagers.RemoveAt(j);
+                    }
+
+
+
                 }
 
-                else
-                {
-                    defanceAreas[i].defanceArea.enemyAIManagers.RemoveAt(j);
-                }
-               
 
-               
             }
-
-            
         }
+
+
+       
 
         return false;
     }

@@ -11,7 +11,8 @@ public class FindEnemy : MonoBehaviour
     public bool isNotEnemy;
 
     [SerializeField]
-    LayerMask enemyLayer;
+    string enemyLayer;
+    
 
     private void Start()
     {
@@ -19,21 +20,24 @@ public class FindEnemy : MonoBehaviour
         
         enemyAIManager = GetComponent<EnemyAIManager>();
 
+       
+     
+        
 
     }
 
 
     private void OnTriggerEnter(Collider other)
     {
-        if (isNotEnemy)
-        {
-            Debug.Log(LayerMask.LayerToName(other.gameObject.layer)+ " " + other.gameObject.name);
-          
-        }
-        
 
-        if(other.gameObject.layer == enemyLayer)
+
+
+
+        if (other.gameObject.layer == LayerMask.NameToLayer(enemyLayer))
         {
+          
+           
+
             if (other.GetComponentInParent<EnemyAIManager>())
             {
 
@@ -42,7 +46,7 @@ public class FindEnemy : MonoBehaviour
 
             }
 
-           else if (other.TryGetComponent<SoldierAIManager>(out SoldierAIManager soldierEnemy))
+           else if (other.GetComponentInParent<SoldierAIManager>())
             {
 
                 enemyAIManager.enemiesInRange.Add(other.gameObject);
@@ -59,7 +63,7 @@ public class FindEnemy : MonoBehaviour
     }
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.layer == enemyLayer)
+        if (other.gameObject.layer == LayerMask.NameToLayer(enemyLayer))
         {
           
             if (other.GetComponentInParent<EnemyAIManager>())
@@ -70,7 +74,7 @@ public class FindEnemy : MonoBehaviour
 
             }
 
-            else if (other.TryGetComponent<SoldierAIManager>(out SoldierAIManager soldierEnemy))
+            else if (other.GetComponentInParent<SoldierAIManager>())
             {
 
                 enemyAIManager.enemiesInRange.Remove(other.gameObject);

@@ -9435,6 +9435,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: RobotLevel1
       objectReference: {fileID: 0}
+    - target: {fileID: 2114987282976757768, guid: 7efd331478ec9e540b2f9e27f17a549a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2114987282976757769, guid: 7efd331478ec9e540b2f9e27f17a549a, type: 3}
+      propertyPath: isNotEnemy
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2114987282976757769, guid: 7efd331478ec9e540b2f9e27f17a549a, type: 3}
+      propertyPath: enemyLayer.m_Bits
+      value: 129
+      objectReference: {fileID: 0}
+    - target: {fileID: 4958563235077609879, guid: 7efd331478ec9e540b2f9e27f17a549a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5347059968953946733, guid: 7efd331478ec9e540b2f9e27f17a549a, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7216149716296684042, guid: 7efd331478ec9e540b2f9e27f17a549a, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7efd331478ec9e540b2f9e27f17a549a, type: 3}
 --- !u!1001 &1392123809

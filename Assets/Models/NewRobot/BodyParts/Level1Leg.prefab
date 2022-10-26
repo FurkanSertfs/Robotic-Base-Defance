@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 3483165262977436615}
   - component: {fileID: -9026694673138067000}
   - component: {fileID: 7285418401741025890}
+  - component: {fileID: 8825461368042876213}
   m_Layer: 0
   m_Name: Level1Leg
   m_TagString: Untagged
@@ -140,3 +141,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b62514d8bb11d245801ed6f35795d52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8825461368042876213
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 708022622577598990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6df0058e5a7d4c74eb2ed801f07eec00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  partObject:
+  - {fileID: -6377713259273355393, guid: 65ca0da7d8b842b41b7bf763bb7907ed, type: 3}
+  - {fileID: 7036116145549807840, guid: 65ca0da7d8b842b41b7bf763bb7907ed, type: 3}
+  - {fileID: 6468802259084973531, guid: 65ca0da7d8b842b41b7bf763bb7907ed, type: 3}
+  material: {fileID: 0}
+  Id: 4
+  level: 1
+  bonusHealth: 0

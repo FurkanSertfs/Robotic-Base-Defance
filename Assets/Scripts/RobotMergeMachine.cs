@@ -11,12 +11,8 @@ public class RobotMergeMachine : MonoBehaviour
     public GameObject robotPart, robotPart2;
 
     [SerializeField]
-    Transform modelPoint, modelPoint2, caryStartPoint, caryStartPoint2, caryEndPoint, caryEndPoint2, caryMergePoint, caryMergePoint2,robotSpawnPoint;
-    
-    [SerializeField]
-    GameObject caryMachine, caryMachine2;
-    
-
+    Transform modelPoint, modelPoint2, robotSpawnPoint;
+       
     [SerializeField]
     GameObject robotLevel1;
 
@@ -87,22 +83,18 @@ public class RobotMergeMachine : MonoBehaviour
 
     void Production()
     {
-        caryMachine.transform.DOMove(caryMergePoint.position, timer).OnComplete(()=> { isCanMarge = true; mergeMachineController.Merge(); });
+        isCanMarge = true; mergeMachineController.Merge();
     }
 
 
     void Production(int x)
     {
-        caryMachine.transform.DOMove(caryMergePoint.position, timer).OnComplete(() => { isCanMarge = true; mergeMachineController.Merge(); });
-
-        caryMachine2.transform.DOMove(caryMergePoint2.position, timer);
+        isCanMarge = true; mergeMachineController.Merge();
     }
 
     public void Setup()
     {
-        caryMachine.transform.DOMove(caryStartPoint.position, timer).OnComplete(() =>
 
-         {
 
              isFull = false;
 
@@ -110,17 +102,7 @@ public class RobotMergeMachine : MonoBehaviour
 
              isCanMarge = false;
 
-             StartCoroutine(dropArea.SetupMergeMachine());
-
-
-         });
-        
-        if (caryMachine2 != null)
-        {
-            caryMachine2.transform.DOMove(caryStartPoint2.position, timer);
-        }
-      
-       
+             StartCoroutine(dropArea.SetupMergeMachine());      
     }
 
     public void CreateRobot()
@@ -163,7 +145,7 @@ public class RobotMergeMachine : MonoBehaviour
         {
             isMerging = true;
            
-            caryMachine.transform.DOMove(caryEndPoint.position, timer).OnComplete(() =>StartCoroutine(Wait()));
+            StartCoroutine(Wait());
         }
       
 

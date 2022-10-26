@@ -6145,13 +6145,13 @@ MonoBehaviour:
   _targetEnemy: {fileID: 0}
   agent: {fileID: 0}
   animator: {fileID: 0}
-  fireRate: 1
+  fireRate: 0.4
   range: 10
-  damage: 10
+  damage: 40
   firePoint: {fileID: 1803543060847156142}
   bullet: {fileID: 4645443845697616512, guid: 44d3487bd266c21478226b2fb2eb2445, type: 3}
   enemiesInRange: []
-  health: 100
+  health: 2000
   isActiceFire: 0
   positionState: 0
   defanceAreas: []

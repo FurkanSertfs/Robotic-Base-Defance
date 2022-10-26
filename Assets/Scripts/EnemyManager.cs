@@ -15,6 +15,12 @@ public class EnemyManager : MonoBehaviour
     [SerializeField]
     Transform[] targetPoints,spawnPoints;
 
+    int dailyEnemyCount;
+    int maxLiveEnemyCount;
+
+    float spawnInterval;
+
+
     private void Awake()
     {
         enemyManager = this;
@@ -26,19 +32,36 @@ public class EnemyManager : MonoBehaviour
 
         baseManager = BaseDefanceManager.baseDefanceManager;
 
-        StartCoroutine(SpawnEnemy("EnemyType1",1));
+        CalculateTheWave(GameManager.gameManager.day);
     }
 
-    IEnumerator SpawnEnemy(string poolName,float spawnInterval)
+
+    void CalculateTheWave(int day)
+    {
+        spawnInterval = 2 / (Mathf.Pow(day, 1.2F)) + 5 + Mathf.Sin(day) / 30;
+
+      
+
+        StartCoroutine(SpawnEnemy("EnemyType1", 0));
+
+    }
+
+
+
+    IEnumerator SpawnEnemy(string poolName,float _spawnInterval)
     {
         
-        yield return new WaitForSeconds(spawnInterval);
+        yield return new WaitForSeconds(_spawnInterval);
 
         int randomPoint = Random.Range(0, spawnPoints.Length);
 
         GameObject newEnemy= poolManager.Pull(0, spawnPoints[randomPoint].position, spawnPoints[randomPoint].rotation);
 
-        newEnemy.GetComponent<EnemyAIManager>().GotoTarget(targetPoints[0]);
+        enemyAIManagers.Add(newEnemy.GetComponent<EnemyAIManager>());
+
+        StartCoroutine(newEnemy.GetComponent<EnemyAIManager>().SetupSpawn(5, targetPoints[0]));
+
+        StartCoroutine(SpawnEnemy("EnemyType1", spawnInterval));
 
     }
 

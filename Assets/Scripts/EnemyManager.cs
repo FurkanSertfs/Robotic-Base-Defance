@@ -40,8 +40,7 @@ public class EnemyManager : MonoBehaviour
     {
         spawnInterval = 2 / (Mathf.Pow(day, 1.2F)) + 5 + Mathf.Sin(day) / 30;
 
-      
-
+        
         StartCoroutine(SpawnEnemy("EnemyType1", 0));
 
     }
